@@ -3,12 +3,19 @@
     background-color:red;
 
 }
+.head{text-align: center;}
 
-
-
+.download-body{
+    text-align: center;
+    width: 80vh;
+    height: 80vh;
+}
 .downloadImg{
+    position: absolute;
     width: 30vh;
     height: 30vh;
+    margin-top: 4%;
+    margin-left: 23%;
   }
 
   .download-link{

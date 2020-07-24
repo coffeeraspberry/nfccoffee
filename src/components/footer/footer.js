@@ -15,7 +15,7 @@ function footer() {
   return (
     <div className="foot">
         <div class="footer">  
-            <Link to='/foot'><img src={logo} className="head-logo" onClick={()=>{handleClick()}}/>  </Link>
+            <Link to='/foot'><img src={logo} className="footer" onClick={()=>{handleClick()}}/>  </Link>
         </div>
      
     </div>
