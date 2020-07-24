@@ -2,12 +2,14 @@ import React from 'react';
 import './home.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import Loading from '../../router/loading';
 import DownloadForm from './downloadDb/download'
 const dbLink=" http://localhost:4321/posts"
 
+
 let handleClick = () => {
     console.log('HERE!');
-    alert('1111Home route');
+   // alert('1111Home route');
   };
 
 

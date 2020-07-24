@@ -7,7 +7,7 @@ import home from '../home.js'
 
 let handleClick = () => {
     console.log('HERE!');
-    alert('Download Router');
+   // alert('Download Router');
   };
 
 

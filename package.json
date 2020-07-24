@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "cra-template": "1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-fade-in": "^1.1.0",
+    "react-loading": "^2.0.3",
+    "react-lottie": "^1.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },

@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 let handleClick = () => {
     console.log('HERE!');
-    alert('Home route');
+   // alert('Home route');
   };
 
 
