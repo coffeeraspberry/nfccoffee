@@ -1,0 +1,17 @@
+.download{
+    text-align:center;
+    background-color:red;
+
+}
+
+
+
+.downloadImg{
+    width: 30vh;
+    height: 30vh;
+  }
+
+  .download-link{
+      text-align: center;
+      height: 20vh;
+  }
