@@ -1,39 +1,26 @@
 import React from 'react';
-import logo from './logoImg.png';
-import down from './download.png';
+import logo from './logo.svg';
 import './App.css';
-import Component from './Component'
-import Navbar from './Navbar'
-import { render } from '@testing-library/react';
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-const dbLink=" http://localhost:4321/posts"
-
 
 function App() {
- 
   return (
     <div className="App">
-      <BrowserRouter>
-
-      <Navbar/>
-      <Component />
-     <Switch>
-       <Route path="/"> </Route>
-       <Route path='/home'><Navbar/></Route>
-       <Route path='/download'><Component  /></Route>
-
-     </Switch>
-
-
-     </BrowserRouter>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
-
-
-
-
-
-
 
 export default App;
