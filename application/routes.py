@@ -1,4 +1,4 @@
-from application import application
+from application import *
 
 @app.route("/")
 def home():
