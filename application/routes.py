@@ -10,3 +10,4 @@ def home():
 @app.route("/users", methods=['GET'])
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()]) 
+    
