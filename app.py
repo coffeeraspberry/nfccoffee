@@ -4,6 +4,8 @@ from flask import Flask, json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from collections import OrderedDict
+from users import Users
+from dates import Dates
 
 ### Flask config
 
@@ -13,7 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pi.db'
 db = SQLAlchemy(app)
 
 ### Database model
-
+'''
 class DictSerializable(object):
     def _asdict(self):
         result = OrderedDict()
@@ -26,8 +28,8 @@ class Users(db.Model, DictSerializable):
     UserID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     userRelationship = db.relationship("Dates") # test
     UserName = db.Column(db.String(80), unique=True, nullable=False, default='user')
-    email = db.Column(db.String(120), unique=True, nullable=False, default='email')
-    Counter = db.Column(db.Integer, nullable=True)
+    Email = db.Column(db.String(120), unique=True, nullable=False, default='email')
+    Counter = db.Column(db.Integer, nullable=flase, default=0)
     LastAccess = db.Column(db.DateTime, nullable=True, default=datetime.now())
 
     def __repr__(self):
@@ -41,7 +43,7 @@ class Dates(db.Model, DictSerializable):
 
     def __repr__(self):
         return '<User %r>' % self.username
-
+'''
 ### DB create if not exists
 with app.app_context():
     db.create_all()
@@ -57,3 +59,6 @@ def users():
     return json.dumps([u._asdict() for u in Users.query.all()]) 
 
 ### To be continued
+
+if __name__ == "__main__":
+    app.run(debug=True)
