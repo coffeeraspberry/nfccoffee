@@ -1,3 +1,5 @@
+from flask_sqlalchemy import SQLAlchemy
+
 class Dates(db.Model, DictSerializable):
     __tablename__ = 'Dates'
     DateID = db.Column(db.Integer, primary_key=True, autoincrement=True)

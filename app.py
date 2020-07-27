@@ -1,12 +1,11 @@
 ### Imports
 
 from flask import Flask, json
-from flask_sqlalchemy import SQLAlchemy
+
 from datetime import datetime
 from collections import OrderedDict
 from users import Users
 from dates import Dates
-
 ### Flask config
 
 app = Flask(__name__)

@@ -1,3 +1,5 @@
+from flask_sqlalchemy import SQLAlchemy
+
 class Users(db.Model, DictSerializable):
     __tablename__ = 'Users'
     UserID = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -15,4 +17,3 @@ class Users(db.Model, DictSerializable):
         for key in self.__mapper__.c.keys():
             result[key] = getattr(self, key)
         return result
-        
