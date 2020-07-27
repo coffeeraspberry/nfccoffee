@@ -1,4 +1,4 @@
-from application import app, jason
+from application import app, json
 
 @app.route("/")
 def home():
