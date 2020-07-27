@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, json
 from flask_sqlalchemy import SQLAlchemy
 
 # Define the WSGI application object
