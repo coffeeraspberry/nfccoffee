@@ -1,4 +1,4 @@
-from application import Flask, SQLAlchemy
+from application import app
 
 @app.route("/")
 def home():
