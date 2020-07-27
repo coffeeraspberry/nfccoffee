@@ -1,4 +1,4 @@
-from flask import Flask, json
+from application import application
 
 @app.route("/")
 def home():
