@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # Configurations
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pi.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.run(debug=True)
 
 # Define the database object which is imported
