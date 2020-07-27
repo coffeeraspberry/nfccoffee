@@ -1,6 +1,6 @@
 ### Imports
 
-from flask import Flask, jsonify
+from flask import Flask, json
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from collections import OrderedDict
@@ -8,6 +8,7 @@ from collections import OrderedDict
 ### Flask config
 
 app = Flask(__name__)
+app.run(debug=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pi.db'
 db = SQLAlchemy(app)
 
@@ -42,8 +43,8 @@ class Dates(db.Model, DictSerializable):
         return '<User %r>' % self.username
 
 ### DB create if not exists
-
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 ### Flask routes
 
@@ -53,6 +54,6 @@ def home():
 
 @app.route("/users", methods=['GET'])
 def users():
-    return jsonify(users=list(Users.query.all()))
+    return json.dumps([u._asdict() for u in Users.query.all()]) 
 
 ### To be continued
