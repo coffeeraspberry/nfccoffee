@@ -1,4 +1,4 @@
-from application import app
+from application import app, models
 from flask import json
 
 @app.route("/")
