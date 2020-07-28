@@ -14,10 +14,7 @@ function footer() {
  
   return (
     <div className="foot">
-        <div className="footer-container">  
-            <Link to='/foot'><img src={logo} className="footer-img" onClick={()=>{handleClick()}}/>  </Link>
-        </div>
-     
+            <Link to='/foot'><img src={logo} className="imgforFooter" onClick={()=>{handleClick()}}/>  </Link>
     </div>
   );
 }

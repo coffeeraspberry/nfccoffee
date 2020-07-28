@@ -4,6 +4,9 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Loading from '../../router/loading';
 import DownloadForm from './downloadDb/download'
+import { Container, Row, Col } from 'reactstrap';
+import DwnBodyPage from '../downloadDbPage/dwn-body/DwnBodyPage';
+
 const dbLink=" http://localhost:4321/posts"
 
 
@@ -41,18 +44,12 @@ demoAsyncCall() {
     if(loading) { // if your component doesn't have to wait for an async action, remove this block 
       return null; // render null when app is not ready
     }
-  
+   
     return (
-      <div className="home">
-       <div class="home-header">
-       <Header/>
-       </div>
-       <div className="home-body">
-        <DownloadForm/>
-        </div>
-        <div className="home-footer">
-         <Footer/>
-          </div>
+      <div>
+    <Header/>
+      <DownloadForm/>
+      <Footer/>
       </div>
     );
 

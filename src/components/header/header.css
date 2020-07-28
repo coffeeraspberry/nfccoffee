@@ -1,20 +1,18 @@
 .head{
-    float: center;
+    position: relative;
+    margin-top: 0px;
+    width: fill;
     text-align: center;
-    background-color: #000000;
+    background-color: black;
 }
 
-.head-header{
-    text-align: center;
-}
-
-.head-bar{
-    text-align: center;
-}
 
 
 .head-logo{
     text-align: center;
+    object-position: center;
+    background-color: black;
     height: 21vh;
     width: 90vh;
+    align-items: center;
 }

@@ -1,40 +1,34 @@
 .download{
+  position: relative;
+  display: flex;
+  width: fill;
     text-align:center;
     background-color:black;
     width: 100%;
     height: 50vh;
+    
 }
 
-
-.img-container{
+.space{flex:0.5;}
+.imgContainer{
+  display: flex;
   position: relative;
-    text-align: center;
-    width: 80vh;
-    height: 80vh;
-    margin-left: 33%;
-    margin-right: 33%;
+  padding-top: 5%;
+    height: 50vh;
     background-color: black;
 }
-.downloadImg{
-    position: absolute;
-    width: 30vh;
-    height: 30vh;
-    margin-top: 4%;
-    margin-left: 0%;
-  }
 
+.downloadImg{
+text-align: center;
+width: 30vh;
+height: 30vh;
+
+  }
   .usersImg{
-      position: absolute;
     text-align: center;
-    width: 26vh;
-  height: 26vh;
-  margin-top: 4.8%;
-  margin-left: -50%;
+    width: 30vh;
+height: 30vh;
+
 }
 
 
-  .download-link{
-      text-align: center;
-      height: 20vh;
-  }
-  

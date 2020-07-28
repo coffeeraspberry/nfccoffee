@@ -1,24 +1,23 @@
 .home
 {
     text-align: center;
-    background-color: #000000;
-    margin:0px
+    background-color: red;
+  
     
 }
 
   .home-header {
-    position:relative;
-    margin-top: 0px;
-    flex:1;
-      background-color: #000000;
-      text-align: center;
-      transition: 0.25s linear;
+   text-align: center;
+   align-items: center;
+   background-color: red;
   }
+
+
   .home-body {
     position:relative;
     margin-top: 0px;
     flex:3;
-      background-color: #000000;
+      background-color: red;
       text-align: center;
       transition: 0.25s linear;
   }
@@ -26,7 +25,7 @@
     position:relative;
     margin-top: 0px;
     flex:2;
-      background-color: #000000;
+      background-color: red;
       text-align: center;
       transition: 0.25s linear;
   }

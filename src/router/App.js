@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import home from '../components/home/home';
 import downloadDbPage from '../components/downloadDbPage/downloadDbPage.jsx'
 import UsersPage from '../components/UsersPage/UsersPage'
-import Loading from "./loading.js"
 import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
 function App() {

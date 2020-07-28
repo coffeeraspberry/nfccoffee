@@ -1,23 +1,18 @@
 .foot{
-    text-align: center;
-    position: absolute;
-    min-height: 60vh;
-    width:200%;
-    margin-bottom: 0px;
-    background-color: #000000;
-}
-.footer-container{
     position: relative;
-  width:200%;
-    height: 21vh;
-    width: 90vh;
+    margin-top: 0px;
+    width: fill;
     text-align: center;
+    background-color: black;
 }
 
-.footer-img{
-    position: absolute;
-   margin-left: 10vh;
-    height: 21vh;
-    
+
+
+.imgforFooter{
     text-align: center;
+    object-position: center;
+    background-color: black;
+    height: 21vh;
+    width: 90vh;
+    align-items: center;
 }

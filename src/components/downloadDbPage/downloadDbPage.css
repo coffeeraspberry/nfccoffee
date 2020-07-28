@@ -1,13 +1,13 @@
 .dwn
 {
     text-align: center;
-    background-color: #000000;
+    background-color: red;
     flex:all;
     transition: 1s;
 }
 
   .dwn-header {
-      background-color: #000000;
+      background-color: red;
       text-align: center;
   }
 

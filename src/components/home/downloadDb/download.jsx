@@ -16,10 +16,12 @@ let handleClick = () => {
 function DownloadForm() {
     return (
       <div className="download">
-       <div className="img-container">
-              <Link to='/download'><img src={downloadImg} className="downloadImg" onClick={()=>{handleClick()}}/>  </Link>
+        <div className="space"></div>
+        <div className="imgContainer">
+          <Link to='/download'><img src={downloadImg} className="downloadImg" onClick={()=>{handleClick()}}/>  </Link>
+          
               <Link to='/users'><img src={usersImg} className="usersImg" onClick={()=>{handleClick()}}/>  </Link>
-              </div>
+              </div> 
       </div>
     );
   }

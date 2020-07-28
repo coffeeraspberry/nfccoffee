@@ -9,13 +9,16 @@
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
     "react-fade-in": "^1.1.0",
     "react-loading": "^2.0.3",
     "react-lottie": "^1.2.3",
+    "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "reactjs-bootstrap-table": "^1.0.12"
+    "reactjs-bootstrap-table": "^1.0.12",
+    "reactstrap": "^8.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
