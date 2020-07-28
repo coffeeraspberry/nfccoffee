@@ -6,13 +6,12 @@
     background-color: black;
 }
 
-
-
 .head-logo{
     text-align: center;
     object-position: center;
     background-color: black;
-    height: 21vh;
-    width: 90vh;
+    width: 100%;
+  height: auto;
     align-items: center;
 }
+

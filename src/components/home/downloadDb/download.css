@@ -1,34 +1,32 @@
 .download{
   position: relative;
   display: flex;
-  width: fill;
     text-align:center;
     background-color:black;
-    width: 100%;
-    height: 50vh;
     
+
 }
 
-.space{flex:0.5;}
-.imgContainer{
-  display: flex;
-  position: relative;
-  padding-top: 5%;
-    height: 50vh;
-    background-color: black;
-}
+
 
 .downloadImg{
-text-align: center;
-width: 30vh;
-height: 30vh;
-
+  position: relative;
+   width: 35%;
+  height: auto;
+  margin-left: 0%;
   }
-  .usersImg{
-    text-align: center;
-    width: 30vh;
-height: 30vh;
+  .downloadImg:hover{
+    opacity: .5;
+    }
 
+  .usersImg{
+    position: relative;
+    width: 35%;
+    height: auto;
+    margin-left: 3%;
+}
+.usersImg:hover{
+  opacity: .5;
 }
 
 

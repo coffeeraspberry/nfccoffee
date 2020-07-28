@@ -1,12 +1,13 @@
 .usr{
-    background-color: #000000;
+    background-color: #white;
     text-align: center;
 }
 
 .text{
-    color:#FFFFFF;
+    color:white;
 }
-.Table{
-    background-color: white;
+.table{
+    background-color:white;
+    opacity: .5;
     text-align: center;
 }

@@ -3,6 +3,7 @@ import './UsersPage.css';
 import Header from '../header/header'
 import Footer from '../footer/footer';
 import UsersBody from './UsersBody/UsersBody'
+import { Container, Row, Col } from 'reactstrap';
 
 
 let handleClick = () => {
@@ -58,7 +59,16 @@ render(){
   return(
   <div>
   <Header/>
-  <h1>Please wait for users to load...</h1>
+  <Container fluid={true}>
+<Row className="on-load">
+  <Col></Col>
+  <Col>
+  <div class="loader"><div className='load-text'>Loading </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+
+  </Col>
+  <Col></Col>
+</Row>
+  </Container>
   <Footer/>
   </div>
   )

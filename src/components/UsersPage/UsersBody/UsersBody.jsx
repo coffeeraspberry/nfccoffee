@@ -1,7 +1,7 @@
 import React from 'react';
 import './UsersBody.css';
 import BootstrapTable from 'reactjs-bootstrap-table';
-
+import { Container, Row, Col } from 'reactstrap';
 class UsersBody extends React.Component{
   constructor(props) {
     super(props);
@@ -11,6 +11,10 @@ class UsersBody extends React.Component{
             users: []
     };
     this.state.data=props.items
+  }
+
+  onDoubleClicked(){
+    alert('double click on row')
   }
 
 
@@ -25,18 +29,13 @@ class UsersBody extends React.Component{
       ]
     console.log('din body ', this.state.data)
         return (
-    <div className="usr">
-        <div className="Table">
-        <BootstrapTable columns={columns} data={data} />
-        </div>
-    </div>
+    <Container fluid={true}>
+        <BootstrapTable className="table" columns={columns} data={data} onRowDoubleClicked={this.onDoubleClicked} headers={true}/>
+        </Container>
      )
   }
 
 }
-
-
-
 
  
       export default UsersBody;

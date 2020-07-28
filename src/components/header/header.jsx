@@ -12,12 +12,27 @@ let handleClick = () => {
 
 
 function header() {
-
+/*
   return (
-   <div className="head">
-           <Col><Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}}/>  </Link></Col> 
-           </div>
+    <Container fluid>
+   <Row>
+     <Col> 1 of 3</Col>
+           <Col  xs={5}><Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}}/>  </Link></Col> 
+           <Col>3 of 3</Col>
+           </Row>
+           </Container>
   );
+  */
+ return (
+  <Container fluid>
+ <Row className="head">
+   <Col></Col>
+         <Col md="auto"> <Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}}/>  </Link> </Col> 
+         <Col></Col>
+         </Row>
+         </Container>
+);
+
 }
 
 

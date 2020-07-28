@@ -4,6 +4,7 @@
     width: fill;
     text-align: center;
     background-color: black;
+    box-shadow: 0 50vh 0 50vh #000;
 }
 
 
@@ -12,7 +13,7 @@
     text-align: center;
     object-position: center;
     background-color: black;
-    height: 21vh;
-    width: 90vh;
+    height: auto;
+    width: 100%;
     align-items: center;
 }

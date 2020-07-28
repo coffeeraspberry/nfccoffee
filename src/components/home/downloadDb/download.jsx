@@ -4,6 +4,7 @@ import {Link}  from "react-router-dom";
 import downloadImg from '../../../assets/downloadImg.png';
 import usersImg from '../../../assets/userListLogo.png'
 import home from '../home'
+import { Container, Row, Col } from 'reactstrap';
 
 
 let handleClick = () => {
@@ -15,14 +16,18 @@ let handleClick = () => {
 
 function DownloadForm() {
     return (
-      <div className="download">
-        <div className="space"></div>
-        <div className="imgContainer">
-          <Link to='/download'><img src={downloadImg} className="downloadImg" onClick={()=>{handleClick()}}/>  </Link>
+      <Container fluid>
+      <div>
+        <Row className="download">
+          <Col></Col>
           
-              <Link to='/users'><img src={usersImg} className="usersImg" onClick={()=>{handleClick()}}/>  </Link>
-              </div> 
-      </div>
+          <Col md="auto"><Link to='/download'><img src={downloadImg} className="downloadImg" onClick={()=>{handleClick()}}/></Link>
+              <Link to='/users'><img src={usersImg} className="usersImg" onClick={()=>{handleClick()}}/>  </Link></Col>
+              <Col></Col>
+              </Row>
+              
+             </div>
+             </Container>
     );
   }
 

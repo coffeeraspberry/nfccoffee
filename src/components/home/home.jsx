@@ -48,8 +48,8 @@ demoAsyncCall() {
     return (
       <div>
     <Header/>
-      <DownloadForm/>
-      <Footer/>
+ <DownloadForm/>
+     <Footer/>
       </div>
     );
 
