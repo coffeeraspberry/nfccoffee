@@ -1,4 +1,4 @@
-from subprocess import Popen
+from subprocess import call
 import os
 
 os.system("pkill -9 flask")
