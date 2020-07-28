@@ -6,6 +6,8 @@ frun='python3 -m flask run'
 
 eval 'pkill -9 -f flask'
 
+echo "\n\n"
+
 bash -c $( eval $flask; eval $frun ) &
 
 echo "Servers run on other bash shell ;) \n"
