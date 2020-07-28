@@ -12,8 +12,9 @@
 
 **Web-app** + **Raspberry Pi Zero W** + **NFC reader** == **Coffe_counter project**
 
-## Backend:
+## Python Backend (uic82959 Andrei) :
 
+> Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :)
 <br>
 
 ### Summary:
