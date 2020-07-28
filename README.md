@@ -12,9 +12,9 @@
 
 **Web-app** + **Raspberry Pi Zero W** + **NFC reader** == **Coffe_counter project**
 
-## Python Backend (uic82959 Andrei) :
+## Python Backend :
 
-> Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :)
+> Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :) (uic82959 Andrei)
 
 <br>
 
@@ -66,7 +66,9 @@ And of course:
 * **PIP3**
 * **sqlite3**
 
-## Frontend:
+## ReactJS Frontend:
+
+> Roberto, please fill in
 
 <br>
 
