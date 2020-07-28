@@ -1,14 +1,24 @@
 # Coffe_counter: An NFC Based Data Acquisition -> Summer practice 2020 Edition
 
+<br>
+
 ## About:
 
 - to do/write smth here in this secttion
 
-**Backend** + **Frontend** == **Web-app**
+**Backend** + **Frontend** == **Web-app** 
+
+<br>
+
 **Web-app** + **Raspberry Pi Zero W** + **NFC reader** == **Coffe_counter project**
 
 ## Backend:
+
+<br>
+
 ### Summary:
+
+<br>
 
 - to do
 
@@ -55,5 +65,7 @@ And of course:
 * **sqlite3**
 
 ## Frontend:
+
+<br>
 
 - to do
