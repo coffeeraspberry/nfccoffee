@@ -3,7 +3,7 @@ import './downloadDbPage.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import DwnBodyPage from './dwn-body/DwnBodyPage'
-import axios from 'axios'
+
 
 let handleClick = () => {
     console.log('HERE!');

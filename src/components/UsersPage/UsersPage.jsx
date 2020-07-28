@@ -3,7 +3,7 @@ import './UsersPage.css';
 import Header from '../header/header'
 import Footer from '../footer/footer';
 import UsersBody from './UsersBody/UsersBody'
-import axios from 'axios'
+
 
 let handleClick = () => {
     console.log('HERE!');
