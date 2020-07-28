@@ -1,6 +1,5 @@
 # Python backend
-
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/coffeeraspberry/nfccoffee/tree/backend)
+> Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :)
 
 # Context
 
