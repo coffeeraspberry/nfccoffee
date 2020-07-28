@@ -2,7 +2,8 @@ import React from 'react';
 import './download.css';
 import {Link}  from "react-router-dom";
 import downloadImg from '../../../assets/downloadImg.png';
-import home from '../home.js'
+import usersImg from '../../../assets/userListLogo.png'
+import home from '../home'
 
 
 let handleClick = () => {
@@ -14,9 +15,10 @@ let handleClick = () => {
 
 function DownloadForm() {
     return (
-      <div className="head">
-       <div className="download-body">
+      <div className="download">
+       <div className="img-container">
               <Link to='/download'><img src={downloadImg} className="downloadImg" onClick={()=>{handleClick()}}/>  </Link>
+              <Link to='/users'><img src={usersImg} className="usersImg" onClick={()=>{handleClick()}}/>  </Link>
               </div>
       </div>
     );

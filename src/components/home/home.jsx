@@ -17,7 +17,8 @@ class home extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-     isActive: true
+     isActive: true,
+     loading:true
     }
   }
   close = () => {
@@ -26,13 +27,30 @@ class home extends React.Component{
   open = () => {
     this.setState({ showMod: true });
   };
+demoAsyncCall() {
+    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  };
+  componentDidMount() {
+    // this simulates an async action, after which the component will render the content
+    this.demoAsyncCall().then(() => this.setState({ loading: false }));
+  };
+  
 
   render(){
+    const { loading } = this.state.loading;
+    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
+      return null; // render null when app is not ready
+    }
+  
     return (
       <div className="home">
        <div class="home-header">
        <Header/>
+       </div>
+       <div className="home-body">
         <DownloadForm/>
+        </div>
+        <div className="home-footer">
          <Footer/>
           </div>
       </div>

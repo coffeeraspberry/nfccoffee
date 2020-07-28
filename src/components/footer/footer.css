@@ -1,10 +1,23 @@
 .foot{
     text-align: center;
-    position: relative;
+    position: absolute;
     min-height: 60vh;
-    margin-bottom: -50px;
+    width:200%;
+    margin-bottom: 0px;
+    background-color: #000000;
+}
+.footer-container{
+    position: relative;
+  width:200%;
+    height: 21vh;
+    width: 90vh;
+    text-align: center;
 }
 
-.footer{
+.footer-img{
+    position: absolute;
+   margin-left: 10vh;
+    height: 21vh;
+    
     text-align: center;
 }

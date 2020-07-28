@@ -1,12 +1,47 @@
 .home
 {
     text-align: center;
-    background-color: #363636;
-    flex:all;
+    background-color: #000000;
+    margin:0px
+    
 }
 
   .home-header {
-      background-color: #363636;
+    position:relative;
+    margin-top: 0px;
+    flex:1;
+      background-color: #000000;
       text-align: center;
+      transition: 0.25s linear;
+  }
+  .home-body {
+    position:relative;
+    margin-top: 0px;
+    flex:3;
+      background-color: #000000;
+      text-align: center;
+      transition: 0.25s linear;
+  }
+  .home-footer {
+    position:relative;
+    margin-top: 0px;
+    flex:2;
+      background-color: #000000;
+      text-align: center;
+      transition: 0.25s linear;
   }
 
+
+
+  .loader:empty {
+    position: absolute;
+    top: calc(50% - 4em);
+    left: calc(50% - 4em);
+    width: 6em;
+    height: 6em;
+    border: 1.1em solid rgba(0, 0, 0, 0.2);
+    border-left: 1.1em solid #000000;
+    border-radius: 50%;
+    animation: load8 1.1s infinite linear;
+  }
+  

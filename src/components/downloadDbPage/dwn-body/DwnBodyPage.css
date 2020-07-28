@@ -1,15 +1,21 @@
 .dwn{
     text-align:center;
-    background-color: #363636;
+    background-color: #000000;
 }
 
 .dwn-header{
     text-align:center;
-    background-color: #363636;
+    background-color: #000000;
 }
 
 .wait{
 
     text-align: center;
-    background-color: #363636;
+    background-color: #000000;
+}
+
+
+.text{
+    text-align: center;
+    color: white;
 }
