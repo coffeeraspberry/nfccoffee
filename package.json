@@ -5,11 +5,16 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "canvasjs": "^1.8.3",
+    "chart.js": "^2.9.3",
     "cra-template": "1.0.3",
     "pace": "0.0.4",
     "pace-js": "^1.0.2",
     "react": "^16.13.1",
+    "react-bar-chart": "^0.1.2",
     "react-bootstrap": "^1.3.0",
+    "react-canvas-js": "^1.0.1",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-fade-in": "^1.1.0",
     "react-loading": "^2.0.3",
@@ -18,7 +23,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "reactjs-bootstrap-table": "^1.0.12",
-    "reactstrap": "^8.5.1"
+    "reactstrap": "^8.5.1",
+    "recharts": "^1.8.5"
   },
   "scripts": {
     "start": "react-scripts start",

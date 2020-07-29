@@ -7,7 +7,14 @@
 
 }
 
-
+.statImg{
+  text-align: center;
+  width: 35%;
+  height: auto;
+}
+.statImg:hover{
+  opacity: .5;
+}
 
 .downloadImg{
   position: relative;
