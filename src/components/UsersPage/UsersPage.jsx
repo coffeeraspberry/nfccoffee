@@ -23,8 +23,9 @@ class UsersPage extends React.Component{
 
  async  componentDidMount() {    
 
-    let url=  api +'/users'
-    console.log(url);
+    //let url=  api +'/users'
+    let url = 'http://192.168.43.27:5000/users'
+    console.log('URL THAT I AM FETCHING', url);
     /*
     let options = {
       method: 'GET',
@@ -38,8 +39,7 @@ class UsersPage extends React.Component{
       },
     };
 */
-    
-
+  
       let Urlresponse = await fetch(url)
       let JsonResponse= await Urlresponse.json()
       console.log('JsonResponse : ', JsonResponse)
