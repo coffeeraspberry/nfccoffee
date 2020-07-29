@@ -1,6 +1,6 @@
 import React from 'react';
 import './DwnBodyPage.css';
-
+import {Container, Row, Col} from 'reactstrap'
 
 
 class DwnBodyPage extends React.Component{
@@ -18,15 +18,17 @@ class DwnBodyPage extends React.Component{
   render (){
     console.log('din body ', this.state.data)
         return (
+          <Container>
     <div className="dwn">
-      <div className='wait'>
-     <h1 className="text">Wait for database download...</h1>
-  <h1 className="text">Downloaded data</h1>
-        <h1 className="text">id = {this.state.data.id}</h1>
-        <h1 className="text">title = {this.state.data.title}</h1>
-        <h1 className="text">author = {this.state.data.author}</h1>
-     </div>
-    </div>)
+      <Row>
+        <Col></Col>
+          <Col><p className="dwn">Your download should be started now</p></Col>
+     <Col></Col>
+      </Row>
+
+    </div>
+    </Container>
+    )
   }
 
 }
@@ -36,25 +38,6 @@ class DwnBodyPage extends React.Component{
 
  
 
-/*
-  function DwnBodyPage(res, gg) {
-    
-     
-     
-       return (
-        
-          <div className="dwn">
-            <div className='wait'>
-           <h1 className="text">Wait for database download...</h1>
-        <h1 className="text">Downloaded : {}</h1>
-      
-           </div>
-          </div>
-           
-        );
-         
-      }
-    
-*/
+
 
       export default DwnBodyPage;

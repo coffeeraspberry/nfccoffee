@@ -4,12 +4,9 @@ import Header from '../header/header'
 import Footer from '../footer/footer';
 import UsersBody from './UsersBody/UsersBody'
 import { Container, Row, Col } from 'reactstrap';
+import api from '../../constants/api'
 
 
-let handleClick = () => {
-    console.log('HERE!');
-    alert('downloadDBPAGE route');
-  };
 
 
 
@@ -25,7 +22,7 @@ class UsersPage extends React.Component{
   
 
  async  componentDidMount() {    
-    let url=  'http://localhost:4321/users'
+    let url=  api +'/users'
     let options = {
       method: 'GET',
       headers: {

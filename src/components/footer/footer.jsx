@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.css';
 import logo from '../../assets/logoImg.png';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row , Col} from 'reactstrap';
 
 
@@ -18,7 +18,7 @@ function footer() {
     <Container fluid={true}>
       <Row className="foot">
         <Col></Col>
-          <Col md="auto">  <Link to='/foot'><img src={logo} className="imgforFooter" onClick={()=>{handleClick()}}/>  </Link></Col>
+          <Col md="auto">  <Link to='/foot'><img src={logo} className="imgforFooter" onClick={()=>{handleClick()}} alt="footlogo"/>  </Link></Col>
           <Col></Col>
             </Row>
     </Container>

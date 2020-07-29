@@ -1,7 +1,7 @@
 import React from 'react';
 import './UsersBody.css';
 import BootstrapTable from 'reactjs-bootstrap-table';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col} from 'reactstrap';
 class UsersBody extends React.Component{
   constructor(props) {
     super(props);

@@ -1,1 +1,3 @@
-export const API_URL="http://localhost:3000"
+let api='http://localhost:4321'
+
+export default api;

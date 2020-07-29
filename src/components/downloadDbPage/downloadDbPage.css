@@ -1,9 +1,9 @@
 .dwn
 {
     text-align: center;
-    background-color: red;
-    flex:all;
-    transition: 1s;
+    color: white;
+    background-color: black;
+
 }
 
   .dwn-header {

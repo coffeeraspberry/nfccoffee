@@ -4,16 +4,9 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import Loading from '../../router/loading';
 import DownloadForm from './downloadDb/download'
-import { Container, Row, Col } from 'reactstrap';
-import DwnBodyPage from '../downloadDbPage/dwn-body/DwnBodyPage';
-
-const dbLink=" http://localhost:4321/posts"
 
 
-let handleClick = () => {
-    console.log('HERE!');
-   // alert('1111Home route');
-  };
+
 
 
 class home extends React.Component{
