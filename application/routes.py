@@ -9,7 +9,7 @@ def home():
 @app.route("/users", methods=['GET'])
 def users():
     data = Users.query.all()
-    result = [d.__asdict__ for d in data]
+    result = [d._asdict() for d in data]
     return jsonify(result=result)
 
     #return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
