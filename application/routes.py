@@ -4,7 +4,7 @@ from flask import json
 
 @app.route("/")
 def home():
-    return 'Debug text: Hello world!'
+    return "Hello, cross-origin-world!"
 
 @app.route("/users", methods=['GET'])
 def users():

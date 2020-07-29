@@ -1,8 +1,10 @@
 from flask import Flask, json
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 # Define the WSGI application object
 app = Flask(__name__)
+CORS(app)
 
 # Configurations
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pi.db'
