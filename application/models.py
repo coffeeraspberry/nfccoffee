@@ -7,7 +7,7 @@ class DictSerializable(object):
         result = OrderedDict()
         for key in self.__mapper__.c.keys():
             result[key] = getattr(self, key)
-        return result
+        return str(result)
 
     def __repr__(self):
         return '<User %r>' % self.username
