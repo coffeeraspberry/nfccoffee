@@ -22,7 +22,10 @@ class UsersPage extends React.Component{
   
 
  async  componentDidMount() {    
+
     let url=  api +'/users'
+    console.log(url);
+    /*
     let options = {
       method: 'GET',
       headers: {
@@ -34,7 +37,10 @@ class UsersPage extends React.Component{
      'Expires': '0'
       },
     };
-      let Urlresponse = await fetch(url, options)
+*/
+    
+
+      let Urlresponse = await fetch(url)
       let JsonResponse= await Urlresponse.json()
       console.log('JsonResponse : ', JsonResponse)
       this.setState({data: JsonResponse})
