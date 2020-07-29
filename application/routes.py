@@ -8,9 +8,9 @@ def home():
 
 @app.route("/users", methods=['GET'])
 def users():
-    users = [u._asdict() for u in Users.query.all()]
+    users = u._asdict() for u in Users.query.all()
     for k, v in users.items():
-        prices[k] = str(v)
+        users[k] = str(v)
     return json.dumps(users, sort_keys=True)
     #return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
