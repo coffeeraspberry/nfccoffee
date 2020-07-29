@@ -23,5 +23,4 @@ with app.app_context():
     db.create_all() # Create sql tables for our data models 
 
 # Bring the @app.routes()
-
 from application import routes
