@@ -1,6 +1,6 @@
 from application import app
 from application.models import *
-from flask import json
+from flask import json, jsonify
 
 @app.route("/")
 def home():
@@ -8,10 +8,10 @@ def home():
 
 @app.route("/users", methods=['GET'])
 def users():
-    users = u._asdict() for u in Users.query.all()
-    for k, v in users.items():
-        users[k] = str(v)
-    return json.dumps(users, sort_keys=True)
+    data = Users.query.all()
+    result = [d.__asdict__ for d in data]
+    return jsonify(result=result)
+
     #return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
 @app.route("/logs", methods=['GET'])
