@@ -1,11 +1,11 @@
 .usr{
-background-color: #000000;
+background-color: transparent;
 text-align: center;
 
 }
 
 .on-load{
-    background-color: #000000;
+    background-color: transparent;
     color:white;
 }
 

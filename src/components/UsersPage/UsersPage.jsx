@@ -5,7 +5,7 @@ import Footer from '../footer/footer';
 import UsersBody from './UsersBody/UsersBody'
 import { Container, Row, Col } from 'reactstrap';
 import api from '../../constants/api'
-
+import '../home/home.css'
 
 
 
@@ -44,7 +44,9 @@ class UsersPage extends React.Component{
       let JsonResponse= await Urlresponse.json()
       console.log('JsonResponse : ', JsonResponse)
       this.setState({data: JsonResponse})
-      return JsonResponse;
+      let picpic= await JSON.stringify(JsonResponse, null, 4);
+      console.log('pic pic ', picpic)
+      return picpic;
   }
 
   close = () => {
@@ -77,10 +79,12 @@ render(){
   )
 }else {
   return(
-    <div>
+    <div className="home">
+      <div className="black">
     <Header/>
     <UsersBody items={this.state.data}/>
     <Footer/>
+    </div>
     </div>
     )
 }

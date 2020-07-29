@@ -20,18 +20,21 @@ class UsersBody extends React.Component{
 
   render (){
       let data= this.state.data
+
       let columns = [
-        { name: 'Counter' },
+        { name: 'Counter'},
+        { name: 'Email' },
         { name: 'LastAccess' },
-        { name: 'UserId' },
-        { name: 'UserName' },
-        { name: 'email' }
+        { name: 'UserID' },
+        { name: 'UserName' }
       ]
     console.log('din body ', this.state.data)
         return (
+          <div className="usr">
     <Container fluid={true}>
         <BootstrapTable className="table" columns={columns} data={data} onRowDoubleClicked={this.onDoubleClicked} headers={true}/>
         </Container>
+        </div>
      )
   }
 

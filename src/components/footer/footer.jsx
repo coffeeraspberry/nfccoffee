@@ -16,6 +16,9 @@ function footer() {
   return (
     
     <Container fluid={true}>
+      <Row className="empty">
+        
+      </Row>
       <Row className="foot">
         <Col></Col>
           <Col md="auto">  <Link to='/foot'><img src={logo} className="imgforFooter" onClick={()=>{handleClick()}} alt="footlogo"/>  </Link></Col>

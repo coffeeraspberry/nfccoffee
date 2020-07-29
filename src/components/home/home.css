@@ -1,11 +1,14 @@
 .home
 {
     text-align: center;
-    background-color: red;
-  
-    
+   background: url("../../assets/background.jpg");
+   background-size: cover;
+ 
 }
-
+.black{
+  background-color: #000000;
+  opacity: 0.8;
+}
   .home-header {
    text-align: center;
    align-items: center;

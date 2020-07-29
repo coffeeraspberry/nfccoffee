@@ -1,8 +1,8 @@
 .dwn
 {
     text-align: center;
-    color: white;
-    background-color: black;
+    background: url("../../assets/background.jpg");
+    background-size: cover;
 
 }
 
@@ -11,3 +11,11 @@
       text-align: center;
   }
 
+  .black{
+    background-color: #000000;
+    opacity: 0.8;
+  }
+  .text{
+      color:white;
+      font-size: large;
+  }

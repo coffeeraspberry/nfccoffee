@@ -3,16 +3,18 @@
     margin-top: 0px;
     width: fill;
     text-align: center;
-    background-color: black;
+    background-color: transparent;
     box-shadow: 0 50vh 0 50vh #000;
 }
 
-
+.empty{
+    height: 50vh;
+}
 
 .imgforFooter{
     text-align: center;
     object-position: center;
-    background-color: black;
+    background-color: transparent;
     height: auto;
     width: 100%;
     align-items: center;

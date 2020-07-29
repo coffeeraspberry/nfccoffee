@@ -3,15 +3,19 @@
     margin-top: 0px;
     width: fill;
     text-align: center;
-    background-color: black;
+    background-color: transparent;
 }
 
 .head-logo{
     text-align: center;
     object-position: center;
-    background-color: black;
+    background-color: transparent;
     width: 100%;
+    filter: contrast(2);
   height: auto;
     align-items: center;
 }
 
+.head-logo:hover{
+  opacity: 0.5;
+}

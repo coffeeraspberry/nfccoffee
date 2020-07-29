@@ -1,5 +1,6 @@
 import React from 'react';
 import './downloadDbPage.css';
+import '../home/home.css'
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import DwnBodyPage from './dwn-body/DwnBodyPage'
@@ -62,17 +63,19 @@ render(){
     console.log('this.state 1 ',this.state.data)
    
   return (
-    <div className="dwn">
+    <div className="home">
+      <div className="black">
     <Container>
       <Header/>
       <Row>
         <Col></Col>
-        <Col><p>Please wait, your download will start shortly</p></Col>
+        <Col><p className="text">Please wait, your download will start shortly</p></Col>
         <Col></Col>
       </Row>
       <Footer/>
      
     </Container>
+    </div>
     </div>
      
   )}
@@ -80,9 +83,11 @@ render(){
     console.log('this.state 2',this.state.data)
    return ( 
      <div className="dwn">
+       <div className="black">
    <Header/>
    <DwnBodyPage items={this.state.data}/>
    <Footer/>
+   </div>
    </div>
    )
 

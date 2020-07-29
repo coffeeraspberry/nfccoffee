@@ -6,12 +6,14 @@ import downloadDbPage from '../components/downloadDbPage/downloadDbPage.jsx'
 import UsersPage from '../components/UsersPage/UsersPage'
 import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
+import back from '../assets/background.jpg'
 function App() {
   
   return (
     
     <Router> 
       <div className="FadeAnim">
+        
      <Switch> 
        <Route exact path='/' component={home}/>
       <Route exact path='/home'component={home} />
