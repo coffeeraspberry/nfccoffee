@@ -9,9 +9,9 @@ def home():
 @app.route("/users", methods=['GET'])
 def users():
     users = [u._asdict() for u in Users.query.all()]
-    for key in users:
-        users[key] = str(users[key])
-    return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True)
+    for k, v in users.items():
+...     prices[k] = str(v)
+    return json.dumps(users, sort_keys=True)
     #return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
 @app.route("/logs", methods=['GET'])
