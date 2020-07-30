@@ -18,4 +18,4 @@ def logs():
 @app.route('/secretstopserver', methods=['GET'])
 def stopServer():
     os.kill(os.getpid(), signal.SIGINT)
-    return jsonify({ "success": True, "message": "Server is shutting down..." })
+    return json.dumps({ "success": True, "message": "Server is shutting down..." })
