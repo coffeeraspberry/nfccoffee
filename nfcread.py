@@ -1,15 +1,10 @@
-# demo purpose
-import time
-import subprocess
-import socket
+###demo pupose
+import socket #for hostname and ip_adress
 import board
 import busio
-import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
+import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd #LCD RGB 16x2
 
-lcd_columns = 16
-lcd_rows = 2
-i2c = busio.I2C(board.SCL, board.SDA)
-lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows) 
+lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2) 
 lcd.color = [100, 0, 0]
 
 hostname = socket.gethostname()
