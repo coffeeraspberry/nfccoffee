@@ -13,8 +13,11 @@ lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.color = [100, 0, 0]
 
 hostname = socket.gethostname()
-#ip_address = socket.gethostbyname(hostname)
-ip_address = subprocess.call("ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'", shell=True)
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+ip_address = s.getsockname()[0]
+s.close()
+
 lcd.clear()
 
 lcd.message = str(hostname)+"\n"+str(ip_address)
