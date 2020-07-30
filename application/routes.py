@@ -1,6 +1,6 @@
 from application import app
 from application.models import *
-from flask import json, jsonify
+from flask import json
 
 @app.route("/")
 def home():
