@@ -14,8 +14,3 @@ def users():
 @app.route("/logs", methods=['GET'])
 def logs():
     return json.dumps([v._asdict() for v in str(Dates.query.all())], sort_keys=True)
-
-@app.route('/secretstopserver', methods=['GET'])
-def stopServer():
-    os.kill(os.getpid(), signal.SIGINT)
-    return json.dumps({ "success": True, "message": "Server is shutting down..." })
