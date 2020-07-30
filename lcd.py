@@ -15,4 +15,4 @@ i2c = busio.I2C(board.SCL, board.SDA)
 lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows) 
 
 lcd.color = [100, 0, 0]
-lcd.message = "{hostname}\n{ip_address}"
+lcd.message = str(hostname)+"\n"+str(ip_address)
