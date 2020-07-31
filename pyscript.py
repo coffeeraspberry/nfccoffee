@@ -1,8 +1,8 @@
 ###demo pupose
-import socket #for hostname and ip_adress
+import socket
 import board
 import busio
-import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd #LCD RGB 16x2
+import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 
 lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2) 
 lcd.color = [100, 0, 0]
