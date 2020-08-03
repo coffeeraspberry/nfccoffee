@@ -5,7 +5,7 @@ import os, signal
 
 @app.route("/")
 def home():
-    return "Hello, cross-origin-world!"
+    return "Hello, cross-origin-world!\n"
 
 @app.route("/users", methods=['GET'])
 def users():
