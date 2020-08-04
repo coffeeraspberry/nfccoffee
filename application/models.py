@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from . import db
 from collections import OrderedDict
 from datetime import datetime

@@ -1,7 +1,15 @@
+#!/usr/bin/python3
 from application import app
-from application.models import *
-from flask import json
+from application.models import Users, Dates
+from . import db
+from flask import json, request
 import os, signal
+
+def getFrontJSON():
+    print("Requesting JSON data...\n") #delete later
+    data = request.get_json(force=True)
+    print("Data:\n%s" % str(data)) #delete later
+    return data
 
 @app.route("/")
 def home():
@@ -14,3 +22,11 @@ def users():
 @app.route("/logs", methods=['GET'])
 def logs():
     return json.dumps([v._asdict() for v in str(Dates.query.all())], sort_keys=True)
+
+@app.route("/createUsers", methods=['POST'])
+def createUsers():
+    data = getFrontJSON()
+    user = Users(UserName=data['UserName'], Email=data['Email'], Counter=data['Counter'])
+    db.session.add(user)
+    db.session.commit()
+    return "User inserted in DB\n"
