@@ -5,6 +5,7 @@ import home from '../components/home/home';
 import downloadDbPage from '../components/downloadDbPage/downloadDbPage.jsx'
 import UsersPage from '../components/UsersPage/UsersPage'
 import GraphPage from '../components/GraphPage/GraphPage'
+import AddUserPage from '../components/AddUserPage/AddUserPage'
 import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
 import back from '../assets/background.jpg'
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/foot' component={home} / >   
         <Route exact path='/users' component={UsersPage} / > 
         <Route exact path='/graph' component={GraphPage}/>
+        <Route exact path='/addUsr' component={AddUserPage}/>
      </Switch>
      </div>
     </Router>

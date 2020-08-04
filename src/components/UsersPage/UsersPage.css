@@ -1,5 +1,6 @@
 .usr{
-background-color: transparent;
+    background: url("../../assets/background.jpg");
+    background-size: cover;
 text-align: center;
 
 }

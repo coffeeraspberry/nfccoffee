@@ -29,7 +29,7 @@ function header() {
     <Nav className="mr-auto">
       <NavDropdown title="Options" id="collasible-nav-dropdown">
         <NavDropdown.Item href="/users">Show User List</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Add New User</NavDropdown.Item>
+        <NavDropdown.Item href="/addUsr">Add New User</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Fill User Info</NavDropdown.Item>
         <NavDropdown.Item href="/graph">CoffeeGraph</NavDropdown.Item>
         <NavDropdown.Divider />

@@ -7,7 +7,16 @@
     color:white;
 }
 .table{
-    background-color:white;
-    opacity: .5;
+   background-color: black;
+    color:white;
+    table-layout: auto;
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
     text-align: center;
+    margin-top: 1.5%;
 }
+
+.react-bootstrap-table table {
+    table-layout: auto;
+    }

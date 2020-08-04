@@ -6,6 +6,8 @@ import UsersBody from './UsersBody/UsersBody'
 import { Container, Row, Col } from 'reactstrap';
 import api from '../../constants/api'
 import '../home/home.css'
+import Loader from "../../router/loading"
+
 
 
 
@@ -62,18 +64,20 @@ class UsersPage extends React.Component{
 render(){
   if(this.state.data==null){
   return(
-  <div>
+  <div className="home">
+    <div className="black">
   <Header/>
   <Container fluid={true}>
 <Row className="on-load">
   <Col></Col>
   <Col>
   <div class="loader"><div className='load-text'>Loading </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
-  </Col>
+ </Col>
   <Col></Col>
 </Row>
   </Container>
   <Footer/>
+  </div>
   </div>
   )
 }else {
