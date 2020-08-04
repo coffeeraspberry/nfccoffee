@@ -33,7 +33,7 @@ class UsersBody extends React.Component{
       console.log('data data data ', data)
       
       let columns = [
-        {dataField: 'id', text : 'id'},
+        
         { dataField: 'Counter', text: 'Counter'},
         { dataField: 'Email',text: 'Email ', filter: textFilter() },
         { dataField: 'LastAccess',text: 'LastAccess' },
