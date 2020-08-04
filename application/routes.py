@@ -33,7 +33,5 @@ def createUsers():
 
 @app.route('/deleteUsers', methods=['GET'])
 def deleteUsers():
-    delete = Users.query.get(2)
-    db.session.delete(delete)
-    db.session.commit()
-    
+    delete = Users.query.filter_by(UserID=2).first()
+    print(str(delete))
