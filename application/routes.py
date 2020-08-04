@@ -50,7 +50,7 @@ def get_random_string(length):
 @app.route("/addtest", methods=['POST', 'GET'])
 def addtest():
     username = get_random_string(4)
-    user = Users(UserName=username, Email=username+"@conti.ro", Counter=0)
+    user = Users(UserName=username, Email=username+"@conti.ro")
     db.session.add(user)
     db.session.commit()
     return "User %s was inserted in DB\n" % user
