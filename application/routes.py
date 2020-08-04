@@ -29,9 +29,11 @@ def createUsers():
     user = Users(UserName=data['UserName'], Email=data['Email'], Counter=data['Counter'])
     db.session.add(user)
     db.session.commit()
-    return "User inserted in DB\n"
+    return "User %s was inserted in DB\n" % user
 
 @app.route('/deleteUsers', methods=['GET'])
 def deleteUsers():
-    delete = Users.query.filter_by(UserID=1).first()
-    return str(delete)
+    user = Users.query.filter_by(UserID=1).first()
+    db.session.delete(user)
+    db.session.commit()
+    return "User %s was deleted from DB\n" % user
