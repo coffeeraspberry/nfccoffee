@@ -23,14 +23,8 @@ class Users(db.Model, DictSerializable):
     Counter = db.Column(db.Integer, nullable=False, server_default=0, )
     LastAccess = db.Column(db.DateTime, nullable=True, server_default=func.now())
 
-    def __repr__ (self):
-        return '<User {}>'.format(self.username)
-
 class Dates(db.Model, DictSerializable):
     __tablename__ = 'Dates'
     DateID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     UserID = db.Column(db.Integer, db.ForeignKey('Users.UserID'))
     DateLog = db.Column(db.DateTime, nullable=False, server_default=func.now())
-
-    def __repr__ (self):
-        return '<User {}>'.format(self.username)
