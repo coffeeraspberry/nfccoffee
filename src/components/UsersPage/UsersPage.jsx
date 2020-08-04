@@ -28,7 +28,7 @@ class UsersPage extends React.Component{
     let url=  api +'/users'
    
     console.log('URL THAT I AM FETCHING', url);
-    /*
+    
     let options = {
       method: 'GET',
       headers: {
@@ -40,11 +40,11 @@ class UsersPage extends React.Component{
      'Expires': '0'
       },
     };
-*/
+
   
-      let Urlresponse = await fetch(url)
+      let Urlresponse = await fetch(url, options)
       let JsonResponse= await Urlresponse.json()
-      console.log('JsonResponse : ', JsonResponse)
+      //console.log('JsonResponse : ', JsonResponse)
       this.setState({data: JsonResponse})
       let picpic= await JSON.stringify(JsonResponse, null, 4);
       console.log('pic pic ', picpic)
