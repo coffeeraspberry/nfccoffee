@@ -38,7 +38,7 @@ def deleteUsers():
     db.session.commit()
     return "User %s was deleted from DB\n" % user
 
-@app.route("/addtest", methods=['POST'])
+@app.route("/addtest", methods=['POST', 'GET'])
 def addtest():
     user = Users(UserName="test", Email="test@conti.ro", Counter=0)
     db.session.add(user)
