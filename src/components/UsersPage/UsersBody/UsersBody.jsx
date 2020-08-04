@@ -1,6 +1,6 @@
 import React from 'react';
 import './UsersBody.css';
-
+import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
 import { Container, Row, Col} from 'reactstrap';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -35,10 +35,10 @@ class UsersBody extends React.Component{
       let columns = [
         {dataField: 'id', text : 'id'},
         { dataField: 'Counter', text: 'Counter'},
-        { dataField: 'Email',text: 'Email' },
+        { dataField: 'Email',text: 'Email ', filter: textFilter() },
         { dataField: 'LastAccess',text: 'LastAccess' },
         { dataField: 'UserID',text: 'UserID' },
-        {dataField: 'UserName', text: 'UserName' }
+        {dataField: 'UserName', text: 'UserName ',  filter: textFilter() }
       ]
     console.log('din body ', this.state.data)
    
@@ -49,7 +49,7 @@ class UsersBody extends React.Component{
 
 
 <div className="table">
-<BootstrapTable className="table-condensed" keyField='id' loading={ true } data={ data } columns={ columns } bordered={true} headers={true} fluid={true} pagination={ paginationFactory()}   />
+<BootstrapTable className="table-condensed" keyField='id' loading={ true } data={ data } columns={ columns } bordered={true} headers={true} fluid={true} pagination={ paginationFactory()}  filter={ filterFactory() }   />
 </div>
 
 
