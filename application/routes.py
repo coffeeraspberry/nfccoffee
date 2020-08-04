@@ -30,3 +30,8 @@ def createUsers():
     db.session.add(user)
     db.session.commit()
     return "User inserted in DB\n"
+
+@app.route('/deleteUsers', methods=['GET'])
+def deleteUsers():
+    delete = Users.query.get(1)
+    return str(delete)
