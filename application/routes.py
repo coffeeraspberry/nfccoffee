@@ -38,9 +38,19 @@ def deleteUsers():
     db.session.commit()
     return "User %s was deleted from DB\n" % user
 
+# delete later
+import random
+import string
+
+def get_random_string(length):
+    letters = string.ascii_lowercase
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
 @app.route("/addtest", methods=['POST', 'GET'])
 def addtest():
-    user = Users(UserName="test", Email="test@conti.ro", Counter=0)
+    username = get_random_string(4)
+    user = Users(UserName=username, Email=username+"@conti.ro", Counter=0)
     db.session.add(user)
     db.session.commit()
     return "User %s was inserted in DB\n" % user
