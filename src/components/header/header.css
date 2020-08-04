@@ -11,11 +11,24 @@
     object-position: center;
     background-color: transparent;
     width: 100%;
+    height: auto;
     filter: contrast(2);
-  height: auto;
+ 
     align-items: center;
 }
 
 .head-logo:hover{
   opacity: 0.5;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a,.navbar-default .navbar-nav .open .dropdown-menu {
+  background-color: #000000;
+  color:#ffffff;
+}
+
+.nav{
+ width:100%;
+}
+
+.home-btn:hover{
+  opacity: .5;
 }

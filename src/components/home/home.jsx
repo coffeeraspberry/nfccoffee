@@ -3,7 +3,7 @@ import './home.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Loading from '../../router/loading';
-import DownloadForm from './downloadDb/download'
+import HomeBody from './HomeBody/HomeBody'
 
 
 
@@ -42,7 +42,7 @@ demoAsyncCall() {
       <div className="home">
         <div className="black">
     <Header/>
- <DownloadForm/>
+ <HomeBody/>
      <Footer/>
       </div>
       </div>

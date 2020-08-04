@@ -1,0 +1,18 @@
+.body-img{
+    position: relative;
+    width:50%;
+    height:auto;
+    margin-top: 18vh;
+}
+
+
+.body-description{
+color:white;
+position: relative;
+width:auto;
+align-content: center;
+height:auto;
+margin-top: 22vh;
+margin-right:3vh;
+text-align: left;
+}
