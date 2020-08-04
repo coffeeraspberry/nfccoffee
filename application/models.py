@@ -21,7 +21,7 @@ class Users(db.Model, DictSerializable):
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
 
     def __repr__(self):
-        return '<User model {}>'.format(self.UserID)
+        return '<User{}>'.format(self.UserID)
 
 class Dates(db.Model, DictSerializable):
     __tablename__ = 'Dates'
@@ -30,4 +30,4 @@ class Dates(db.Model, DictSerializable):
     DateLog = db.Column(db.DateTime, nullable=False, default=func.now())
     
     def __repr__(self):
-        return '<Date model {}>'.format(self.DateID)
+        return '<Date{}>'.format(self.DateID)
