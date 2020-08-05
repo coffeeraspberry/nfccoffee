@@ -1,5 +1,6 @@
 import React from 'react';
 import './GraphPage.css';
+import '../home/home.css'
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Loading from '../../router/loading';
@@ -61,13 +62,17 @@ class GraphPage extends React.Component{
   };
   
 
+
+  
   render(){
    if(this.state.data==null){
      return (
-       <div>
+       <div className="home">
+         <div className="black">
        <Header/>
-       <h1>Data fetching</h1>
+       <div class="loader"><div className='load-text'>loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
        <Footer/>
+       </div>
        </div>
      )
    }

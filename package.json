@@ -25,6 +25,7 @@
     "react-lottie": "^1.2.3",
     "react-responsive": "^8.1.0",
     "react-router-dom": "^5.2.0",
+    "react-router-transition": "^2.0.0",
     "react-scripts": "3.4.1",
     "reactjs-bootstrap-table": "^1.0.12",
     "reactstrap": "^8.5.1",

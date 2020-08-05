@@ -9,11 +9,20 @@ import AddUserPage from '../components/AddUserPage/AddUserPage'
 import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
 import back from '../assets/background.jpg'
+
+
+
+  
+
+
+
+
 function App() {
   
   return (
     
     <Router> 
+
       <div className="FadeAnim">
         
      <Switch> 

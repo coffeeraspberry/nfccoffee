@@ -15,6 +15,8 @@ class DwnBodyPage extends React.Component{
   }
 
 
+
+  
   render (){
     console.log('din body ', this.state.data)
         return (

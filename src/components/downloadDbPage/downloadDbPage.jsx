@@ -16,6 +16,8 @@ let handleClick = () => {
 
 
 
+  
+
 class downloadDbPage extends React.Component{
   constructor(props) {
     super(props);
@@ -65,16 +67,18 @@ render(){
   return (
     <div className="home">
       <div className="black">
-    <Container>
       <Header/>
+    <Container>
       <Row>
         <Col></Col>
         <Col><p className="text">Please wait, your download will start shortly</p></Col>
         <Col></Col>
       </Row>
-      <Footer/>
-     
+      <Row>
+        <Col> <div class="loader"><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div> </Col>
+      </Row>
     </Container>
+    <Footer/>
     </div>
     </div>
      

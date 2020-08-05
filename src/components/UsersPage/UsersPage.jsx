@@ -71,7 +71,7 @@ render(){
 <Row className="on-load">
   <Col></Col>
   <Col>
-  <div class="loader"><div className='load-text'>Loading </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+  <div class="loader"><div className='load-text'>loading </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
  </Col>
   <Col></Col>
 </Row>
