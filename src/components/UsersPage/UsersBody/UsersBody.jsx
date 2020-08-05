@@ -1,7 +1,7 @@
 import React from 'react';
 import './UsersBody.css';
 import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
-import { Container, Row, Col} from 'reactstrap';
+
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 //<BootstrapTable className="table-condensed" pagination={true} columns={columns} data={data} bordered={true} onRowDoubleClicked={this.onDoubleClicked} headers={true}/>
