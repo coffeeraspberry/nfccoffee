@@ -47,7 +47,7 @@ def deleteUsers():
     db.session.commit()
     return "User %s was deleted from DB \n" % user
 
-@app.route('/downloadUsers', methods=['POST'])
+@app.route('/downloadUsers', methods=['POST','GET'])
 def downloadUsers():
     makeCSV()
     return "CSV created"
