@@ -12,13 +12,8 @@ def getFrontJSON():
     print("Data:\n%s" % str(data)) #delete later
     return data
 
-def makeCSV():
-    outfile = open('Users.csv', 'wb')
-    outcsv = csv.writer(outfile)
-    records = db.session.query(Users).all()
-    [outcsv.writerow([getattr(curr, column.name) for column in Users.__mapper__.columns]) for curr in records]
-    # or maybe use outcsv.writerows(records)
-    outfile.close()
+def makeCSV(table):
+    subprocess.call("sqlite3 -header -csv application/pi.db \"select * from %s\" > %s.csv " % table, shell=True)
 
 @app.route("/")
 def home():
