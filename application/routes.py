@@ -44,7 +44,7 @@ def deleteUsers():
 
 @app.route('/downloadUsers', methods=['POST','GET'])
 def downloadUsers():
-    makeCSV()
+    makeCSV("Users")
     return "CSV created"
 
 # delete later
