@@ -12,7 +12,7 @@ def getFrontJSON():
     return data
 
 def makeCSV(table):
-    subprocess.call("sqlite3 -header -csv application/pi.db \"select * from %{}\" > {}.csv ".format(table), shell=True)
+    subprocess.call("sqlite3 -header -csv application/pi.db \"select * from {}\" > {}.csv ".format(table), shell=True)
 
 @app.route("/")
 def home():
