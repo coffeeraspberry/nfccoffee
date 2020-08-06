@@ -3,13 +3,16 @@ from application import app
 from application.models import Users, Dates
 from . import db
 from flask import json, request
-import os, signal
+import os, signal, csv, subprocess
 
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
     data = request.get_json(force=True)
     print("Data:\n%s" % str(data)) #delete later
     return data
+
+def makeCSV(table):
+    subprocess.call('sqlite3 -header -csv application/pi.db \"select * from ' + str(table) + '" > ' + str(table) + '.csv', shell=True)
 
 @app.route("/")
 def home():
@@ -36,7 +39,12 @@ def deleteUsers():
     user = Users.query.filter_by(UserID=1).first()
     db.session.delete(user)
     db.session.commit()
-    return "User %s was deleted from DB\n" % user
+    return "User %s was deleted from DB \n" % user
+
+@app.route('/downloadUsers', methods=['POST','GET'])
+def downloadUsers():
+    makeCSV("Users")
+    return "CSV created\n"
 
 # delete later
 import random
@@ -54,3 +62,4 @@ def addtest():
     db.session.add(user)
     db.session.commit()
     return "User %s was inserted in DB\n" % user
+    
