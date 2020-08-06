@@ -15,8 +15,8 @@ def getFrontJSON():
 def makeCSV():
     outfile = open('Users.csv', 'wb')
     outcsv = csv.writer(outfile)
-    records = session.query(Users).all()
-    [outcsv.writerow([getattr(curr, column.name) for column in MyTable.__mapper__.columns]) for curr in records]
+    records = db.session.query(Users).all()
+    [outcsv.writerow([getattr(curr, column.name) for column in Users.__mapper__.columns]) for curr in records]
     # or maybe use outcsv.writerows(records)
     outfile.close()
 
