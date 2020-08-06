@@ -4,12 +4,21 @@ from application.models import Users, Dates
 from . import db
 from flask import json, request
 import os, signal
+import csv
 
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
     data = request.get_json(force=True)
     print("Data:\n%s" % str(data)) #delete later
     return data
+
+def makeCSV():
+    outfile = open('Users.csv', 'wb')
+    outcsv = csv.writer(outfile)
+    records = session.query(Users).all()
+    [outcsv.writerow([getattr(curr, column.name) for column in MyTable.__mapper__.columns]) for curr in records]
+    # or maybe use outcsv.writerows(records)
+    outfile.close()
 
 @app.route("/")
 def home():
@@ -37,6 +46,11 @@ def deleteUsers():
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
+
+@app.route('/downloadUsers', methods=['POST'])
+def downloadUsers():
+    makeCSV()
+    return "CSV created"
 
 # delete later
 import random
