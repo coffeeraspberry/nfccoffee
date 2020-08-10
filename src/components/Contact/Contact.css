@@ -3,6 +3,9 @@
     text-align: center;
    background: url("../../assets/background.jpg");
    background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center;
  
 }
 .black{

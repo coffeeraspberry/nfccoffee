@@ -10,12 +10,25 @@
 .empty{
     height: 50vh;
 }
+.bord{
+    border-style: solid;
+    border-radius: 2px;
+    border-color: transparent;
+}
 
 .imgforFooter{
     text-align: center;
     object-position: center;
     background-color: transparent;
     height: auto;
-    width: 100%;
+    width: 50%;
     align-items: center;
+   margin-bottom: 5%;
+  
+}
+
+.copyright-text{
+    color:white;
+    text-align: center;
+    margin-top:10%;
 }

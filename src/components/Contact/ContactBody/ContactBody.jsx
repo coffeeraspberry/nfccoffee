@@ -41,7 +41,7 @@ class ContactBody extends React.Component{
 
 render(){
 return (
-<Container>
+<Container fluid>
     <div className="input-pos">
     <Row>
         <Col></Col>
