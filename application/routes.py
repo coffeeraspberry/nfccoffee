@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from application import app
-from application.models import Users, Dates
+from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
 import os, signal, csv, subprocess
@@ -26,6 +26,15 @@ def users():
 def logs():
     return json.dumps([v._asdict() for v in str(Dates.query.all())], sort_keys=True)
 
+@app.route("/contacts", methods=['GET'])
+def contacts():
+    return json.dumps([w._asdict() for w in str(Contact.query.all())], sort_keys=True)
+
+@app.route("/insertContacts", methods=['GET','POST'])
+def insertContacts():
+    data = getFrontJSON()
+    return "Contact %s recieved\n" %data
+
 @app.route("/createUsers", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
@@ -40,11 +49,12 @@ def deleteUsers():
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
-
+'''
 @app.route('/downloadUsers', methods=['POST','GET'])
 def downloadUsers():
     makeCSV("Users")
     return "home/pi/back/Users.csv"
+'''
 
 # delete later
 import random
