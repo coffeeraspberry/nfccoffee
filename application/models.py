@@ -32,3 +32,14 @@ class Dates(db.Model, DictSerializable):
     
     def __repr__(self):
         return '<Date{}>'.format(self.DateID)
+
+class Contact(db.Model, DictSerializable):
+    __tablename__ = 'Contact'
+    ContactID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Email =  db.Column(db.String(150), unique=True, nullable=False, default='defaultEmail')
+    Name = db.Column(db.String(150), unique=True, nullable=False, default='defaultName')
+    Message = db.Column(db.String(500), unique=True, nullable=False, default='defaultMessage')
+    
+    def __repr__(self):
+        return '<Contact{}>'.format(self.ContactID)
+        
