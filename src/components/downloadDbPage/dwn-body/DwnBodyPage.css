@@ -19,3 +19,15 @@
     text-align: center;
     color: white;
 }
+
+.black{
+    background-color: #000000;
+}
+.transparent{
+    opacity: .5;
+}
+
+
+.down-button{
+    margin-top:10%;
+}

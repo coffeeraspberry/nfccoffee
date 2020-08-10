@@ -1,7 +1,8 @@
 import React from 'react';
 import './DwnBodyPage.css';
+import api from '../../../constants/api'
 import {Container, Row, Col} from 'reactstrap'
-
+import CsvDownload from 'react-json-to-csv'
 
 class DwnBodyPage extends React.Component{
   constructor(props) {
@@ -14,22 +15,54 @@ class DwnBodyPage extends React.Component{
     this.state.data=props.items
   }
 
+  async  componentDidMount() {    
 
+    let url=  api +'/users'
+   
+    console.log('URL THAT I AM FETCHING', url);
+    
+    let options = {
+      method: 'GET',
+      headers: {
+        'mode': 'cors',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+     'Pragma': 'no-cache',
+     'Expires': '0'
+      },
+    };
+
+  
+      let Urlresponse = await fetch(url, options)
+      let JsonResponse= await Urlresponse.json()
+      //console.log('JsonResponse : ', JsonResponse)
+      this.setState({data: JsonResponse})
+      let picpic= await JSON.stringify(JsonResponse, null, 4);
+      console.log('pic pic ', picpic)
+      return picpic;
+  }
 
   
   render (){
     console.log('din body ', this.state.data)
         return (
+          <div className="black">
           <Container>
-    <div className="dwn">
+    
       <Row>
         <Col></Col>
-          <Col><p className="dwn">Your download should be started now</p></Col>
+          <Col>
+          
+          <CsvDownload data={this.state.data}  className="down-button"/>
+          
+          </Col>
      <Col></Col>
       </Row>
 
-    </div>
+  
     </Container>
+    </div>
     )
   }
 
