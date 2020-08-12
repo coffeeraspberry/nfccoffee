@@ -20,6 +20,8 @@ s.connect(("8.8.8.8", 80))
 ip_address = s.getsockname()[0]
 s.close()
 
+print("Sunt in test.py inaite de while!")
+
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
