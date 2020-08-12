@@ -11,8 +11,6 @@ from time import sleep
 lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
 lcd.color = [0, 0, 0]
 
-
-#req_pin = DigitalInOut(board.D12)
 spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
 cs_pin = DigitalInOut(board.D8)
 pn532 = PN532_SPI(spi, cs_pin, debug=False)
