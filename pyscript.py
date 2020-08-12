@@ -27,14 +27,20 @@ def webapp():
     s.close()
     return hostname, ip_address
 
-lcd.clear()
-lcdmessage = webapp()
-while True:
-    # Check if a card is available to read
-    uid = pn532.read_passive_target(timeout=0.5)
-    # Try again if no card is available.
-    if uid is None:
-        lcd.message = str(lcdmessage[0])+"\n"+str(lcdmessage[1])
-    lcd.clear()    
-    #print("Found card with UID:\n", [hex(i) for i in uid])
-    lcd.message("Found card with UID:\n", str(uid).strip('[]',','))
+if __name__=='__main__':
+    
+    lcdSetup()
+    pn532Setup()
+
+    lcd.clear()
+    lcdmessage = webapp()
+
+    while True:
+        # Check if a card is available to read
+        uid = pn532.read_passive_target(timeout=0.5)
+        # Try again if no card is available.
+        if uid is None:
+            lcd.message = str(lcdmessage[0])+"\n"+str(lcdmessage[1])
+        lcd.clear()    
+        #print("Found card with UID:\n", [hex(i) for i in uid])
+        lcd.message("Found card with UID:\n", str(uid).strip('[]',','))
