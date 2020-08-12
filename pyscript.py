@@ -28,7 +28,7 @@ ip_address = s.getsockname()[0]
 s.close()
 
 def convertUIDtoSTR(uid):
-    STRUID = [str(int(i,16)) for i in uid] 
+    STRUID = [hex(i) for i in uid] 
     return STRUID
 
 while True:
@@ -40,7 +40,7 @@ while True:
         lcd.message = str(hostname)+"\n"+str(ip_address)
     else:
         #print("Found card with UID:\n", [hex(i) for i in uid])
-        lcd.message = "Found card with UID:\n%s" %(str(uid))
+        lcd.message = "Found card with UID:\n%s" %(str(printuid))
     sleep(2)
     lcd.clear()    
     
