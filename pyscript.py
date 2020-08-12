@@ -11,9 +11,9 @@ def lcdSetup():
     lcd.color = [0, 0, 0]
 
 def pn532Setup():
-    req_pin = DigitalInOut(board.D12)
+    #req_pin = DigitalInOut(board.D12)
     spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-    cs_pin = DigitalInOut(board.D5)
+    cs_pin = DigitalInOut(board.D8)
     pn532 = PN532_SPI(spi, cs_pin, debug=False)
     ic, ver, rev, support = pn532.firmware_version
     print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
