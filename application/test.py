@@ -31,11 +31,10 @@ while True:
         if our_user:
             lcd.message = "Found User:\n%s" %(str(our_user['UserName']))
             our_user['Counter'] = our_user['Counter'] + 1
-            db.session.commit() 
         else:
             db.session.add(Users(UserID=str(uid.hex()))
-            db.session.commit()
             lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
+    db.session.commit()
     sleep(1)
     lcd.clear()    
     
