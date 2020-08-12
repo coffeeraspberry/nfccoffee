@@ -35,7 +35,7 @@ while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
     print(uid)
-    print(hex(uid))
+    print("Type is: %s" %(str(type(uid))))
     # Try again if no card is available.
     if uid is None:
         lcd.message = str(hostname)+"\n"+str(ip_address)
