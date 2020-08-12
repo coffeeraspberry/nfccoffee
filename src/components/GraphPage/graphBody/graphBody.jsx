@@ -15,7 +15,7 @@ class graphBody extends React.Component{
     
     this.state.data=props.items
     let temp=this.state.data
-    let sheet={labels: [], datasets:[{label: 'Users', backgroundColor: 'rgba(75,192,192,1)',
+    let sheet={labels: [], datasets:[{label: 'CoffeeCouter', backgroundColor: 'rgba(75,192,192,1)',
     borderColor: 'rgba(0,0,0,1)',borderWidth: 2, data:[]}]}
     console.log('TEMP ', temp)
    temp.forEach(element => {
@@ -56,15 +56,34 @@ class graphBody extends React.Component{
 
 
           options={{
+            responsive:true,
+            maintainAspectRatio: true,
             title:{
+              animation: true,
               display:true,
               text:'Coffee Counter',
               fontSize:20
             },
             legend:{
-              display:true,
+              display:false,
               position:'right'
-            }
+            },
+            scales: {
+              xAxes: [{
+                  ticks: { display: true },
+                  gridLines: {
+                      display: true,
+                      drawBorder: true
+                  }
+              }],
+              yAxes: [{
+                  ticks: { display: true },
+                  gridLines: {
+                      display: true,
+                      drawBorder: true
+                  }
+              }]
+          }
           }}
         />
                   
