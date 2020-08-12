@@ -37,7 +37,7 @@ while True:
         lcd.message = str(hostname)+"\n"+str(ip_address[1])
     else:
         #print("Found card with UID:\n", [hex(i) for i in uid])
-        lcd.message("Found card with UID:\n", str(printuid))
+        lcd.message("Found card with UID:\n")
     sleep(2)
     lcd.clear()    
     
