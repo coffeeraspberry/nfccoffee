@@ -27,14 +27,17 @@ s.connect(("8.8.8.8", 80))
 ip_address = s.getsockname()[0]
 s.close()
 
+def convertUIDtoSTR(uid):
+    STRUID = [str(int(i,16)) for i in uid] 
+    return STRUID
 
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
-    printuid = bytearray.hex(uid)
+    printuid = convertUIDtoSTR(uid)
     # Try again if no card is available.
     if uid is None:
-        lcd.message = str(hostname)+"\n"+str(ip_address[1])
+        lcd.message = str(hostname)+"\n"+str(ip_address)
     else:
         #print("Found card with UID:\n", [hex(i) for i in uid])
         lcd.message = "Found card with UID:\n%s" %(str(uid))
