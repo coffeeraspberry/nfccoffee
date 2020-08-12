@@ -5,6 +5,7 @@ import busio
 import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 from digitalio import DigitalInOut
 from adafruit_pn532.spi import PN532_SPI
+from time import sleep
 
 
 lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
@@ -33,6 +34,9 @@ while True:
     # Try again if no card is available.
     if uid is None:
         lcd.message = str(hostname)+"\n"+str(ip_address[1])
+    else:
+        #print("Found card with UID:\n", [hex(i) for i in uid])
+        lcd.message("Found card with UID:\n", str(uid))
+    sleep(2)
     lcd.clear()    
-    #print("Found card with UID:\n", [hex(i) for i in uid])
-    lcd.message("Found card with UID:\n", str(uid).strip('[]'))
+    
