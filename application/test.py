@@ -34,7 +34,7 @@ while True:
         else:
             db.session.add(Users(UserID=str(uid.hex()))
             lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
-    db.session.commit()
+        db.session.commit()
     sleep(1)
     lcd.clear()    
     
