@@ -31,14 +31,13 @@ s.close()
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
-    type(uid)
-    print(uid)
+    printuid = bytearray.hex(uid)
     # Try again if no card is available.
     if uid is None:
         lcd.message = str(hostname)+"\n"+str(ip_address[1])
     else:
         #print("Found card with UID:\n", [hex(i) for i in uid])
-        lcd.message("Found card with UID:\n", [hex(i) for i in uid])
+        lcd.message("Found card with UID:\n", str(printuid))
     sleep(2)
     lcd.clear()    
     
