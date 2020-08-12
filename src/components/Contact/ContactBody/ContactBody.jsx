@@ -43,38 +43,52 @@ render(){
 return (
 <Container fluid>
     <div className="input-pos">
-    <Row>
-        <Col></Col>
-        <Col md="auto" lg="6" sm="auto">
-        <p className="big-text">Contact us</p>
+    <p className="big-text">Contact us</p>
+    <p className="empty-contact"></p>
+  <Row>
+       <Col></Col>
+        <Col lg="3" >
 <div className="white">
 <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} md="6" sm="6" lg="6" errorMessage="Please enter valid Email">
-          <AvField name="Email" label="Email Address" type="email" required />
+          <AvField name="Email" label="Email Address" type="email" required className="center"/>
         </AvForm>
-      
-    </div>
+        
+    </div></Col>
+    <Col lg="3">
     <div className="white">
 <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} errorMessage="This field is mandatory" >
           <AvField name="Name" label="Your Name"  required />
         </AvForm>
-     
-    </div>
+        </div>
+        </Col>
+        <Col></Col>
+        </Row>
+
+    <Row>
+       <Col></Col>
+     <Col lg="6">
     <div className="white">
 <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} errorMessage="This field is mandatory">
           <AvField name="Subject" label="Subject"  required />
         </AvForm>
-   
     </div>
+    </Col>
+    <Col></Col>
+    </Row>
+
+    <Row>
+        <Col></Col>
+        <Col lg="6">
     <div className="white">
 <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} errorMessage="This field is mandatory">
           <AvField name="Msg" label="Your message"  required />
         </AvForm>
-     
+
     </div>
-    <Button color="success" onClick={this.handleSubmitButton}>Submit</Button>{' '}
     </Col>
     <Col></Col>
     </Row>
+    <Button color="success" onClick={this.handleSubmitButton}>Submit</Button>{' '}
     </div>
     </Container>
 );

@@ -7,6 +7,7 @@ import {Bar} from 'react-chartjs-2';
 
 
 class graphBody extends React.Component{
+  chartRef = React.createRef();
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +28,7 @@ class graphBody extends React.Component{
     this.state.data=sheet
   }
 
-
+ 
 
 
   componentDidMount(){ 
@@ -35,8 +36,10 @@ class graphBody extends React.Component{
 
 
   handleBarClick(element, id){ 
-    console.log(`The bin ${element.text} with id ${id} was clicked`);
+   
+    
   }
+
 
   render (){
       let data= this.state.data
@@ -56,6 +59,7 @@ class graphBody extends React.Component{
 
 
           options={{
+            onClick:this.handleBarClick,
             responsive:true,
             maintainAspectRatio: true,
             title:{
