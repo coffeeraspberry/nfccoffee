@@ -18,7 +18,7 @@ def getUser(con,UserID):
     return user
 
 def incrementUserCounter(con,user):
-    cursor = con.cursor
+    cursor = con.cursor()
     cursor.update('UPDATE Users SET Counter = Counter + 1 WHERE UserID = '+user[0][1])
     con.commit()
 
