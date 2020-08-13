@@ -15,9 +15,9 @@ class Users(db.Model, DictSerializable):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     UserID = db.Column(db.String(80), nullable=False, default="0")
-    userRelationship = db.relationship("Dates") # test
-    UserName = db.Column(db.String(80), unique=True, nullable=False, default='Unknown')
-    Email = db.Column(db.String(120), unique=True, nullable=False, default='Unknown')
+    userRelationship = db.relationship("Dates")
+    UserName = db.Column(db.String(80),  nullable=False, default='Unknown')
+    Email = db.Column(db.String(120), nullable=False, default='Unknown')
     Counter = db.Column(db.Integer, nullable=False, default=0, )
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
 
