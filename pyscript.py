@@ -7,6 +7,9 @@ from digitalio import DigitalInOut
 from adafruit_pn532.spi import PN532_SPI
 from time import sleep
 import sqlite3
+import subprocess
+
+subprocess.call('python3 -m app &', shell=True)
 
 con = sqlite3.connect('application/pi.db')
 
@@ -57,9 +60,13 @@ while True:
         our_user = getUser(con,str(uid.hex()))
         if our_user:
             lcd.message = "Found User:\n%s" %(our_user[0][2])
+            lcd.message = "Remove card!"
             incrementUserCounter(con,our_user)
+            sleep(2)
         else:
             addUserIfNotExists(con,str(uid.hex()))
+            lcd.message = "Remove card!"
+            sleep(2)
             lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
     sleep(1)
     lcd.clear()     
