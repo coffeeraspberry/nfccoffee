@@ -6,7 +6,26 @@ import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 from digitalio import DigitalInOut
 from adafruit_pn532.spi import PN532_SPI
 from time import sleep
+import sqlite3
 
+con = sqlite3.connect('application/pi.db')
+
+def getUser(con,UserID):
+    cursor = con.cursor()
+    cursor.execute('SELECT * from Users where UserdID='+UserID)
+    user = cursor.fetchall()
+    print(user)
+    return user
+
+def incrementUserCounter(con,user):
+    cursor = con.cursor
+    cursor.update('UPDATE Users SET Counter = Counter + 1 WHERE id = '+user[0])
+    con.commit()
+
+def addUserIfNotExists(con,uid):
+    cursor = con.cursor()
+    cursor.execute('INSERT INTO Users(UserID) values('+str(uid.hex())+')')
+    con.commit()
 
 lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
 lcd.color = [0, 0, 0]
@@ -18,28 +37,27 @@ ic, ver, rev, support = pn532.firmware_version
 print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
 pn532.SAM_configuration()
 
-
 hostname = socket.gethostname()
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ip_address = s.getsockname()[0]
 s.close()
 
-def convertUIDtoSTR(uid):
-    STRUID = [hex(i) for i in uid] 
-    return STRUID
-
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
-    print(uid)
-    print("Type is: %s" %(str(type(uid))))
+    print("UID: "+str(uid.hex()))
     # Try again if no card is available.
     if uid is None:
         lcd.message = str(hostname)+"\n"+str(ip_address)
     else:
-        #print("Found card with UID:\n", [hex(i) for i in uid])
-        lcd.message = "Found card with UID:\n%s" %(str(uid.hex()))
-    sleep(2)
-    lcd.clear()    
+        our_user = getUser(con,str(uid.hex())
+        if our_user:
+            lcd.message = "Found User:\n%s" %(our_user[1])
+            incrementUserCounter(con,our_user)
+        else:
+            addUserIfNotExists(con,uid)
+            lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
+    sleep(1)
+    lcd.clear()     
     
