@@ -59,7 +59,7 @@ while True:
             lcd.message = "Found User:\n%s" %(our_user[1])
             incrementUserCounter(con,our_user)
         else:
-            addUserIfNotExists(con,uid)
+            addUserIfNotExists(con,str(uid.hex()))
             lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
     sleep(1)
     lcd.clear()     
