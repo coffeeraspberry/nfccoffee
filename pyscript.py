@@ -52,7 +52,7 @@ while True:
         lcd.message = str(hostname)+"\n"+str(ip_address)
     else:
         our_user = getUser(con,str(uid.hex())
-        if our_user:
+        if our_user is not None:
             lcd.message = "Found User:\n%s" %(our_user[1])
             incrementUserCounter(con,our_user)
         else:
