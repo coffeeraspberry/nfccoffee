@@ -43,6 +43,7 @@ s.connect(("8.8.8.8", 80))
 ip_address = s.getsockname()[0]
 s.close()
 
+our_user = None
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
