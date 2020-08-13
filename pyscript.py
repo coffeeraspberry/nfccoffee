@@ -17,7 +17,6 @@ def getUser(con,UserID):
     cursor = con.cursor()
     cursor.execute('SELECT * from Users where UserID=\''+str(UserID)+'\'')
     user = cursor.fetchall()
-    print(user)
     return user
 
 def incrementUserCounter(con,user):
@@ -48,7 +47,6 @@ s.connect(("8.8.8.8", 80))
 ip_address = s.getsockname()[0]
 s.close()
 
-our_user = None
 while True:
     # Check if a card is available to read
     uid = pn532.read_passive_target(timeout=0.5)
