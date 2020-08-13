@@ -56,7 +56,7 @@ while True:
     else:
         our_user = getUser(con,str(uid.hex()))
         if our_user:
-            lcd.message = "Found User:\n%s" %(our_user[1])
+            lcd.message = "Found User:\n%s" %(our_user[0][2])
             incrementUserCounter(con,our_user)
         else:
             addUserIfNotExists(con,str(uid.hex()))
