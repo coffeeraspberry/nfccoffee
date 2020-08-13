@@ -22,7 +22,7 @@ def getUser(con,UserID):
 
 def incrementUserCounter(con,user):
     cursor = con.cursor()
-    cursor.execute('UPDATE Users SET Counter = Counter + 1 WHERE UserID = \'%s\'' %(user[0][1]))
+    cursor.execute('UPDATE Users SET Counter = Counter + 1, LastAccess=CURRENT_TIMESTAMP WHERE UserID = \'%s\'' %(user[0][1]))
     con.commit()
 
 def addUserIfNotExists(con,uid):
