@@ -57,7 +57,7 @@ while True:
         our_user = getUser(con,str(uid.hex()))
         if our_user:
             lcd.message = "Found User:\n%s" %(our_user[0][2])
-            incrementUserCounter(con,our_user)
+            incrementUserCounter(con,our_user[0][4])
         else:
             addUserIfNotExists(con,str(uid.hex()))
             lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
