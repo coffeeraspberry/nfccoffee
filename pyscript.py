@@ -12,7 +12,7 @@ con = sqlite3.connect('application/pi.db')
 
 def getUser(con,UserID):
     cursor = con.cursor()
-    cursor.execute('SELECT * from Users where UserdID='+UserID)
+    cursor.execute('SELECT * from Users where UserID=\''+str(UserID)+'\'')
     user = cursor.fetchall()
     print(user)
     return user
