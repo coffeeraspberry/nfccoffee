@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from application import app
-from application.models import Users, Dates
+from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
 import os, signal, csv, subprocess
@@ -26,7 +26,16 @@ def users():
 def logs():
     return json.dumps([v._asdict() for v in str(Dates.query.all())], sort_keys=True)
 
-@app.route("/createUsers", methods=['POST'])
+@app.route("/contacts", methods=['GET'])
+def contacts():
+    return json.dumps([w._asdict() for w in str(Contact.query.all())], sort_keys=True)
+
+@app.route("/insertContacts", methods=['GET','POST'])
+def insertContacts():
+    data = getFrontJSON()
+    return "Contact %s recieved\n" % str(data)
+
+@app.route("/createUsers", methods=['GET','POST'])
 def createUsers():
     data = getFrontJSON()
     user = Users(UserName=data['UserName'], Email=data['Email'], Counter=data['Counter'])
@@ -40,11 +49,12 @@ def deleteUsers():
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
-
+'''
 @app.route('/downloadUsers', methods=['POST','GET'])
 def downloadUsers():
     makeCSV("Users")
-    return "CSV created\n"
+    return "home/pi/back/Users.csv"
+'''
 
 # delete later
 import random
@@ -58,7 +68,7 @@ def get_random_string(length):
 @app.route("/addtest", methods=['POST', 'GET'])
 def addtest():
     username = get_random_string(4)
-    user = Users(UserName=username, Email=username+"@conti.ro")
+    user = Users(UserName=username, Email=username+"@conti.ro", Counter=random.randint(0,100))
     db.session.add(user)
     db.session.commit()
     return "User %s was inserted in DB\n" % user
