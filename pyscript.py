@@ -19,7 +19,7 @@ def getUser(con,UserID):
 
 def incrementUserCounter(con,user):
     cursor = con.cursor()
-    cursor.execute('UPDATE Users SET Counter = Counter + 1 WHERE UserID = '+user[0][1])
+    cursor.execute('UPDATE Users SET Counter = Counter + 1 WHERE UserID = \'%s\'' %(user[0][1]))
     con.commit()
 
 def addUserIfNotExists(con,uid):
@@ -60,7 +60,7 @@ while True:
             incrementUserCounter(con,our_user)
         else:
             addUserIfNotExists(con,str(uid.hex()))
-            lcd.message = "Generic user added in DB\nPlease visit %s" %(str(ip_address))
+            lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
     sleep(1)
     lcd.clear()     
     
