@@ -24,7 +24,9 @@ def incrementUserCounter(con,user):
 
 def addUserIfNotExists(con,uid):
     cursor = con.cursor()
-    cursor.execute('INSERT INTO Users(UserID,UserName,Email,Counter,LastAccess) values(\'%s\',\'%s\',\'%s\',0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown'))
+    insert = 'INSERT INTO Users(UserID,UserName,Email,Counter,LastAccess) VALUES(\'%s\',\'%s\',\'%s\',0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown')
+    print(insert)
+    cursor.execute(insert)
     con.commit()
 
 lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
