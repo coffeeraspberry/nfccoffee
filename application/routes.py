@@ -40,7 +40,7 @@ def insertContacts():
     data = getFrontJSON()
     return "Contact %s recieved\n" % str(data)
 
-@app.route("/createUsers", methods=['GET','POST'])
+@app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
     user = Users(UserName=data['UserName'], Email=data['Email'])
