@@ -14,9 +14,13 @@ def getFrontJSON():
 def makeCSV(table):
     subprocess.call('sqlite3 -header -csv application/pi.db \"select * from ' + str(table) + '" > ' + str(table) + '.csv', shell=True)
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
-    return "Hello, cross-origin-world!\n"
+    return "Hello\n"
+
+@app.route("/", methods=['POST'])
+def home():
+    return "World!\n"
 
 @app.route("/users", methods=['GET'])
 def users():
