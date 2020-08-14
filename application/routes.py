@@ -14,14 +14,6 @@ def getFrontJSON():
 def makeCSV(table):
     subprocess.call('sqlite3 -header -csv application/pi.db \"select * from ' + str(table) + '" > ' + str(table) + '.csv', shell=True)
 
-@app.route("/", methods=['GET'])
-def home1():
-    return "Hello\n"
-
-@app.route("/", methods=['POST'])
-def home2():
-    return "World!\n"
-
 @app.route("/users", methods=['GET'])
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
@@ -38,7 +30,7 @@ def contacts():
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     data = getFrontJSON()
-    return "Contact %s recieved\n" % str(data)
+    return json.dumps("Contact %s recieved\n" % str(data))
 
 @app.route("/users", methods=['POST'])
 def createUsers():
