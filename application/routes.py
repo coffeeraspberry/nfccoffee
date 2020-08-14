@@ -30,7 +30,8 @@ def logs():
 def contacts():
     return json.dumps([w._asdict() for w in str(Contact.query.all())], sort_keys=True)
 
-@app.route("/insertContacts", methods=['GET','POST'])
+
+@app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     data = getFrontJSON()
     return "Contact %s recieved\n" % str(data)
@@ -38,9 +39,9 @@ def insertContacts():
 @app.route("/createUsers", methods=['GET','POST'])
 def createUsers():
     data = getFrontJSON()
-    user = Users(UserName=data['UserName'], Email=data['Email'], Counter=data['Counter'])
-    db.session.add(user)
-    db.session.commit()
+    user = Users(UserName=data['UserName'], Email=data['Email'])
+    #db.session.add(user)
+    #db.session.commit()
     return "User %s was inserted in DB\n" % user
 
 @app.route('/deleteUsers', methods=['GET'])
@@ -49,27 +50,4 @@ def deleteUsers():
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
-'''
-@app.route('/downloadUsers', methods=['POST','GET'])
-def downloadUsers():
-    makeCSV("Users")
-    return "home/pi/back/Users.csv"
-'''
-
-# delete later
-import random
-import string
-
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
-
-@app.route("/addtest", methods=['POST', 'GET'])
-def addtest():
-    username = get_random_string(4)
-    user = Users(UserName=username, Email=username+"@conti.ro", Counter=random.randint(0,100))
-    db.session.add(user)
-    db.session.commit()
-    return "User %s was inserted in DB\n" % user
     
