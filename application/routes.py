@@ -15,11 +15,11 @@ def makeCSV(table):
     subprocess.call('sqlite3 -header -csv application/pi.db \"select * from ' + str(table) + '" > ' + str(table) + '.csv', shell=True)
 
 @app.route("/", methods=['GET'])
-def home():
+def home1():
     return "Hello\n"
 
 @app.route("/", methods=['POST'])
-def home():
+def home2():
     return "World!\n"
 
 @app.route("/users", methods=['GET'])
