@@ -43,10 +43,10 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    user = Users(UserName=data['UserName'], Email=data['Email'])
+    user = Users(UserName=data['UserName'], Email=data['Email'], )
     #db.session.add(user)
     #db.session.commit()
-    return "User %s was inserted in DB\n" % user
+    return json.dumps("User %s was inserted in DB\n" % user)
 
 @app.route('/deleteUsers', methods=['GET'])
 def deleteUsers():
