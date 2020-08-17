@@ -26,10 +26,10 @@ def getFrontJSON():
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
-@app.route("/scan", methods=['GET'])
+@app.route("/scan", methods=['POST'])
 def scan():
     user = findUser()
-    return user._asdict()
+    return json.dump(user._asdict())
 
 @app.route("/logs", methods=['GET'])
 def logs():
