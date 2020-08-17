@@ -29,7 +29,7 @@ def users():
 @app.route("/scan", methods=['GET'])
 def scan():
     user = findUser()
-    return json.dump(user._asdict())
+    return user._asdict()
 
 @app.route("/logs", methods=['GET'])
 def logs():
