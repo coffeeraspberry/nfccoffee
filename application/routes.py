@@ -8,9 +8,8 @@ import os, signal, csv, subprocess
 def findUser(filename):
     with open(str(filename), "r") as file:
         uid = file.readline
-    if db.session.query(Users).filter_by(UserID=uid).scalar() is None:
-        return False
-    return True
+    user = User(db.session.query(Users).filter_by(UserID=uid))
+    return user    
 
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
@@ -21,6 +20,11 @@ def getFrontJSON():
 @app.route("/users", methods=['GET'])
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
+
+@app.route("/scan", methods=['GET','POST'])
+def scan():
+    user = findUser("user.txt")
+    return json.dumps(user)
 
 @app.route("/logs", methods=['GET'])
 def logs():
