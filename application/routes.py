@@ -8,8 +8,8 @@ import os, signal, csv, subprocess
 def findUser(filename):
     with open(str(filename), "r") as file:
         uid = file.readline
-    #user = db.session.query(Users).filter_by(UserID=uid)
-    return json.dumps(str(uid))    
+    #user = db.session.query(Users).filter_by(UserID=uid).firsr()
+    return json.dumps(usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first())    
 
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
