@@ -26,7 +26,7 @@ def getFrontJSON():
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
-@app.route("/scan", methods=['GET','POST'])
+@app.route("/scan", methods=['GET'])
 def scan():
     user = findUser()
     return user._asdict()
