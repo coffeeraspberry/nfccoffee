@@ -26,6 +26,7 @@ def users():
 @app.route("/scan", methods=['GET','POST'])
 def scan():
     user = findUser()
+    print(user)
     return json.dumps(user)
 
 @app.route("/logs", methods=['GET'])
