@@ -53,6 +53,7 @@ def mainf():
         uid = pn532.read_passive_target(timeout=0.5)
         f = open("user.txt","w+")
         f.write(str(uid.hex()))
+        f.close()
         print("UID: "+str(uid.hex()))
         # Try again if no card is available.
         if uid is None:
@@ -69,7 +70,6 @@ def mainf():
                 lcd.message = "Remove card!"
                 sleep(2)
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
-        f.close()
         sleep(1)
         lcd.clear()     
     

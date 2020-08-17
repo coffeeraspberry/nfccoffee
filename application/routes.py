@@ -3,16 +3,13 @@ from application import app
 from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
-import os, signal, csv, subprocess
+import os, signal, csv, subprocess, stream
 
 def findUser():
     #uid="fab0671a"
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     file.close()
-    #user = db.session.query(Users).filter_by(UserID=uid).firsr()
-    #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
-    #temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).first()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
 
@@ -21,6 +18,14 @@ def getFrontJSON():
     data = request.get_json(force=True)
     print("Data:\n%s" % str(data)) #delete later
     return data
+
+@app.route("/comment",methods=['GET'])
+def comment():
+    client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
+    frontData = getFrontJSON()
+    user_token = client.create_user_token(str(frontData['username']))
+    print(user_token)
+    return user_token
 
 @app.route("/users", methods=['GET'])
 def users():
