@@ -5,6 +5,13 @@ from . import db
 from flask import json, request
 import os, signal, csv, subprocess
 
+def findUser(filename):
+    with open(str(filename), "r") as file:
+        uid = file.readline
+    if db.session.query(Users).filter_by(UserID=uid).scalar() is None:
+        return False
+    return True
+
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
     data = request.get_json(force=True)
@@ -33,7 +40,7 @@ def insertContacts():
         db.session.commit()
     except Exception as e:
         success = False
-        
+
     return json.dumps({'Success' : str(success)})
 
 @app.route("/users", methods=['POST'])

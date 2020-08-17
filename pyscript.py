@@ -9,8 +9,6 @@ from time import sleep
 import sqlite3
 import subprocess
 
-
-
 def getUser(con,UserID):
     cursor = con.cursor()
     cursor.execute('SELECT * from Users where UserID=\''+str(UserID)+'\'')
