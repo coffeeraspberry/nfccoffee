@@ -13,11 +13,7 @@ def findUser():
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
     temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).all()
-    if str(temp) is None:
-        print("Cica nu e %s" %(uid))
-    else:
-        print("E %s" %uid)
-    #return user
+    return temp
 
 def getFrontJSON():
     print("Requesting JSON data...\n") #delete later
@@ -31,9 +27,9 @@ def users():
 
 @app.route("/scan", methods=['GET','POST'])
 def scan():
-    findUser()
-    #print(user)
-    #return json.dumps(user)
+    user = findUser()
+    print(user)
+    return json.dumps(user)
 
 @app.route("/logs", methods=['GET'])
 def logs():
