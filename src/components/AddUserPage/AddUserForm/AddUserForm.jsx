@@ -4,8 +4,8 @@ import { Button, Form, FormGroup,FormFeedback, Label, Input, FormText, Container
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import api from '../../../constants/api'
 import { Redirect } from 'react-router-dom';
-
-
+let route='/users'
+const DEBUG = 1
 
 
 class AddUserForm extends React.Component{
@@ -20,29 +20,68 @@ constructor(props){
      email:null,
      username:null,
     }
-this.state.badgeID='1234321323213'
+    
+    this.state.badgeID=props.items.UserID
+    this.state.email=props.items.Email.toString()
+    this.state.username=props.items.UserName.toString()
 this.handleSubmitButton=this.handleSubmitButton.bind(this)
+/* 
+-------------------
+DEBUG. EXPERIMENTAL FEATURE
+NO USE NOW
+-------------------
+*/
+if(DEBUG){
 localStorage.setItem('badgeId', this.state.badgeID);
 }
 
+}
+//END CONSTRUCTOR
+
 async handleSubmitButton(){
-  
-let url=  api +'/users'
-   
-console.log('URL THAT I AM FETCHING', url);
+
+
+/*
+------------------------
+       DEBUG CONSOLE LOG
+------------------------
+*/
+if (DEBUG){
+console.log('USERNAME ', document.getElementById("username").value)
+console.log('EMAIL ', typeof(document.getElementById("email").value))
+}
+/*
+------------------------
+        END DEBUG
+------------------------
+*/
+
+
+/* Check if input forms are not empty  */
+/* Submit button will not do anything */
+if(document.getElementById("username").value === "" && document.getElementById("email").value==="" )
+  {return null}
+
+
+let url=  api + route
 
 let options = {
-  method: 'POST',
+  method: 'PUT',
   headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    'Cache-Control': 'no-cache, no-store, must-revalidate',
- 'Pragma': 'no-cache',
- 'Expires': '0',
  },
- body:await  JSON.stringify({ Email:document.getElementById("email").value, UserName: document.getElementById("username").value, UserID: localStorage.getItem('badgeId')})
+ body:await  JSON.stringify({ UserName:document.getElementById("username").value, Email: document.getElementById("email").value, UserID:this.state.badgeID})
 };
+/* 
+----------------
+DEBUG. DATA CHECK
+----------------
+*/
+if(DEBUG){
 await console.log('set state ', this.state.data)
+await console.log('body json : ', options.body)
+}
+
 
   let Urlresponse = await fetch(url, options)
   let JsonResponse= await Urlresponse.json()
@@ -51,12 +90,28 @@ if(JsonResponse != null  || JsonResponse != undefined)
   await this.setState({data:true})
 }
 
-await console.log('set state  dupa ', this.state.data)
 }
+//*END HANDLE SUBMIT BUTTON
+
+
+async componentDidMount()
+{
+  
+    /* 
+    -------------------
+    DEBUG. CHECK DATA
+    -------------------
+    */
+       if(DEBUG){
+        console.log('FORM this.state.email ', this.state.email)
+        console.log('FORM this.state.username ', this.state.username)
+         }
+         
+} 
+
 
 
 render(){
-     console.log('set state render ', this.state.data)
 if(this.state.data==null || this.state.data==false ){
 
 return(
@@ -80,13 +135,13 @@ return(
         <FormGroup>
             <Row>
                 <Col>
-                <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit}>
-          <AvField name="email" label="Email Address" type="email" required  />
+                <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} >
+          <AvField name="email" label="Email Address" type="email" required value={this.state.email}/>
         </AvForm>
         </Col>
         <Col>
         <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit}>
-          <AvField name="username" label="Username" type="username" required />
+          <AvField name="username" label="Username" type="username" required value={this.state.username}/>
         </AvForm>
         </Col>
         </Row>
@@ -109,17 +164,12 @@ return(
        <Col></Col>
    </Row>
   
- <Redirect exact path ='/home'></Redirect>
+ <Redirect to exact path ='/home'></Redirect>
 </Container>
     )
   
 }
-
-
-
 }
-
-
 
 }
 

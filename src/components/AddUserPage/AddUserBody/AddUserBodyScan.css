@@ -1,3 +1,18 @@
 .white{
     color:white;
 }
+
+.loader{
+    text-align: center;
+}
+
+.load-text{
+    text-align: center;
+    color: white;
+    margin-top: 5%;
+}
+
+.nothing-text{
+    margin-top: 1%;
+    color:white;
+}

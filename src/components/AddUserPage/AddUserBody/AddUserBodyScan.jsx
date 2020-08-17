@@ -12,19 +12,25 @@ constructor(props){
 
 }
 render(){
+    const { loading } = this.state.loading;
+    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
+      return null; // render null when app is not ready
+    }
 
+    
 return(
-<p1 className="white">AddUserBody scan</p1>
-
-
-
-
-
+    <Container fluid>
+        <Row>
+            <Col>
+<div>
+<div class="loader"><div className='load-text'>Please scan your badge within 5 seconds </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+<div className="nothing-text">If nothing happens, please refresh the page</div>
+</div>
+</Col>
+</Row>
+</Container>
 )
 }
-
-
-
 }
 
 export default AddUserBodyScan;

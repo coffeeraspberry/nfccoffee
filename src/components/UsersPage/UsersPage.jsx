@@ -18,6 +18,7 @@ class UsersPage extends React.Component{
     this.state = {
       data : null,
       isFetching: true,
+      loading:true,
     }
   }
 
@@ -48,7 +49,9 @@ class UsersPage extends React.Component{
       this.setState({data: JsonResponse})
       let picpic= await JSON.stringify(JsonResponse, null, 4);
       console.log('pic pic ', picpic)
+      this.demoAsyncCall().then(() => this.setState({ loading: false }));
       return picpic;
+
   }
 
   close = () => {
@@ -59,13 +62,21 @@ class UsersPage extends React.Component{
     this.setState({ showMod: true });
   };
 
+  demoAsyncCall() {
+    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  };
 
 
 render(){
+  const { loading } = this.state.loading;
+    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
+      return null; // render null when app is not ready
+    }
+
   if(this.state.data==null){
   return(
-  <div className="home">
-    <div className="black">
+  <div className="usr">
+    <div className="black-layer">
   <Header/>
   <Container fluid={true}>
 <Row className="on-load">
