@@ -13,7 +13,7 @@ def findUser():
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
     temp = Users.query.filter_by(UserID='\''+uid+'\'').first()
-    user = User(UserID=temp.UserID, UserName=temp.UserName, Email=temp.Email, Counter=temp.Counter,LastAccess=temp.LastAccess)
+    user = Users(UserID=temp.UserID, UserName=temp.UserName, Email=temp.Email, Counter=temp.Counter,LastAccess=temp.LastAccess)
     return user
 
 def getFrontJSON():
