@@ -6,7 +6,7 @@ from flask import json, request
 import os, signal, csv, subprocess
 
 def findUser():
-    with open("../users.txt", "r") as file:
+    with open("/home/pi/back/nfccoffee/user.txt", "r") as file:
         uid = file.readline
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     return json.dumps(usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first())    
