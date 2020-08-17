@@ -11,9 +11,6 @@ def getFrontJSON():
     print("Data:\n%s" % str(data)) #delete later
     return data
 
-def makeCSV(table):
-    subprocess.call('sqlite3 -header -csv application/pi.db \"select * from ' + str(table) + '" > ' + str(table) + '.csv', shell=True)
-
 @app.route("/users", methods=['GET'])
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
@@ -26,19 +23,20 @@ def logs():
 def contacts():
     return json.dumps([w._asdict() for w in str(Contact.query.all())], sort_keys=True)
 
-
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     data = getFrontJSON()
+    #to do addDB (daca adaugat succes return {"Succes" : "True"} else {"Succes" : False})
     return json.dumps("Contact %s recieved\n" % str(data))
 
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
     user = Users(UserName=data['UserName'], Email=data['Email'], )
-    #db.session.add(user)
-    #db.session.commit()
-    return json.dumps("User %s was inserted in DB\n" % user)
+    #vezi cu fisierul
+    db.session.add(user)
+    db.session.commit()
+    return json.dumps("User %s was inserted in DB\n" % user) # Succes : True sau False
 
 @app.route('/deleteUsers', methods=['GET'])
 def deleteUsers():
@@ -46,4 +44,3 @@ def deleteUsers():
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
-    
