@@ -9,6 +9,7 @@ def findUser(filename):
     with open(str(filename), "r") as file:
         uid = file.readline
     user = User(db.session.query(Users).filter_by(UserID=uid))
+    print(user)
     return user    
 
 def getFrontJSON():
