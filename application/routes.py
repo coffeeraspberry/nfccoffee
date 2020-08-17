@@ -12,7 +12,7 @@ def findUser():
     file.close()
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
-    temp = db.session.query(Users).filter_by(Users.UserID='\''+uid+'\'').all()
+    temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).all()
     if str(temp) is None:
         print("Cica nu e %s" %(uid))
     else:
