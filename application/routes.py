@@ -5,8 +5,8 @@ from . import db
 from flask import json, request
 import os, signal, csv, subprocess
 
-def findUser(filename):
-    with open(str(filename), "r") as file:
+def findUser():
+    with open("../users.txt", "r") as file:
         uid = file.readline
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     return json.dumps(usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first())    
@@ -23,7 +23,7 @@ def users():
 
 @app.route("/scan", methods=['GET','POST'])
 def scan():
-    user = findUser("user.txt")
+    user = findUser()
     return json.dumps(user)
 
 @app.route("/logs", methods=['GET'])
