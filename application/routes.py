@@ -9,8 +9,8 @@ def findUser():
     uid="fab0671a"
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
-    print(uid)
     file.close()
+    print("uid din fct e %s" %(uid))
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
     temp = Users.query.filter_by(UserID='\''+uid+'\'').first()
