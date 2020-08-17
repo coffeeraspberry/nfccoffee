@@ -43,13 +43,12 @@ class graphBody extends React.Component{
 
   render (){
       let data= this.state.data
-    console.log('data sad', this.state.data)
+   
     
-
-
+    /*
     if(this.state.data==null){
         return (<h1>Data Null</h1>)
-    }
+    }*/
       return (
           <Container>
               <Row>

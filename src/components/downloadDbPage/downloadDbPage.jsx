@@ -65,9 +65,9 @@ render(){
     console.log('this.state 1 ',this.state.data)
    
   return (
-    <div className="home">
-      <div className="black">
-      <Header/>
+    <div >
+      <div >
+ 
     <Container>
       <Row>
         <Col></Col>
@@ -78,7 +78,7 @@ render(){
         <Col> <div class="loader"><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div> </Col>
       </Row>
     </Container>
-    <Footer/>
+  
     </div>
     </div>
      
@@ -86,11 +86,11 @@ render(){
   else {
     console.log('this.state 2',this.state.data)
    return ( 
-     <div className="dwn">
-       <div className="black">
-   <Header/>
+     <div >
+       <div >
+  
    <DwnBodyPage items={this.state.data}/>
-   <Footer/>
+  
    </div>
    </div>
    )

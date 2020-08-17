@@ -9,8 +9,20 @@ super(props)
 this.state={
     data:null
 }
+
+
 }
 
+componentDidMount(){
+  const ANIMATION_TIMEOUT = 50;
+
+  setTimeout(() => {
+    this.setState({ animate: true });
+  }, ANIMATION_TIMEOUT);
+}
+
+
+  
 render(){
     return(
         <Container fluid>

@@ -1,24 +1,8 @@
-.dwn
-{
-    text-align: center;
-    background: url("../../assets/background.jpg");
-    background-size: cover;
 
-}
-
-  .dwn-header {
-      background-color: red;
-      text-align: center;
-  }
-
-  .black{
-    background-color: #000000;
-    opacity: 0.8;
-  }
   .text{
     margin-top: 3%;
       color:white;
-      font-size: large;
+      font-size: 300%;
   }
 
   .on-load{

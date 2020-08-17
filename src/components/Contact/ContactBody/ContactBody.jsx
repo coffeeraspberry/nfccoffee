@@ -17,6 +17,10 @@ class ContactBody extends React.Component{
        
 
   handleSubmitButton(){
+      if (document.getElementById("Email").value =="" ||document.getElementById("Name").value=="" || document.getElementById("Subject").value=="" ||  document.getElementById("Msg").value==""){
+        alert('Please fill all mandatory fields')  
+        return null
+      }
     let options = {
         method: 'POST',
         headers: {
@@ -28,11 +32,9 @@ class ContactBody extends React.Component{
        }, 
        body:  JSON.stringify({ Email:document.getElementById("Email").value, UserName: document.getElementById("Name").value, Subject:document.getElementById("Subject").value, Message:document.getElementById("Msg").value})
     }
-       
     
     
        let url=api +'/contact';
-      
       
       let Urlresponse =  fetch(url, options)
      // let JsonResponse=  Urlresponse.json()

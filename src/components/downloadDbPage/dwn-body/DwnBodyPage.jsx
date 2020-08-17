@@ -3,7 +3,7 @@ import './DwnBodyPage.css';
 import api from '../../../constants/api'
 import {Container, Row, Col} from 'reactstrap'
 import CsvDownload from 'react-json-to-csv'
-
+let route='/users'
 class DwnBodyPage extends React.Component{
   constructor(props) {
     super(props);
@@ -17,9 +17,9 @@ class DwnBodyPage extends React.Component{
 
   async  componentDidMount() {    
 
-    let url=  api +'/users'
+    let url=  api +route
    
-    console.log('URL THAT I AM FETCHING', url);
+    
     
     let options = {
       method: 'GET',
@@ -47,7 +47,7 @@ class DwnBodyPage extends React.Component{
   render (){
     console.log('din body ', this.state.data)
         return (
-          <div className="black">
+          <div>
           <Container>
     
       <Row>

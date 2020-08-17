@@ -1,14 +1,4 @@
-.usr{
-    background: url("../../assets/background.jpg");
-    background-size: cover;
-    text-align: center;
-    background-attachment: fixed;
-    background-size: cover;
-}
-.black-layer{
-    color:black;
-    opacity: 0.5;
-}
+
 .on-load{
     background-color: transparent;
     color:white;
@@ -16,7 +6,7 @@
 
 .load-text{
     color:white;
-    font-size: 300%;
+    font-size: 200%;
 }
 
 

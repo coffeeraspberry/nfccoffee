@@ -1,4 +1,6 @@
 .head{
+  border:solid;
+  border-color:black;
     position: relative;
     margin-top: 0px;
     width: fill;

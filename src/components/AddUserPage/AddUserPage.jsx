@@ -61,22 +61,22 @@ demoAsyncCall() {
     }
    if(this.state.data!==null){
     return (
-      <div className="home">
-        <div className="black">
-    <Header/>
+      <div >
+        <div >
+   
     <AddUserForm items={this.state.data}/>
-     <Footer/>
+     
       </div>
       </div>
     );
    }else {
 
 return (
-  <div className="home">
-  <div className="black">
-<Header/>
+  <div >
+  <div >
+
 <AddUserBodyScan/>
-<Footer/>
+
 </div>
 </div>
 )

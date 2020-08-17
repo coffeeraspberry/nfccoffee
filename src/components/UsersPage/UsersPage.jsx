@@ -75,30 +75,28 @@ render(){
 
   if(this.state.data==null){
   return(
-  <div className="usr">
-    <div className="black-layer">
-  <Header/>
+  <div >
+    <div >
+
   <Container fluid={true}>
 <Row className="on-load">
   <Col></Col>
   <Col>
-  <div class="loader"><div className='load-text'>loading </div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+  <div class="loader"><div className='load-text'>User table loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
  </Col>
   <Col></Col>
 </Row>
   </Container>
-  <Footer/>
+  
   </div>
   </div>
   )
 }else {
   return(
-    <div className="home">
-      <div className="black">
-    <Header/>
+    <div >
+   
     <UsersBody items={this.state.data}/>
-    <Footer/>
-    </div>
+    
     </div>
     )
 }

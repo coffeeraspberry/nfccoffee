@@ -40,13 +40,11 @@ class UsersBody extends React.Component{
         { dataField: 'UserID',text: 'UserID' },
         {dataField: 'UserName', text: 'UserName ',  filter: textFilter() }
       ]
-    console.log('din body ', this.state.data)
+    
    
         return (
-          <div className="usr">
+          <div>
          
-
-
 
 <div className="table">
 <BootstrapTable className="table-condensed" keyField='id' loading={ true } data={ data } columns={ columns } bordered={true} headers={true} fluid={true} pagination={ paginationFactory()}  filter={ filterFactory() }   />

@@ -16,36 +16,38 @@ let handleClick = () => {
 function header() {
 
  return (
+   
   <Container fluid>
+
  <Row className="head">
    <Col>  </Col>
-         <Col md="auto"> <Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}} alt="logo"/>  </Link> </Col> 
+         <Col md="auto"> <Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}} alt="logo"/> </Link> </Col> 
          <Col ></Col>
          </Row>
          <Row>
 
          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="nav">
-  <Navbar.Brand href="/home" className="home-btn">Home</Navbar.Brand>
+  <Navbar.Brand className="home-btn" ><Link to="/home">Home</Link></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
       <NavDropdown title="Options" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="/users">Show User List</NavDropdown.Item>
-        <NavDropdown.Item href="/addUsr">Add/Fill User Info</NavDropdown.Item>
-        <NavDropdown.Item href="/graph">CoffeeGraph</NavDropdown.Item>
+        <NavDropdown.Item><Link to="/users">Show User List</Link></NavDropdown.Item>
+        <NavDropdown.Item><Link to="/addUsr">Add/Fill User Info</Link></NavDropdown.Item>
+        <NavDropdown.Item ><Link to="/graph">CoffeeGraph</Link></NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item href="/download">Download Database .csv</NavDropdown.Item> 
+        <NavDropdown.Item><Link to="/download">Download Database .csv</Link></NavDropdown.Item> 
       </NavDropdown>
-   
-      <Nav.Link href="/contact">Contact</Nav.Link>
-      <Nav.Link href="/about">About</Nav.Link>
-    
+      <Nav.Link ><Link to="/contact">Contact</Link></Nav.Link>
+      <Nav.Link ><Link to="/about">About</Link></Nav.Link>
+  
     </Nav>
   </Navbar.Collapse>
 </Navbar>
          </Row>
-
+         
          </Container>
+         
 );
 
 }

@@ -8,11 +8,11 @@ class Contact extends React.Component{
 
     render(){
         return(
-            <div className="background">
-                <div className="black">
-        <Header />
+            <div >
+                <div >
+        
         <ContactBody/>
-        <Footer/>
+       
         </div>
         </div>
             )

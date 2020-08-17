@@ -67,22 +67,18 @@ class GraphPage extends React.Component{
   render(){
    if(this.state.data==null){
      return (
-       <div className="home">
-         <div className="black">
-       <Header/>
-       <div class="loader"><div className='load-text'>loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
-       <Footer/>
-       </div>
+       <div>
+       
+       <div class="loader"><div className='load-text'>CoffeeGraph loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+    
        </div>
      )
    }
    
     return (
-      <div className="home">
-        <div className="black">
-    <Header/>
+      <div >
+        <div >
  <GraphBody items={this.state.data}/>
-     <Footer/>
       </div>
       </div>
     );

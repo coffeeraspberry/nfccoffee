@@ -41,12 +41,12 @@ demoAsyncCall() {
 
     
     return (
-      <div className="home">
-        <div className="black">
-    <Header/>
+      <div>
+       
+   
  <HomeBody/>
-     <Footer/>
-      </div>
+     
+      
       </div>
     );
 

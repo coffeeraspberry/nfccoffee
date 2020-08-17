@@ -8,11 +8,11 @@ class About extends React.Component{
 
     render(){
         return(
-            <div className="background">
-                <div className="black">
-        <Header />
+            <div >
+                <div >
+        
         <AboutBody/>
-        <Footer/>
+      
         </div>
         </div>
             )
