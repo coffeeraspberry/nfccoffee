@@ -26,17 +26,29 @@ def contacts():
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     data = getFrontJSON()
-    #to do addDB (daca adaugat succes return {"Succes" : "True"} else {"Succes" : False})
-    return json.dumps("Contact %s recieved\n" % str(data))
+    contact = Contact(Email=data['Email'], Name=data['Name'], Message=data['Message']) 
+    success = True
+    try:
+        db.session.add(user)
+        db.session.commit()
+    except Exception as e:
+        success = False
+        
+    return json.dumps({'Success' : str(success)})
 
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
     user = Users(UserName=data['UserName'], Email=data['Email'], )
     #vezi cu fisierul
-    db.session.add(user)
-    db.session.commit()
-    return json.dumps("User %s was inserted in DB\n" % user) # Succes : True sau False
+    success = True
+    try:
+        db.session.add(user)
+        db.session.commit()
+    except Exception as e:
+        success = False
+
+    return json.dumps({'Success' : str(success)})
 
 @app.route('/deleteUsers', methods=['GET'])
 def deleteUsers():
