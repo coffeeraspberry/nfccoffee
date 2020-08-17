@@ -10,10 +10,9 @@ def findUser():
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     file.close()
-    print("uid din fct e %s" %(uid))
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
-    temp = Users.query.filter_by(UserID='\''+uid+'\'').first()
+    temp = db.session.query(Users).filter_by(UserID='\''+uid+'\'').first()
     if temp is None:
         print("Cica nu e %s" %(uid))
     else:
