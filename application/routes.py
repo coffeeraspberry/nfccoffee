@@ -6,15 +6,14 @@ from flask import json, request
 import os, signal, csv, subprocess
 
 def findUser():
-    uid="fab0671a"
+    #uid="fab0671a"
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     file.close()
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
     #temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).first()
-    temp = Users.query.filter_by(UserID='fab0671a').first()
-    print("Tmp e: %s" %(temp))
+    temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
 
 def getFrontJSON():
