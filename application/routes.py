@@ -8,9 +8,11 @@ import os, signal, csv, subprocess
 def findUser():
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
+    print(uid)
     file.close()
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
+    print(Users.query.filter_by(UserID='\''+uid+'\'').first())
     return Users.query.filter_by(UserID='\''+uid+'\'').first()
 
 def getFrontJSON():
