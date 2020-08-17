@@ -6,6 +6,7 @@ from flask import json, request
 import os, signal, csv, subprocess
 
 def findUser():
+    uid="fab0671a"
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     print(uid)
