@@ -12,7 +12,8 @@ def findUser():
     file.close()
     #user = db.session.query(Users).filter_by(UserID=uid).firsr()
     #return json.dumps([usr._asdict() for usr in Users.query.filter_by(UserID=str(uid)).first()])    
-    temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).first()
+    #temp = db.session.query(Users).filter_by(UserID='\'%s\'' %(uid)).first()
+    temp = Users.query.get(2)
     print("Tmp e: %s" %(temp))
     return temp
 
