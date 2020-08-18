@@ -6,7 +6,6 @@ from flask import json, request
 import os, signal, csv, subprocess, stream
 
 def findUser():
-    #uid="fab0671a"
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     file.close()
@@ -14,17 +13,14 @@ def findUser():
     return temp
 
 def getFrontJSON():
-    print("Requesting JSON data...\n") #delete later
     data = request.get_json(force=True)
-    print("Data:\n%s" % str(data)) #delete later
     return data
 
-@app.route("/comment",methods=['GET'])
+@app.route("/comment",methods=['PUT'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
     frontData = getFrontJSON()
     user_token = client.create_user_token(str(frontData['username']))
-    print(user_token)
     return user_token
 
 @app.route("/users", methods=['GET'])
@@ -54,7 +50,6 @@ def insertContacts():
         db.session.commit()
     except Exception as e:
         success = False
-
     return json.dumps({'Success' : str(success)})
 
 @app.route("/users", methods=['POST'])
@@ -71,7 +66,7 @@ def createUsers():
 
     return json.dumps({'Success' : str(success)})
 
-@app.route('/deleteUsers', methods=['GET'])
+@app.route('/deleteUsers', methods=['DELETE'])
 def deleteUsers():
     user = Users.query.filter_by(UserID=1).first()
     db.session.delete(user)
