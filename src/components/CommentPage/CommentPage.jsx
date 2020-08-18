@@ -1,7 +1,5 @@
 import React from 'react';
 import './CommentPage.css';
-import Header from '../header/header';
-import Footer from '../footer/footer';
 import Loading from '../../router/loading';
 import CommentBody from './CommentBody/CommentBody'
 import api from '../../constants/api'
@@ -20,9 +18,10 @@ class CommentPage extends React.Component{
      isActive: true,
      loading:true,
      moveOn:false,
+     user:null,
     }
 
- 
+    this.handleSubmitButton=this.handleSubmitButton.bind(this)
   }
 
   close = () => {
@@ -36,7 +35,7 @@ demoAsyncCall() {
   };
 
 async needFetch(){
-
+/*
     let url=api+route
     console.log('FETCH URL ', url)
 let options = {
@@ -59,7 +58,7 @@ let options = {
     let picpic= await JSON.stringify(JsonResponse, null, 4);
    this.state.data= picpic
     console.log('this.state.dataa ', this.state.data)
-    
+    */
    
 
 }
@@ -68,7 +67,7 @@ let options = {
 
 
 async   componentDidMount() {
-    
+   /*
     //this.demoAsyncCall().then(() => this.setState({ loading: false }));
     let url=  api +route
    
@@ -81,15 +80,20 @@ async   componentDidMount() {
       await this.setState({data: JsonResponse})
       console.log('state data ', this.state.data)
       return JsonResponse;
+      */  
   };
-  
-  handleSubmitButton(){
+
+
+
+  async handleSubmitButton(){
+      
     if (document.getElementById("username").value==""){
       alert('Please fill all mandatory fields')  
       return null
     }
+    
   let options = {
-      method: 'GET',
+      method: 'POST',
       headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -99,12 +103,15 @@ async   componentDidMount() {
      }, 
      body:  JSON.stringify({username:document.getElementById("username").value})
   }
-  
-  
-     let url=api +'/comment';
+  this.state.user=document.getElementById("username").value
+  console.log('BODY SUBMIT ', options.body)
+     let url=api +route;
     
-    let Urlresponse =  fetch(url, options)
-   // let JsonResponse=  Urlresponse.json()
+    let Urlresponse = await fetch(url, options)
+    let JsonResponse= await Urlresponse.json()
+    console.log('response ', JsonResponse)
+
+   this.setState({moveOn:true, data:JsonResponse.token})
 
   }
 
@@ -119,24 +126,29 @@ async   componentDidMount() {
     
  
 
-   if(this.state.data==null){
+   if(this.state.moveOn==false){
     return (
-      <div>
-
-      <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} errorMessage="This field is mandatory">
+    <div>
+<Container fluid className="white">
+    <Col></Col>
+    <Col lg="3" xl="3" sm xs md="6">
+      <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} value={"user"} errorMessage="This field is mandatory">
 <AvField name="username" label="Enter your username"  required />
 </AvForm>
 <Button color="success" onClick={this.handleSubmitButton}>Submit</Button>{' '}
+</Col>
+<Col></Col>
+</Container>
 <div class="loader"><div className='load-text'>Comments loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
-   
-
 </div>
+
+
     )
   }
  
     return (
     <div>
-       <CommentBody items={this.state.data}/>
+       <CommentBody data={this.state.data} userItem={this.state.user}/>
     </div>
     )
 

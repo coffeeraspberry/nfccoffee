@@ -16,9 +16,11 @@ constructor(props){
      isActive: true,
      loading:true,
      token: null,
+     user:null,
     }
-this.state.data=props.items
-console.log('token', props.items)
+this.state.data=props.data
+this.state.user=props.userItem
+console.log('token', props.data)
 
 }
   async componentDidMount(){
@@ -34,9 +36,10 @@ if(this.state.data==null){
 }
 
 return (
-    <Container >
-        <Row>
-            <Col>
+    <Container fluid>
+        <Row lg="auto">
+        <Col></Col>
+            <Col className="comment-div" lg="6">
     <StreamApp
     apiKey="cacwd7veh7pg"
     appId="89736"
@@ -45,7 +48,7 @@ return (
     <NotificationDropdown notify />
     <StatusUpdateForm
       feedGroup="timeline"
-      userId="user" />
+      userId="user"/>
     <FlatFeed
       options={ {reactions: { recent: true } } }
       notify
@@ -53,7 +56,7 @@ return (
           <Activity {...props}
             Footer={() => (
               <div style={ {padding: '8px 16px'} }>
-                <LikeButton {...props} />
+               
                 <CommentField
                   activity={props.activity}
                   onAddReaction={props.onAddReaction} />
@@ -66,6 +69,7 @@ return (
 
   </StreamApp>
   </Col>
+  <Col></Col>
   </Row>
 
   </Container>

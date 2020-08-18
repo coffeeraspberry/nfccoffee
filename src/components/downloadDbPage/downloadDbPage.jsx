@@ -5,6 +5,8 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 import DwnBodyPage from './dwn-body/DwnBodyPage'
 import {Container, Row, Col} from 'reactstrap'
+import api from '../../constants/api'
+let route='/users'
 
 let handleClick = () => {
     console.log('HERE!');
@@ -32,7 +34,7 @@ class downloadDbPage extends React.Component{
   }
 
  async  componentDidMount() {    
-    let url=  'http://localhost:4321/posts'
+    let url=  api+route
     let options = {
       method: 'GET',
       headers: {

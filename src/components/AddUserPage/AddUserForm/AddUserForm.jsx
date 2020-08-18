@@ -66,7 +66,7 @@ if(document.getElementById("username").value === "" && document.getElementById("
 let url=  api + route
 
 let options = {
-  method: 'PUT',
+  method: 'POST',
   headers: {
         'Content-Type': 'application/json',
  },
