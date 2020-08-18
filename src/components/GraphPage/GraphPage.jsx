@@ -77,9 +77,9 @@ class GraphPage extends React.Component{
    
     return (
       <div >
-        <div >
+        
  <GraphBody items={this.state.data}/>
-      </div>
+    
       </div>
     );
 

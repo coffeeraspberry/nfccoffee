@@ -89,11 +89,9 @@ render(){
     console.log('this.state 2',this.state.data)
    return ( 
      <div >
-       <div >
-  
-   <DwnBodyPage items={this.state.data}/>
-  
-   </div>
+<Container>
+   <DwnBodyPage items={this.state.data}/> 
+   </Container>
    </div>
    )
 

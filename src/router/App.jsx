@@ -26,7 +26,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
       <Switch location={location}>
       <Route exact path='/' component={home}/>
       <Route exact path='/home'component={home} />
-        <Route exact path='/download' component={downloadDbPage} / >
+      
         <Route exact path='/foot' component={home} / >   
         <Route exact path='/users' component={UsersPage} / > 
         <Route exact path='/graph' component={GraphPage}/>
@@ -34,6 +34,9 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/comment' component={CommentPage}/>
+        <div className="download-trans">
+        <Route exact path='/download' component={downloadDbPage} / >
+        </div>
       </Switch>
     </CSSTransition>
    

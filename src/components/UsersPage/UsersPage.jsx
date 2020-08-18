@@ -75,9 +75,8 @@ render(){
 
   if(this.state.data==null){
   return(
-  <div >
+  
     <div >
-
   <Container fluid={true}>
 <Row className="on-load">
   <Col></Col>
@@ -87,8 +86,6 @@ render(){
   <Col></Col>
 </Row>
   </Container>
-  
-  </div>
   </div>
   )
 }else {

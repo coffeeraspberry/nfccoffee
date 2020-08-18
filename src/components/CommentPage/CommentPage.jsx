@@ -67,20 +67,29 @@ let options = {
 
 
 async   componentDidMount() {
-   /*
-    //this.demoAsyncCall().then(() => this.setState({ loading: false }));
-    let url=  api +route
-   
-    console.log('URL THAT I AM FETCHING', url);
-  
-      let Urlresponse = await fetch(url, this.options)
-      let JsonResponse= await Urlresponse.json()
 
-    
-      await this.setState({data: JsonResponse})
-      console.log('state data ', this.state.data)
-      return JsonResponse;
-      */  
+      /*
+    let options = {
+        method: 'POST',
+        headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+       'Pragma': 'no-cache',
+       'Expires': '0',
+       }, 
+       body:  JSON.stringify({username:"user"})
+    }
+   
+    console.log('BODY SUBMIT ', options.body)
+       let url=api +route;
+      
+      let Urlresponse = await fetch(url, options)
+      let JsonResponse= await Urlresponse.json()
+      console.log('response ', JsonResponse.token)
+  
+     this.setState({moveOn:true, data:JsonResponse.token})
+   */
   };
 
 
@@ -111,7 +120,7 @@ async   componentDidMount() {
     let JsonResponse= await Urlresponse.json()
     console.log('response ', JsonResponse)
 
-   this.setState({moveOn:true, data:JsonResponse.token})
+   await this.setState({moveOn:true, data:JsonResponse.token})
 
   }
 
@@ -128,24 +137,22 @@ async   componentDidMount() {
 
    if(this.state.moveOn==false){
     return (
-    <div>
-<Container fluid className="white">
-    <Col></Col>
-    <Col lg="3" xl="3" sm xs md="6">
-      <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit} value={"user"} errorMessage="This field is mandatory">
+<div>
+      <AvForm onValidSubmit={this.handleValidSubmit} onInvalidSubmit={this.handleInvalidSubmit}  errorMessage="This field is mandatory">
 <AvField name="username" label="Enter your username"  required />
 </AvForm>
-<Button color="success" onClick={this.handleSubmitButton}>Submit</Button>{' '}
-</Col>
-<Col></Col>
-</Container>
-<div class="loader"><div className='load-text'>Comments loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
-</div>
 
+<Button color="success" onClick={this.handleSubmitButton}>Submit</Button>{' '}
+
+<div class="loader"><div className='load-text'>Comments loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+
+</div>
 
     )
   }
  
+
+
     return (
     <div>
        <CommentBody data={this.state.data} userItem={this.state.user}/>
