@@ -10,7 +10,7 @@ import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
 import back from '../assets/background.jpg'
 import Contact from '../components/Contact/Contact'
-
+import CommentPage from '../components/CommentPage/CommentPage'
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
 
@@ -33,6 +33,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/addUsr' component={AddUserPage}/>
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/about' component={About}/>
+        <Route exact path='/comment' component={CommentPage}/>
       </Switch>
     </CSSTransition>
    
@@ -47,9 +48,9 @@ function App() {
     <div className="black">
       <Container fluid>
     <Router> 
-      <div className="header">
+      
     <Row xl md lg sm xs ><Header/> </Row>
-    </div>
+    
     
       <AnimatedSwitch/>
       

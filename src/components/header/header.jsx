@@ -16,11 +16,12 @@ let handleClick = () => {
 function header() {
 
  return (
-   
+  <div className="header">
   <Container fluid>
 
  <Row className="head">
    <Col>  </Col>
+   
          <Col md="auto"> <Link to='/home'><img src={logo} className="head-logo" onClick={()=>{handleClick()}} alt="logo"/> </Link> </Col> 
          <Col ></Col>
          </Row>
@@ -38,16 +39,18 @@ function header() {
         <NavDropdown.Divider />
         <NavDropdown.Item><Link to="/download">Download Database .csv</Link></NavDropdown.Item> 
       </NavDropdown>
+      <Nav.Link ><Link to="/comment">Comment Feed</Link></Nav.Link>
       <Nav.Link ><Link to="/contact">Contact</Link></Nav.Link>
       <Nav.Link ><Link to="/about">About</Link></Nav.Link>
   
     </Nav>
   </Navbar.Collapse>
 </Navbar>
+
          </Row>
          
          </Container>
-         
+         </div>
 );
 
 }
