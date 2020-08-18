@@ -22,7 +22,7 @@ def comment():
     frontData = getFrontJSON()
     user_token = client.create_user_token(str(frontData['username']))
     print(user_token)
-    return json.dumps(user_token)
+    return {'token':user_token}
 
 @app.route("/users", methods=['GET'])
 def users():
