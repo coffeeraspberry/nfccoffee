@@ -51,10 +51,11 @@ def mainf():
     while True:
         # Check if a card is available to read
         uid = pn532.read_passive_target(timeout=0.5)
-        f = open("user.txt","w+")
-        f.write(str(uid.hex()))
-        f.close()
-        print("UID: "+str(uid.hex()))
+        if uid is not None:
+            f = open("user.txt","w+")
+            f.write(str(uid.hex()))
+            f.close()
+            print("UID: "+str(uid.hex()))
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
