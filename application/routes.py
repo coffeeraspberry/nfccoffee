@@ -16,7 +16,7 @@ def getFrontJSON():
     data = request.get_json(force=True)
     return data
 
-@app.route("/comment",methods=['PUT'])
+@app.route("/comment",methods=['POST'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
     frontData = getFrontJSON()
