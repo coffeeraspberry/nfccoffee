@@ -21,8 +21,8 @@ def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
     frontData = getFrontJSON()
     user_token = client.create_user_token(str(frontData['username']))
-    print(user_token)
-    return {'token':user_token}
+    print(json.dump({'token':user_token}))
+    return json.dump({'token':user_token})
 
 @app.route("/users", methods=['GET'])
 def users():
