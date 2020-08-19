@@ -34,7 +34,7 @@ ic, ver, rev, support = pn532.firmware_version
 print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
 pn532.SAM_configuration()
 
-def scanBadge(option):
+def scanBadge():
     uid = pn532.read_passive_target(timeout=0.5)
     return uid
 
@@ -55,6 +55,7 @@ def mainf():
         uid = None
         if interuptScan is False:
             uid = scanBadge()
+        print("UID: %s" %(uid.hex()))
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
@@ -76,6 +77,6 @@ def mainf():
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
         sleep(1)
         lcd.clear()     
-        
+
 if __name__=='__main__':
      mainf()
