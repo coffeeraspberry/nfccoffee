@@ -27,30 +27,34 @@ def addUserIfNotExists(con,uid):
     cursor.execute(insert)
     con.commit()
 
+spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+cs_pin = DigitalInOut(board.D8)
+pn532 = PN532_SPI(spi, cs_pin, debug=False)
+ic, ver, rev, support = pn532.firmware_version
+print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
+pn532.SAM_configuration()
+
+def scanBadge(option):
+    uid = pn532.read_passive_target(timeout=0.5)
+    return uid
+
+interuptScan = False
+
 def mainf():
     subprocess.call('python3 -m app &', shell=True)
-
     con = sqlite3.connect('application/pi.db')
-
     lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
     lcd.color = [0, 0, 0]
-
-    spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-    cs_pin = DigitalInOut(board.D8)
-    pn532 = PN532_SPI(spi, cs_pin, debug=False)
-    ic, ver, rev, support = pn532.firmware_version
-    print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
-    pn532.SAM_configuration()
-
     hostname = socket.gethostname()
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     ip_address = s.getsockname()[0]
     s.close()
-
     while True:
         # Check if a card is available to read
-        uid = pn532.read_passive_target(timeout=0.5) 
+        uid = None
+        if interuptScan is False:
+            uid = scanBadge()
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
@@ -72,6 +76,6 @@ def mainf():
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
         sleep(1)
         lcd.clear()     
-    
+        
 if __name__=='__main__':
      mainf()

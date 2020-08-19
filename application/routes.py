@@ -4,12 +4,11 @@ from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
 import os, signal, csv, subprocess, stream
+from pyscript import interuptScan, scanBadge
 
 def findUser():
-    with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
-        uid = file.read()
-    file.close()
-    os.remove("/home/pi/back/nfccoffee/user.txt")
+    uid = scanBadge()
+    uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
 
@@ -31,7 +30,9 @@ def users():
 
 @app.route("/scan", methods=['GET'])
 def scan():
+    pyscript.interuptScan = True
     user = findUser()
+    pyscript.interuptScan = False
     return user._asdict()
 
 @app.route("/logs", methods=['GET'])
@@ -48,7 +49,7 @@ def insertContacts():
     contact = Contact(Email=data['Email'], Name=data['Name'], Message=data['Message']) 
     success = True
     try:
-        db.session.add(user)
+        db.session.add(contact)
         db.session.commit()
     except Exception as e:
         success = False
