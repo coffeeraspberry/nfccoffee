@@ -10,7 +10,6 @@ let handleClick = () => {
 
 function footer() {
   return (
-  
     <Container fluid={true}>
       <Row className="empty"></Row>
       <Row className="foot">
@@ -39,7 +38,6 @@ function footer() {
         </Col>
       </Row>
     </Container>
-    
   );
 }
 
