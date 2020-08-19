@@ -63,13 +63,12 @@ def mainf():
                 lcd.message = "Found User:\n%s" %(our_user[0][2])
                 lcd.message = "Remove card!"
                 incrementUserCounter(con,our_user)
-                sleep(2)
+                sleep(0.5)
             else:
                 addUserIfNotExists(con,str(uid.hex()))
                 lcd.message = "Remove card!"
-                sleep(2)
+                sleep(1)
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
-        sleep(1)
         lcd.clear()     
 
 if __name__=='__main__':

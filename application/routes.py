@@ -10,7 +10,7 @@ def findUser():
     uid = None
     uid = scanBadge()
     while uid is None:
-        sleep(1)
+        sleep(0.55)
         uid = scanBadge()
     uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
