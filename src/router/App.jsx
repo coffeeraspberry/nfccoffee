@@ -24,9 +24,8 @@ const AnimatedSwitch = withRouter(({ location }) => (
 
     <CSSTransition key={location.key} classNames="slide" timeout={1000}>
       <Switch location={location}>
-      <Route exact path='/' component={home}/>
-      <Route exact path='/home'component={home} />
-      
+        <Route exact path='/' component={home}/>
+        <Route exact path='/home'component={home} /> 
         <Route exact path='/foot' component={home} / >   
         <Route exact path='/users' component={UsersPage} / > 
         <Route exact path='/graph' component={GraphPage}/>
@@ -34,9 +33,8 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/comment' component={CommentPage}/>
-        <div className="download-trans">
         <Route exact path='/download' component={downloadDbPage} / >
-        </div>
+       
       </Switch>
     </CSSTransition>
    
@@ -53,8 +51,6 @@ function App() {
     <Router> 
       
     <Row xl md lg sm xs ><Header/> </Row>
-    
-    
       <AnimatedSwitch/>
       
     
