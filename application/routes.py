@@ -30,9 +30,9 @@ def users():
 
 @app.route("/scan", methods=['GET'])
 def scan():
-    pyscript.interuptScan = True
+    interuptScan = True
     user = findUser()
-    pyscript.interuptScan = False
+    interuptScan = False
     return user._asdict()
 
 @app.route("/logs", methods=['GET'])
