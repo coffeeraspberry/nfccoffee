@@ -11,7 +11,7 @@
 
     color:white;
     table-layout: auto;
-   
+   display:block;
     overflow-x: auto !important;
     width: 100% !important;
     text-align: center;
@@ -26,3 +26,4 @@
 .table-hover > tbody > tr:hover > th {
     background-color: #CFF5FF;
 }
+

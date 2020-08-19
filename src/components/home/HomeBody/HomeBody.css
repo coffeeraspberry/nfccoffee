@@ -17,3 +17,28 @@ margin-left: 5%;
 margin-right: 5%;
 text-align: justify;
 }
+
+.video-tag{
+    height: 100%;
+    width: 100%;
+    float: center;
+    top: 20;
+    object-fit: stretch;
+    padding: none;
+    position: relative; /* optional depending on what you want to do in your app */
+border:solid;
+border-color:red;
+opacity: 10;
+
+}
+
+.video-component{
+    text-align: center;
+    border:solid;
+border-color:yellow;
+}
+.video-component-blue{
+    text-align: center;
+    border:solid;
+border-color:blue;
+}

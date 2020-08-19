@@ -54,11 +54,13 @@ class UsersBody extends React.Component {
     let columns = [
       {
         dataField: "Counter",
+        dataAlign:"Center", 
         text: "Counter",
         headerStyle: { backgroundColor: "white" },
       },
       {
         dataField: "Email",
+        dataAlign:"Center", 
         text: "Email ",
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
@@ -100,6 +102,7 @@ class UsersBody extends React.Component {
             rowStyle={{ backgroundColor: "white" }}
             rowEvents={rowEvents}
             condensed={true}
+            
            
           />
         </div>

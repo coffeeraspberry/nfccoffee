@@ -2,6 +2,7 @@ import React from "react";
 import "./HomeBody.css";
 import BodyImg from "../../../assets/bodyImg.png";
 import { Container, Row, Col } from "reactstrap";
+import laptop from '../../../assets/laptop.mp4';
 
 class HomeBody extends React.Component {
   constructor(props) {
@@ -14,7 +15,18 @@ class HomeBody extends React.Component {
 
   render() {
     return (
+      <div>
       <Container fluid={true}>
+        <Row>
+          <Col xl="auto"className="video-component-blue" >
+           <div className="video-component">
+      <video className='video-tag' autoPlay loop muted>
+    <source src={laptop} type='video/mp4' />
+</video>
+</div> 
+</Col>
+</Row>
+     
         <Row sm="1" md="1" xs="1" lg="1" xl="2">
           <Col xs sm md lg xl>
             <img className="body-img" src={BodyImg} />
@@ -39,6 +51,7 @@ class HomeBody extends React.Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
