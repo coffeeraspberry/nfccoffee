@@ -6,16 +6,18 @@
 .text{
     color:white;
 }
-.table{
-    width: 100% !important;
+.please-no-overflow{
+    overflow-x:hidden !important;
 }
 
-.react-bootstrap-table{
+.react-bootstrap-table table{
     overflow-x:auto !important;
+    overflow-y:auto !important;
     width: 100% !important;
     table-layout: auto;
     margin-top:4%;
     display: block;
     text-align: center;
+    
     }
 

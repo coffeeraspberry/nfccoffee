@@ -95,7 +95,7 @@ class UsersPage extends React.Component {
       return (
         <div>
           <UsersBody items={this.state.data} />
-        </div>
+          </div>
       );
     }
   }

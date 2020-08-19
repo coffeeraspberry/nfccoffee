@@ -22,7 +22,7 @@ import { Container, Row, Col } from 'reactstrap';
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
 
-    <CSSTransition key={location.key} classNames="slide" timeout={1000}>
+    <CSSTransition key={location.key} classNames="slide"  timeout={1000}>
       <Switch location={location}>
         <Route exact path='/' component={home}/>
         <Route exact path='/home'component={home} /> 

@@ -83,13 +83,13 @@ class UsersBody extends React.Component {
     ];
     
     return (
-<Container >
-  <Row xs="1" sm="1">
-  <Col  sm="auto" xs="auto" lg="auto" xl="auto" md="auto"></Col>
-    <Col sm="auto" xs="auto" lg="auto" xl="auto" md="auto">
+    
+
+  
       <div>
-        
+     
           <BootstrapTable 
+          className="table-condensed"
           hover={true}
             keyField="id"
             loading={true}
@@ -102,14 +102,12 @@ class UsersBody extends React.Component {
             filter={filterFactory()}
             rowStyle={{ backgroundColor: "white" }}
             rowEvents={rowEvents}
-           
+            wrapperClasses="table-responsive"
           />
-       
-      </div>
-      </Col>
-      <Col sm="auto" xs="auto" lg="auto" xl="auto" md="auto"></Col>
-      </Row>
-      </Container>
+       </div>
+     
+      
+    
      
     );
   }

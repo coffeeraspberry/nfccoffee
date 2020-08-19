@@ -11,15 +11,15 @@
   animation: load8 1.1s infinite linear;
 }
 
-
-
-  
+.color{
+  border:solid;
+  color:red;
+}
   .App {
     text-align: center;
     position: relative;
    
   }
-
 
   .home
   {

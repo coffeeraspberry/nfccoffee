@@ -1,3 +1,7 @@
+.check{
+    border:solid;
+  color:red;
+}
 .foot{
     position: relative;
     margin-top: 0px;
@@ -9,11 +13,7 @@
 .empty{
     height: 30vh;
 }
-.bord{
-    border-style: solid;
-    border-radius: 2px;
-    border-color: transparent;
-}
+
 
 .imgforFooter{
     text-align: center;
