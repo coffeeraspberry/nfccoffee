@@ -1,21 +1,14 @@
-import React from 'react';
-import './home.css';
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Loading from '../../router/loading';
-import HomeBody from './HomeBody/HomeBody'
+import React from "react";
+import "./home.css";
+import HomeBody from "./HomeBody/HomeBody";
 
-
-
-
-
-class home extends React.Component{
+class home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     isActive: true,
-     loading:true
-    }
+      isActive: true,
+      loading: true,
+    };
   }
   close = () => {
     this.setState({ showMod: false });
@@ -23,38 +16,22 @@ class home extends React.Component{
   open = () => {
     this.setState({ showMod: true });
   };
-demoAsyncCall() {
+  demoAsyncCall() {
     return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-  };
-  componentDidMount() {
-    // this simulates an async action, after which the component will render the content
-    this.demoAsyncCall().then(() => this.setState({ loading: false }));
-  };
-  
+  }
 
-  render(){
+  render() {
     const { loading } = this.state.loading;
-    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
-      return null; // render null when app is not ready
+    if (loading) {
+      return null;
     }
-   
 
-    
     return (
       <div>
-       
-   
- <HomeBody/>
-     
-      
+        <HomeBody />
       </div>
     );
-
   }
 }
-
-
-
-
 
 export default home;

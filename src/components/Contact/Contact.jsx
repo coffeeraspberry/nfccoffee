@@ -1,22 +1,18 @@
-import React from 'react'
-import './Contact.css'
-import Header from '../header/header'
-import Footer from '../footer/footer'
-import ContactBody from './ContactBody/ContactBody'
-class Contact extends React.Component{
+import React from "react";
+import "./Contact.css";
+import ContactBody from "./ContactBody/ContactBody";
 
-
-    render(){
-        return(
-            <div >
-            
-        
-        <ContactBody/>
-       
-        
+class Contact extends React.Component {
+    
+  render() {
+    return (
+      <div>
+        <div>
+          <ContactBody />
         </div>
-            )
-    }
+      </div>
+    );
+  }
 }
 
 export default Contact;

@@ -1,23 +1,19 @@
-import React from 'react';
-import './GraphPage.css';
-import '../home/home.css'
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import Loading from '../../router/loading';
-import GraphBody from './graphBody/graphBody'
-import api from '../../constants/api'
+import React from "react";
+import "./GraphPage.css";
+import "../home/home.css";
+import GraphBody from "./graphBody/graphBody";
+import api from "../../constants/api";
+let route = "/users";
+const DEBUG = 1;
 
-
-
-
-class GraphPage extends React.Component{
+class GraphPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data:null,
-     isActive: true,
-     loading:true
-    }
+      data: null,
+      isActive: true,
+      loading: true,
+    };
   }
   close = () => {
     this.setState({ showMod: false });
@@ -27,67 +23,62 @@ class GraphPage extends React.Component{
   };
 
   options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'mode': 'cors',
-      'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-   'Pragma': 'no-cache',
-   'Expires': '0'
+      mode: "cors",
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
     },
   };
   async componentDidMount() {
-    // this simulates an async action, after which the component will render the content
-    //this.demoAsyncCall().then(() => this.setState({ loading: false }));
-    let url=  api +'/users'
-   
-    console.log('URL THAT I AM FETCHING', url);
-  
-      let Urlresponse = await fetch(url, this.options)
-      let JsonResponse= await Urlresponse.json()
-    
-      //this.setState({data: JsonResponse})
-      let newData=[];
-      JsonResponse.forEach(element=>{
-       newData.push({
-         label:element.UserName,
-         data: parseInt(element.Counter)
-       })
-      })
-      console.log('newData ', newData)
-      await this.setState({data: newData})
-      console.log('state data ', this.state.data)
-      return newData;
-  };
-  
+    let url = api + route;
 
+    let Urlresponse = await fetch(url, this.options);
+    let JsonResponse = await Urlresponse.json();
+    let newData = [];
+    JsonResponse.forEach((element) => {
+      newData.push({
+        label: element.UserName,
+        data: parseInt(element.Counter),
+      });
+    });
 
-  
-  render(){
-   if(this.state.data==null){
-     return (
-       <div>
-       
-       <div class="loader"><div className='load-text'>CoffeeGraph loading</div><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
-    
-       </div>
-     )
-   }
-   
+    await this.setState({ data: newData });
+    /* 
+    -------------------
+    DEBUG. CHECK DATA
+    -------------------
+    */
+    if (DEBUG) {
+      console.log("GraphPage newData : ", newData);
+      console.log("GraphPage state.data : ", this.state.data);
+    }
+    return newData;
+  }
+
+  render() {
+    if (this.state.data == null) {
+      return (
+        <div>
+          <div class="loader">
+            <div className="load-text">CoffeeGraph loading</div>
+            <span class="loader__dot">.</span>
+            <span class="loader__dot">.</span>
+            <span class="loader__dot">.</span>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div >
-        
- <GraphBody items={this.state.data}/>
-    
+      <div>
+        <GraphBody items={this.state.data} />
       </div>
     );
-
   }
 }
-
-
-
-
 
 export default GraphPage;

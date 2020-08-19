@@ -1,78 +1,78 @@
-import React from 'react';
-import './DwnBodyPage.css';
-import api from '../../../constants/api'
-import {Container, Row, Col} from 'reactstrap'
-import CsvDownload from 'react-json-to-csv'
-let route='/users'
-class DwnBodyPage extends React.Component{
+import React from "react";
+import "./DwnBodyPage.css";
+import api from "../../../constants/api";
+import { Container, Row, Col } from "reactstrap";
+import CsvDownload from "react-json-to-csv";
+let route = "/users";
+const DEBUG = 1;
+
+class DwnBodyPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data : null,
+      data: null,
       isFetching: false,
-            users: []
+      users: [],
     };
-    this.state.data=props.items
+    this.state.data = props.items;
   }
 
-  async  componentDidMount() {    
+  async componentDidMount() {
+    let url = api + route;
 
-    let url=  api +route
-   
-    
-    
     let options = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'mode': 'cors',
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-     'Pragma': 'no-cache',
-     'Expires': '0'
+        mode: "cors",
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     };
 
-  
-      let Urlresponse = await fetch(url, options)
-      let JsonResponse= await Urlresponse.json()
-      //console.log('JsonResponse : ', JsonResponse)
-      this.setState({data: JsonResponse})
-      let picpic= await JSON.stringify(JsonResponse, null, 4);
-      console.log('pic pic ', picpic)
-      return picpic;
+    let Urlresponse = await fetch(url, options);
+    let JsonResponse = await Urlresponse.json();
+
+    this.setState({ data: JsonResponse });
+    let JsonString = await JSON.stringify(JsonResponse, null, 4);
+    /* 
+    -------------------
+    DEBUG. CHECK DATA
+    -------------------
+    */
+    if (DEBUG) {
+      console.log("JsonResponse : ", JsonResponse);
+      console.log("pic pic ", JsonString);
+    }
+    return JsonString;
   }
 
-  
-  render (){
-    console.log('din body ', this.state.data)
-        return (
-          <div>
-          <Container>
+  render() {
+    /* 
+    -------------------
+    DEBUG. CHECK DATA
+    -------------------
+    */
+    if(DEBUG){
+    console.log("DownloadDbBody Json Data : ", this.state.data);
+    }
     
-      <Row>
-        <Col></Col>
-          <Col>
-          
-          <CsvDownload data={this.state.data}  className="down-button"/>
-          
-          </Col>
-     <Col></Col>
-      </Row>
-
-  
-    </Container>
-    </div>
-    )
+    return (
+      <div>
+        <Container>
+          <Row>
+            <Col></Col>
+            <Col>
+              <CsvDownload data={this.state.data} className="down-button" />
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
+      </div>
+    );
   }
-
 }
 
-
-
-
- 
-
-
-
-      export default DwnBodyPage;
+export default DwnBodyPage;
