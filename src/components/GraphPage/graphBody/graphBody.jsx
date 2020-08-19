@@ -53,6 +53,7 @@ class graphBody extends React.Component {
         <Row>
           <Col>
             <Bar
+            className="bar-graph"
               data={this.state.data}
               options={{
                 onClick: this.handleBarClick,
@@ -70,7 +71,8 @@ class graphBody extends React.Component {
                 },
                 scales: {
                   xAxes: [
-                    {
+                    { 
+                      
                       ticks: { display: true },
                       gridLines: {
                         display: true,

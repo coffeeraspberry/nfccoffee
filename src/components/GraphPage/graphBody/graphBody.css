@@ -6,3 +6,9 @@
 .text{
     color:white;
 }
+.bar-graph{
+    table-layout: auto;
+overflow-x: auto !important;
+width: 100% !important;
+text-align: center;
+}
