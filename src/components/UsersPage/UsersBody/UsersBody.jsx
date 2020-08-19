@@ -7,7 +7,6 @@ import filterFactory, {
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import copy from "copy-to-clipboard";
-import {Container, Row, Col} from 'reactstrap'
 
 class UsersBody extends React.Component {
   constructor(props) {
@@ -83,18 +82,16 @@ class UsersBody extends React.Component {
     ];
     
     return (
-<Container >
-  <Row xs="1" sm="1">
-  <Col  sm="auto" xs="auto" lg="auto" xl="auto" md="auto"></Col>
-    <Col sm="auto" xs="auto" lg="auto" xl="auto" md="auto">
       <div>
-        
-          <BootstrapTable 
+        <div classNames="table table-hover">
+          <BootstrapTable
           hover={true}
+            className="table-condensed table-striped table-hover"
             keyField="id"
             loading={true}
             data={data}
             columns={columns}
+            headerStyle={{ backgroundColor: "green" }}
             bordered={true}
             headers={true}
             fluid={true}
@@ -104,13 +101,8 @@ class UsersBody extends React.Component {
             rowEvents={rowEvents}
            
           />
-       
+        </div>
       </div>
-      </Col>
-      <Col sm="auto" xs="auto" lg="auto" xl="auto" md="auto"></Col>
-      </Row>
-      </Container>
-     
     );
   }
 }
