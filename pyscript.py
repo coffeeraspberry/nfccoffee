@@ -52,10 +52,11 @@ def mainf():
         uid = None
         if interuptScan is False:
             uid = scanBadge()
-        print("UID: %s" %(uid.hex()))
+            print("UID: %s" %(uid.hex()))
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
+            print("No badge detected")
         else:
             f = open("user.txt","w+")
             f.write(str(uid.hex()))
