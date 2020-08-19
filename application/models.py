@@ -38,6 +38,7 @@ class Contact(db.Model, DictSerializable):
     ContactID = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Email =  db.Column(db.String(150), unique=True, nullable=False, default='defaultEmail')
     Name = db.Column(db.String(150), unique=True, nullable=False, default='defaultName')
+    Subject = db.Column(db.String(300), unique=True, nullable=False, default='defaultSubject')
     Message = db.Column(db.String(500), unique=True, nullable=False, default='defaultMessage')
     
     def __repr__(self):

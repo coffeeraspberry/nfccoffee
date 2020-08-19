@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-import socket
-import board
-import busio
+import socket, board, busio
 import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 from digitalio import DigitalInOut
 from adafruit_pn532.spi import PN532_SPI
 from time import sleep
-import sqlite3
-import subprocess
+import sqlite3, subprocess
 
 def getUser(con,UserID):
     cursor = con.cursor()

@@ -5,10 +5,12 @@
 
 Backend subproject part of **Coffe_counter** web-app built inside Continental Summer Practice 2020. 
 
-## New Features!
-  - run ofl
-  - Comunicate with frontend app via JSON data
-  - [to be continued]
+## About and usage!
+  * the 'offline' script called pyscript.py starts 
+  * a subprocess calls the Flask server (aka app.py)
+  * pyscript scans every second for card and displays different messages on LCD screen
+  * when /scan route is called from frontend, a 'virtual interrupt' is generated
+  * [to be continued]
 
 ### Requirments
 

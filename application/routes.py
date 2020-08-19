@@ -46,7 +46,7 @@ def contacts():
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     data = getFrontJSON()
-    contact = Contact(Email=data['Email'], Name=data['Name'], Message=data['Message']) 
+    contact = Contact(Email=data['Email'], Name=data['Name'], Subject=data['Subject'] Message=data['Message']) 
     success = True
     try:
         db.session.add(contact)
