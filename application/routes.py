@@ -4,11 +4,11 @@ from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
 import os, signal, csv, subprocess, stream
-from pyscript import interuptScan, scanBadge, uid
+from pyscript import interuptScan, scanBadge
 
 def findUser():
+    uid = None
     uid = scanBadge()
-    uid = uid.hex()
     while uid is None:
         uid = scanBadge()
         uid = uid.hex()
