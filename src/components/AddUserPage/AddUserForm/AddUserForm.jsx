@@ -13,8 +13,9 @@ import {
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import api from "../../../constants/api";
 import { Redirect } from "react-router-dom";
+import DEBUG from '../../../constants/debug';
 let route = "/users";
-const DEBUG = 1;
+
 
 class AddUserForm extends React.Component {
   constructor(props) {

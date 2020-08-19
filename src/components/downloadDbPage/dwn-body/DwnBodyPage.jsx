@@ -3,8 +3,9 @@ import "./DwnBodyPage.css";
 import api from "../../../constants/api";
 import { Container, Row, Col } from "reactstrap";
 import CsvDownload from "react-json-to-csv";
+import DEBUG from '../../../constants/debug'
 let route = "/users";
-const DEBUG = 1;
+
 
 class DwnBodyPage extends React.Component {
   constructor(props) {

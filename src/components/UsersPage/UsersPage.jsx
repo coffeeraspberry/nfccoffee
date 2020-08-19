@@ -7,7 +7,7 @@ import { Container, Row, Col } from "reactstrap";
 import api from "../../constants/api";
 import "../home/home.css";
 import Loader from "../../router/loading";
-import DEBUG from '../../constants/debug'
+import DEBUG from '../../constants/debug';
 let route = "/users";
 
 class UsersPage extends React.Component {

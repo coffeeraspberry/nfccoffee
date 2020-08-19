@@ -8,8 +8,9 @@ import {
   Button,
 } from "reactstrap";
 import { AvForm, AvField, AvInput } from "availity-reactstrap-validation";
+import DEBUG from '../../../constants/debug';
 let route="/contact"
-const DEBUG=1
+
 
 class ContactBody extends React.Component {
   constructor(props) {

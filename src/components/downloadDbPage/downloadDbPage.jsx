@@ -3,8 +3,9 @@ import "./downloadDbPage.css";
 import DwnBodyPage from "./dwn-body/DwnBodyPage";
 import { Container, Row, Col } from "reactstrap";
 import api from "../../constants/api";
+import DEBUG from '../../constants/debug';
 let route = "/users";
-const DEBUG = 1;
+
 
 
 

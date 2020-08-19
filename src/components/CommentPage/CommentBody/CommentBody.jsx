@@ -11,8 +11,9 @@ import {
   StatusUpdateForm,
 } from "react-activity-feed";
 import "react-activity-feed/dist/index.css";
+import DEBUG from '../../../constants/debug';
 let route = "/comment";
-const DEBUG = 1;
+
 
 class CommentBody extends React.Component {
   constructor(props) {

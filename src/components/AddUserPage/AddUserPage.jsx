@@ -3,8 +3,9 @@ import "../home/home.css";
 import AddUserBodyScan from "./AddUserBody/AddUserBodyScan";
 import AddUserForm from "./AddUserForm/AddUserForm";
 import url from "../../constants/api";
+import DEBUG from '../../constants/debug'
 let route = "/scan";
-const DEBUG = 1;
+
 
 class AddUserPage extends React.Component {
   constructor(props) {

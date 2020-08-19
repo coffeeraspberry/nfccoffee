@@ -4,8 +4,9 @@ import CommentBody from "./CommentBody/CommentBody";
 import api from "../../constants/api";
 import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
+import DEBUG from '../../constants/debug';
 let route = "/comment";
-const DEBUG = 1;
+
 
 class CommentPage extends React.Component {
   constructor(props) {

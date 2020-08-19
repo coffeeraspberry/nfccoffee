@@ -3,8 +3,9 @@ import "./GraphPage.css";
 import "../home/home.css";
 import GraphBody from "./graphBody/graphBody";
 import api from "../../constants/api";
+import DEBUG from '../../constants/debug';
 let route = "/users";
-const DEBUG = 1;
+
 
 class GraphPage extends React.Component {
   constructor(props) {
