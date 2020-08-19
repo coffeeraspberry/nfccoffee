@@ -44,12 +44,13 @@ class UsersBody extends React.Component {
         copy(string);
       },
     };
+   
     /*
     const selectRow = {
       mode: 'radio',
     }
     */
-
+   
     let columns = [
       {
         dataField: "Counter",
@@ -79,12 +80,13 @@ class UsersBody extends React.Component {
         headerStyle: { backgroundColor: "white" },
       },
     ];
-
+    
     return (
       <div>
-        <div className="table">
+        <div classNames="table table-hover">
           <BootstrapTable
-            className=".table-condensed .table-striped"
+          hover={true}
+            className="table-condensed table-striped table-hover"
             keyField="id"
             loading={true}
             data={data}
@@ -97,6 +99,7 @@ class UsersBody extends React.Component {
             filter={filterFactory()}
             rowStyle={{ backgroundColor: "white" }}
             rowEvents={rowEvents}
+           
           />
         </div>
       </div>
