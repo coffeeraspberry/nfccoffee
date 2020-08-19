@@ -40,7 +40,7 @@
   
   
   .slide-exit {
-    transition: transform 500ms ease-out;
+    transition: transform 2000ms ease-out;
   }
   
   .slide-enter {
@@ -52,19 +52,16 @@
     transform: translateX(0%);
   }
   
-.download-trans{
-  margin-top:33%;
-}
-
   .slide-exit {
     position: absolute;
-    top: 0;
-    left: 0;
+   
     width: 100%;
     transform: translateY(0%) ;
   }
   
   .slide-exit-active {
+    margin-top:50%;
+    margin-left:33%;
     transform: translateY(+1000%) ;
   }
 

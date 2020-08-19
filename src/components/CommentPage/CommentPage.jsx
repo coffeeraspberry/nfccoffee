@@ -117,16 +117,34 @@ class CommentPage extends React.Component {
     if (this.state.moveOn == false) {
       return (
         <div>
+          <Container fluid >
+            <Row>
+              <Col></Col>
+              <Col xs="6">
+          <div>
+            <p className="white-text">Enter Alias</p>
+          </div>
+          </Col>
+          <Col></Col>
+          </Row>
+          
+            <Row>
+              <Col></Col>
+              <Col sm="10" xs="auto" lg="4" md="6">
           <AvForm
             onValidSubmit={this.handleValidSubmit}
             onInvalidSubmit={this.handleInvalidSubmit}
             errorMessage="This field is mandatory"
           >
-            <AvField name="username" label="Enter your username" required />
+            <AvField name="username" required />
           </AvForm>
           <Button color="success" onClick={this.handleSubmitButton}>
             Submit
           </Button>{" "}
+          </Col>
+          <Col></Col>
+          </Row>
+          </Container>
           <div class="loader">
             <div className="load-text">Comments loading</div>
             <span class="loader__dot">.</span>

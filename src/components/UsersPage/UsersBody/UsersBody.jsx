@@ -99,6 +99,7 @@ class UsersBody extends React.Component {
             filter={filterFactory()}
             rowStyle={{ backgroundColor: "white" }}
             rowEvents={rowEvents}
+            condensed={true}
            
           />
         </div>

@@ -18,15 +18,15 @@ import About from '../components/About/About'
   
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Container, Row, Col } from 'reactstrap';
-
+let pageArray=['/home', '/graph', '/comment','/contact', '/about']
 const AnimatedSwitch = withRouter(({ location }) => (
+
   <TransitionGroup>
 
     <CSSTransition key={location.key} classNames="slide" timeout={1000}>
       <Switch location={location}>
       <Route exact path='/' component={home}/>
       <Route exact path='/home'component={home} />
-      
         <Route exact path='/foot' component={home} / >   
         <Route exact path='/users' component={UsersPage} / > 
         <Route exact path='/graph' component={GraphPage}/>
@@ -34,17 +34,29 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/contact' component={Contact}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/comment' component={CommentPage}/>
-        <div className="download-trans">
         <Route exact path='/download' component={downloadDbPage} / >
-        </div>
+        
       </Switch>
     </CSSTransition>
    
   </TransitionGroup>
 ));
 
+function arrayIndex(array, element){
+for(let i=0; i<array.length; i++)
+{
+  if(element==array[i])
+  {
+    return i;
+  }
+}
+}
+
+
 function App() {
   
+
+
   return (
     <div className="App">
     <div className="home">
@@ -54,10 +66,8 @@ function App() {
       
     <Row xl md lg sm xs ><Header/> </Row>
     
-    
       <AnimatedSwitch/>
       
-    
      <div>
     <Row> <Footer/>   </Row>
      </div>
