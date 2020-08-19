@@ -6,7 +6,7 @@
 Backend subproject part of **Coffe_counter** web-app built inside Continental Summer Practice 2020. 
 
 ## New Features!
-
+  - run ofl
   - Comunicate with frontend app via JSON data
   - [to be continued]
 

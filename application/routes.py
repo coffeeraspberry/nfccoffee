@@ -9,6 +9,7 @@ def findUser():
     with open("/home/pi/back/nfccoffee/user.txt", "r+") as file:
         uid = file.read()
     file.close()
+    os.remove("/home/pi/back/nfccoffee/user.txt")
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
 
@@ -56,12 +57,12 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    user = Users(UserName=data['UserName'], Email=data['Email'], )
-    #vezi cu fisierul
+    #user = Users(UserName=data['UserName'], Email=data['Email'], UserID=data['UserID']) #modifica aici filter by 
+    user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     success = True
     try:
-        db.session.add(user)
         db.session.commit()
+        print("User updated succesfully")
     except Exception as e:
         success = False
 
