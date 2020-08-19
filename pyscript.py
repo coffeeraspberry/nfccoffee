@@ -36,6 +36,7 @@ def scanBadge():
     return uid
 
 interuptScan = False
+uid = None
 
 def mainf():
     subprocess.call('python3 -m app &', shell=True)
@@ -49,7 +50,6 @@ def mainf():
     s.close()
     while True:
         # Check if a card is available to read
-        uid = None
         if interuptScan is False:
             uid = scanBadge()
         # Try again if no card is available.
