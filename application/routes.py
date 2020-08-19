@@ -4,11 +4,14 @@ from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
 import os, signal, csv, subprocess, stream
-from pyscript import interuptScan, scanBadge
+from pyscript import interuptScan, scanBadge, uid
 
 def findUser():
     uid = scanBadge()
     uid = uid.hex()
+    while uid is None:
+        uid = scanBadge()
+        uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
 
