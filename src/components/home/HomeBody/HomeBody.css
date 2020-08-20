@@ -20,7 +20,16 @@ margin-right: 5%;
 text-align: justify;
 }
 
-.video-tag{
+
+.elements-together{
+    width: 100%;
+      position: relative; 
+      width: 100%;
+      height: auto;
+  }
+
+
+#video-tag{
     height: 100%;
     width: 100%;
     float: center;
@@ -28,25 +37,41 @@ text-align: justify;
     object-fit: stretch;
     padding: none;
     position: relative; 
-border:solid;
-border-color:red;
 opacity: 10;
 z-index:20;
 
 }
 
+
+
 .video-component{
     text-align: center;
-    border:solid;
-border-color:yellow;
-}
-.video-component-blue{
-    text-align: center;
-    border:solid;
-border-color:blue;
+  z-index: 999;
+  object-fit: fill;
+margin-top:-5%;
+transform: scaleY(0.8);
+overflow:hidden;
+min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
 }
 
-.elements-together{
-    border:solid;
-    border-color: green;
+#home-text{
+    position: absolute;
+    top:0;
+    left:0;
+    margin-top:0%;
+    margin-left:0%;
+  
+    z-index: 1000;
+    
 }
+
+.video-component-blue{
+    text-align: center;
+
+}
+
+
+

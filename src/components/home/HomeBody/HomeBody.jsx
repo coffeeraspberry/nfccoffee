@@ -16,24 +16,24 @@ class HomeBody extends React.Component {
   render() {
     return (
       <div>
-      <Container fluid={true}>
+      <Container fluid >
         <div className="elements-together">
-        <Row>
-          <Col xl="auto"className="video-component-blue" >
+        <Row xl="50">
+          <Col >
+         
            <div className="video-component">
       <video className='video-tag' autoPlay loop muted>
     <source src={laptop} type='video/mp4' />
 </video>
 </div> 
+
 </Col>
 </Row>
-     
-        <Row sm="1" md="1" xs="1" lg="1" xl="2">
-          <Col xs sm md lg xl>
-            <img className="body-img" src={BodyImg} />
-          </Col>
-          <Col xs sm md lg xl>
-            <p className="body-description">
+     <div id="home-text">
+        <Row sm="1" md="1" xs="1" lg="1" xl="3">
+          <Col xs sm md lg xl></Col>
+          <Col >
+          <p className="body-description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
               placerat orci mattis dignissim tincidunt. Nulla a posuere diam,
               nec maximus libero. Integer dapibus condimentum nisl, sit amet
@@ -50,7 +50,11 @@ class HomeBody extends React.Component {
               posuere cubilia curae;
             </p>
           </Col>
+          <Col xs sm md lg xl>
+            
+          </Col>
         </Row>
+        </div>
         </div>
       </Container>
       </div>

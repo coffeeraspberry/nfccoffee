@@ -61,7 +61,7 @@ function App() {
     
    
     <div className="home">
-    <div className="black">
+   
       <Container fluid>
     <Router> 
       
@@ -69,13 +69,13 @@ function App() {
     
       <AnimatedSwitch/>
       
-     <div>
+     <div className="footer">
     <Row> <Footer/>   </Row>
      </div>
     </Router>
     </Container>
     </div>
-    </div>
+    
     
   );
 
