@@ -17,6 +17,7 @@ class HomeBody extends React.Component {
     return (
       <div>
       <Container fluid={true}>
+        <div className="elements-together">
         <Row>
           <Col xl="auto"className="video-component-blue" >
            <div className="video-component">
@@ -50,6 +51,7 @@ class HomeBody extends React.Component {
             </p>
           </Col>
         </Row>
+        </div>
       </Container>
       </div>
     );

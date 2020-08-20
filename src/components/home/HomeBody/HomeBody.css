@@ -1,8 +1,10 @@
 .body-img{
     position: relative;
+    
     width:50%;
     height:auto;
     margin-top: 18vh;
+  
 }
 
 
@@ -25,10 +27,11 @@ text-align: justify;
     top: 20;
     object-fit: stretch;
     padding: none;
-    position: relative; /* optional depending on what you want to do in your app */
+    position: relative; 
 border:solid;
 border-color:red;
 opacity: 10;
+z-index:20;
 
 }
 
@@ -41,4 +44,9 @@ border-color:yellow;
     text-align: center;
     border:solid;
 border-color:blue;
+}
+
+.elements-together{
+    border:solid;
+    border-color: green;
 }

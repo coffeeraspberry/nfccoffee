@@ -58,7 +58,8 @@ function App() {
 
 
   return (
-    <div className="App">
+    
+   
     <div className="home">
     <div className="black">
       <Container fluid>
@@ -75,7 +76,7 @@ function App() {
     </Container>
     </div>
     </div>
-    </div>
+    
   );
 
 }
