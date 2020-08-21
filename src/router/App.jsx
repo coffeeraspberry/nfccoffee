@@ -22,7 +22,6 @@ let pageArray=['/home', '/graph', '/comment','/contact', '/about']
 const AnimatedSwitch = withRouter(({ location }) => (
 
   <TransitionGroup>
-
     <CSSTransition key={location.key} classNames="slide" timeout={1000}>
       <Switch location={location}>
       <Route exact path='/' component={home}/>
@@ -40,17 +39,10 @@ const AnimatedSwitch = withRouter(({ location }) => (
     </CSSTransition>
    
   </TransitionGroup>
+ 
 ));
 
-function arrayIndex(array, element){
-for(let i=0; i<array.length; i++)
-{
-  if(element==array[i])
-  {
-    return i;
-  }
-}
-}
+
 
 
 function App() {
@@ -60,17 +52,19 @@ function App() {
   return (
     
    
-    <div className="home">
+    <div className="background-img">
    
       <Container fluid>
     <Router> 
-      
+      <div className="webpage">
+        <div className="webpage-header">
     <Row xl md lg sm xs ><Header/> </Row>
-    
+    </div>
       <AnimatedSwitch/>
       
      <div className="footer">
     <Row> <Footer/>   </Row>
+    </div>
      </div>
     </Router>
     </Container>

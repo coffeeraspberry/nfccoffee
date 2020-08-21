@@ -6,12 +6,23 @@
     width: fill;
     text-align: center;
     background-color: transparent;
+    z-index:1;
 }
+
+.items{
+  z-index: 1000;
+}
+#dropdown-menu { z-index:1000 !important}
 .header{
   position: relative;
   background: rgb(253,187,45);
   background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(0,0,0,1) 76%);
   width: 100%;
+  z-index:1000;
+}
+
+#fix-z{
+  z-index: 1000;
 }
 .head-logo{
     text-align: center;

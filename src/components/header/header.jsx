@@ -41,36 +41,41 @@ function header() {
             bg="dark"
             variant="dark"
             className="nav"
+           
           >
             <Navbar.Brand className="home-btn">
-              <Link to="/home">Home</Link>
+              <Link to="/home" style={{ textDecoration: 'none', color:'whitesmoke' }}>Home</Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <NavDropdown title="Options" id="collasible-nav-dropdown">
+                
+                <NavDropdown title="Options" id="collasible-nav-dropdown"  className="nav-dropdown">
+               <div className="items">
                   <NavDropdown.Item>
-                    <Link to="/users">Show User List</Link>
+                   <div className="fix-z"> <Link to="/users" style={{ textDecoration: 'none', color:'orange' }}>Show User List</Link></div>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/addUsr">Add/Fill User Info</Link>
+                    <Link to="/addUsr" style={{ textDecoration: 'none', color:'orange' }}>Add/Fill User Info</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/graph">CoffeeGraph</Link>
+                    <Link to="/graph" style={{ textDecoration: 'none', color:'orange' }}>CoffeeGraph</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item>
-                    <Link to="/download">Download Database .csv</Link>
+                    <Link to="/download" style={{ textDecoration: 'none', color:'orange' }}>Download Database .csv</Link>
                   </NavDropdown.Item>
+                  </div>
                 </NavDropdown>
+                
                 <Nav.Link>
-                  <Link to="/comment">Comment Feed</Link>
+                  <Link to="/comment" style={{ textDecoration: 'none', color:'whitesmoke' }}>Comment Feed</Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/contact"  style={{ textDecoration: 'none', color:'whitesmoke' }}>Contact</Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/about">About</Link>
+                  <Link to="/about" style={{ textDecoration: 'none', color:'whitesmoke' }}>About</Link>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
