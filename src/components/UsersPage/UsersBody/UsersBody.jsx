@@ -44,23 +44,17 @@ class UsersBody extends React.Component {
         copy(string);
       },
     };
-   
-    /*
-    const selectRow = {
-      mode: 'radio',
-    }
-    */
-   
+
     let columns = [
       {
         dataField: "Counter",
-        dataAlign:"Center", 
+        dataAlign: "Center",
         text: "Counter",
         headerStyle: { backgroundColor: "white" },
       },
       {
         dataField: "Email",
-        dataAlign:"Center", 
+        dataAlign: "Center",
         text: "Email ",
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
@@ -82,12 +76,13 @@ class UsersBody extends React.Component {
         headerStyle: { backgroundColor: "white" },
       },
     ];
-    
+
     return (
       <div>
         <div classNames="table table-hover">
           <BootstrapTable
-          hover={true}
+          wrapperClasses="table-responsive" 
+            hover={true}
             className="table-condensed table-striped table-hover"
             keyField="id"
             loading={true}
@@ -102,13 +97,13 @@ class UsersBody extends React.Component {
             rowStyle={{ backgroundColor: "white" }}
             rowEvents={rowEvents}
             condensed={true}
-            
-           
           />
         </div>
       </div>
     );
   }
 }
+
+
 
 export default UsersBody;

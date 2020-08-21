@@ -6,19 +6,10 @@
 .text{
     color:white;
 }
-.table{
-   background-color: transparent;
 
-    color:white;
-    table-layout: auto;
-   display:block;
-    overflow-x: auto !important;
-    width: 100% !important;
-    text-align: center;
-    margin-top: 1.5%;
-}
 
 .react-bootstrap-table table {
+    margin-top:3%;
     table-layout: auto;
     }
 
