@@ -23,8 +23,7 @@
 }
 #webpage-header{
   z-index: 1;
-  border:solid;
-  border-color: red;
+ 
 }
   .App {
     text-align: center;
@@ -36,7 +35,6 @@
   position:relative;
 }
 
-  
   .black{
     background-color: #000000;
     opacity: 0.8;
