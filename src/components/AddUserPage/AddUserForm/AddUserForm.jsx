@@ -122,10 +122,11 @@ DEBUG. DATA CHECK
               <FormGroup>
                 <Row>
                   <Col></Col>
-                  <Col>
+                  <Col xs="auto" sm="auto" md="auto">
                     <FormGroup>
+                      <div className="badge-label-formgroup">
                       <Label for="BadgeID" className="white-badge-label">
-                        Badge ID
+                        Your badge serial number: 
                       </Label>
                       <Input
                         name="badgeinput"
@@ -134,6 +135,7 @@ DEBUG. DATA CHECK
                         plaintext
                         value={this.state.badgeID}
                       />
+                      </div>
                     </FormGroup>
                   </Col>
                   <Col></Col>
@@ -142,7 +144,8 @@ DEBUG. DATA CHECK
 
               <FormGroup>
                 <Row>
-                  <Col>
+                  <Col></Col>
+                  <Col sm="10"  md="8" lg="6" xl="5" >
                     <AvForm
                       onValidSubmit={this.handleValidSubmit}
                       onInvalidSubmit={this.handleInvalidSubmit}
@@ -156,7 +159,11 @@ DEBUG. DATA CHECK
                       />
                     </AvForm>
                   </Col>
-                  <Col>
+                  <Col></Col>
+                  </Row>
+                  <Row>
+                  <Col></Col>
+                  <Col sm="10" md="8" lg="6" xl="5" >
                     <AvForm
                       onValidSubmit={this.handleValidSubmit}
                       onInvalidSubmit={this.handleInvalidSubmit}
@@ -170,7 +177,8 @@ DEBUG. DATA CHECK
                       />
                     </AvForm>
                   </Col>
-                </Row>
+                  <Col></Col>
+                  </Row>
               </FormGroup>
               <Button color="success" onClick={this.handleSubmitButton}>
                 Submit

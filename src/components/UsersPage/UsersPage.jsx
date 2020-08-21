@@ -78,9 +78,9 @@ class UsersPage extends React.Component {
           <Container fluid={true}>
             <Row className="on-load">
               <Col></Col>
-              <Col>
+              <Col xs="auto" sm="auto" md="auto">
                 <div class="loader">
-                  <div className="load-text">User table loading</div>
+                  <div className="load-text">Please wait, loading data</div>
                   <span class="loader__dot">.</span>
                   <span class="loader__dot">.</span>
                   <span class="loader__dot">.</span>

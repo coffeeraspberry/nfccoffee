@@ -64,6 +64,11 @@ class DwnBodyPage extends React.Component {
       <div>
         <Container>
           <Row>
+          <Col></Col>
+          <Col xs="auto" sm="auto" md="auto"><p className="white-text">Click on Download Button to start the download</p></Col>
+            <Col></Col>
+          </Row>
+          <Row>
             <Col></Col>
             <Col>
               <CsvDownload data={this.state.data} className="down-button" />

@@ -63,7 +63,8 @@ class graphBody extends React.Component {
                   animation: true,
                   display: true,
                   text: "Coffee Counter",
-                  fontSize: 20,
+                  fontColor:"white",
+                  fontSize: 30,
                 },
                 legend: {
                   display: false,

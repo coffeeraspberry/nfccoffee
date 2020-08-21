@@ -23,7 +23,7 @@ class AddUserBodyScan extends React.Component {
             <div>
               <div class="loader">
                 <div className="load-text">
-                  Please scan your badge within 5 seconds{" "}
+                  Scan your badge within 5 seconds{" "}
                 </div>
                 <span class="loader__dot">.</span>
                 <span class="loader__dot">.</span>
