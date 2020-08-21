@@ -40,7 +40,7 @@ class CommentBody extends React.Component {
 
   render() {
     if (this.state.data == null) {
-      return <h1>DATA NULL</h1>;
+      return (<p style={{color:'white'}}>unable to fetch <pre style={{color:'white'}}>:(((</pre> </p>);
     }
 
     return (

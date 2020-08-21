@@ -88,6 +88,14 @@ class UsersPage extends React.Component {
               </Col>
               <Col></Col>
             </Row>
+            <Row>
+              <Col></Col>
+              <Col sm="10"> <div className="load-gif">
+      <img src="https://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" height="200"    />
+
+       </div></Col>
+              <Col></Col>
+            </Row>
           </Container>
         </div>
       );

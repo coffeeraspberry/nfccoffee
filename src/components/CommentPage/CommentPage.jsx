@@ -2,8 +2,6 @@ import React from "react";
 import "./CommentPage.css";
 import CommentBody from "./CommentBody/CommentBody";
 import api from "../../constants/api";
-import { Container, Row, Col, Button } from "reactstrap";
-import { AvForm, AvField } from "availity-reactstrap-validation";
 import DEBUG from '../../constants/debug';
 let route = "/comment";
 
@@ -56,29 +54,27 @@ class CommentPage extends React.Component {
   }
 
   async componentDidMount() {
-    /*
-  ------------------
+  
 
-  ------------------
-  */
-    /*
     let options = {
-        method: 'POST',
-        headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-       'Pragma': 'no-cache',
-       'Expires': '0',
-       }, 
-       body:  JSON.stringify({username:"user"})
-    }
-   
-     let url=api +route;
-     let Urlresponse = await fetch(url, options)
-     let JsonResponse= await Urlresponse.json()
-     this.setState({moveOn:true, data:JsonResponse.token})
-   */
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+      body: JSON.stringify({
+        username: "user",
+      }),
+    };
+    this.state.user = "user";
+
+    let url = api + route;
+    let Urlresponse = await fetch(url, options);
+    let JsonResponse = await Urlresponse.json();
+    await this.setState({ moveOn: true, data: JsonResponse.token });
   }
 
   async handleSubmitButton() {
@@ -116,42 +112,11 @@ class CommentPage extends React.Component {
     //Return input form while waiting for input
     if (this.state.moveOn == false) {
       return (
-        <div>
-          <Container fluid >
-            <Row>
-              <Col></Col>
-              <Col xs="6">
-          <div>
-            <p className="white-text">Enter Alias</p>
-          </div>
-          </Col>
-          <Col></Col>
-          </Row>
-          
-            <Row>
-              <Col></Col>
-              <Col sm="10" xs="auto" lg="4" md="6">
-          <AvForm
-            onValidSubmit={this.handleValidSubmit}
-            onInvalidSubmit={this.handleInvalidSubmit}
-            errorMessage="This field is mandatory"
-          >
-            <AvField name="username" required />
-          </AvForm>
-          <Button color="success" onClick={this.handleSubmitButton}>
-            Submit
-          </Button>{" "}
-          </Col>
-          <Col></Col>
-          </Row>
-          </Container>
-          <div class="loader">
-            <div className="load-text">Comments loading</div>
-            <span class="loader__dot">.</span>
-            <span class="loader__dot">.</span>
-            <span class="loader__dot">.</span>
-          </div>
-        </div>
+       <div className="load">
+         <p style={{color:'white', fontSize:'150%'}}>Comments loading</p>
+      <img src="https://media.giphy.com/media/roZg3KeB7Pzfq/giphy.gif" width="300" height="200"    />
+
+       </div>
       );
     }
 
