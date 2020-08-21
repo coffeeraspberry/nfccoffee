@@ -70,7 +70,7 @@ class downloadDbPage extends React.Component {
                 <Col></Col>
                 <Col xs="auto" sm="auto" md="auto">
                   <p className="text">
-                    Please wait, your file is prepared
+                    Please wait, your file is being prepared
                   </p>
                 </Col>
                 <Col></Col>
