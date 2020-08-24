@@ -35,7 +35,7 @@ class AboutBody extends React.Component {
               </p>
             </Col>
             <Col xs sm md lg xl>
-              <img className="about-img" src={aboutImg} />
+              <img className="about-img" src={aboutImg} alt="raspberry" />
             </Col>
           </Row>
         </div>

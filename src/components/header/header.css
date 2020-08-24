@@ -50,3 +50,6 @@
 .home-btn:hover{
   opacity: .5;
 }
+.highlight:hover{
+  opacity: 0.5;
+}

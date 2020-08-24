@@ -1,3 +1,8 @@
+.graph{
+    position:relative;
+    text-align:center;
+    overflow-x:auto;
+}
 .graphBody{
     background-color: white;
     text-align: center;
@@ -10,5 +15,6 @@
     table-layout: auto;
 overflow-x: auto !important;
 width: 100% !important;
+
 text-align: center;
 }

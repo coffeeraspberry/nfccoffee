@@ -1,9 +1,6 @@
 import React from "react";
 import "./UsersBody.css";
-import filterFactory, {
-  textFilter,
-  selectFilter,
-} from "react-bootstrap-table2-filter";
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import copy from "copy-to-clipboard";
@@ -81,7 +78,7 @@ class UsersBody extends React.Component {
       <div>
         <div classNames="table table-hover">
           <BootstrapTable
-          wrapperClasses="table-responsive" 
+            wrapperClasses="table-responsive"
             hover={true}
             className="table-condensed table-striped table-hover"
             keyField="id"
@@ -103,7 +100,5 @@ class UsersBody extends React.Component {
     );
   }
 }
-
-
 
 export default UsersBody;

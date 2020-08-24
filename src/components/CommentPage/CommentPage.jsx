@@ -2,9 +2,8 @@ import React from "react";
 import "./CommentPage.css";
 import CommentBody from "./CommentBody/CommentBody";
 import api from "../../constants/api";
-import DEBUG from '../../constants/debug';
+import DEBUG from "../../constants/debug";
 let route = "/comment";
-
 
 class CommentPage extends React.Component {
   constructor(props) {
@@ -54,8 +53,6 @@ class CommentPage extends React.Component {
   }
 
   async componentDidMount() {
-  
-
     let options = {
       method: "POST",
       headers: {
@@ -78,7 +75,7 @@ class CommentPage extends React.Component {
   }
 
   async handleSubmitButton() {
-    if (document.getElementById("username").value == "") {
+    if (document.getElementById("username").value === "") {
       alert("Please fill all mandatory fields");
       return null;
     }
@@ -110,13 +107,17 @@ class CommentPage extends React.Component {
       return null;
     }
     //Return input form while waiting for input
-    if (this.state.moveOn == false) {
+    if (this.state.moveOn === false) {
       return (
-       <div className="load">
-         <p style={{color:'white', fontSize:'150%'}}>Comments loading</p>
-      <img src="https://media.giphy.com/media/roZg3KeB7Pzfq/giphy.gif" width="300" height="200"    />
-
-       </div>
+        <div className="load">
+          <p style={{ color: "white", fontSize: "150%" }}>Comments loading</p>
+          <img
+            src="https://media.giphy.com/media/roZg3KeB7Pzfq/giphy.gif"
+            width="300"
+            height="200"
+            alt="cat"
+          />
+        </div>
       );
     }
 

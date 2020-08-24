@@ -1,16 +1,10 @@
 import React from "react";
 import "./ContactBody.css";
 import api from "../../../constants/api";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-} from "reactstrap";
-import { AvForm, AvField, AvInput } from "availity-reactstrap-validation";
-import DEBUG from '../../../constants/debug';
-let route="/contact"
-
+import { Container, Row, Col, Button } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
+import DEBUG from "../../../constants/debug";
+let route = "/contact";
 
 class ContactBody extends React.Component {
   constructor(props) {
@@ -25,10 +19,10 @@ class ContactBody extends React.Component {
   handleSubmitButton() {
     let url = api + route;
     if (
-      document.getElementById("Email").value == "" ||
-      document.getElementById("Name").value == "" ||
-      document.getElementById("Subject").value == "" ||
-      document.getElementById("Msg").value == ""
+      document.getElementById("Email").value === "" ||
+      document.getElementById("Name").value === "" ||
+      document.getElementById("Subject").value === "" ||
+      document.getElementById("Msg").value === ""
     ) {
       alert("Please fill all mandatory fields");
       return null;
@@ -49,11 +43,18 @@ class ContactBody extends React.Component {
         Message: document.getElementById("Msg").value,
       }),
     };
-
-
     let Urlresponse = fetch(url, options);
-    if(DEBUG){
-        console.log('ContactBody Response to POST :', Urlresponse)
+
+    if (Urlresponse) {
+      document.getElementById("Email").value = "";
+      document.getElementById("Name").value = "";
+      document.getElementById("Subject").value = "";
+      document.getElementById("Msg").value = "";
+      alert("Your message has been send!");
+    }
+
+    if (DEBUG) {
+      console.log("ContactBody Response to POST :", Urlresponse);
     }
   }
 

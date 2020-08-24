@@ -12,7 +12,7 @@ import {
 } from "react-activity-feed";
 import "react-activity-feed/dist/index.css";
 import DEBUG from '../../../constants/debug';
-let route = "/comment";
+
 
 
 class CommentBody extends React.Component {

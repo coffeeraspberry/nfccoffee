@@ -95,7 +95,7 @@ DEBUG. DATA CHECK
 
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-    if (JsonResponse != null || JsonResponse != undefined) {
+    if (JsonResponse !== null || JsonResponse !== undefined) {
       await this.setState({ data: true });
     }
   }
@@ -114,7 +114,7 @@ DEBUG. DATA CHECK
   }
 
   render() {
-    if (this.state.data == null || this.state.data == false) {
+    if (this.state.data === null || this.state.data === false) {
       return (
         <Container>
           <div className="white">
@@ -187,7 +187,7 @@ DEBUG. DATA CHECK
           </div>
         </Container>
       );
-    } else if (this.state.data == true) {
+    } else if (this.state.data === true) {
       return (
         <Container fluid>
           <Row>

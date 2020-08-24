@@ -8,7 +8,6 @@ import GraphPage from '../components/GraphPage/GraphPage'
 import AddUserPage from '../components/AddUserPage/AddUserPage'
 import 'pace-js'
 import 'pace-js/themes/yellow/pace-theme-minimal.css'
-import back from '../assets/background.jpg'
 import Contact from '../components/Contact/Contact'
 import CommentPage from '../components/CommentPage/CommentPage'
 import Header from '../components/header/header'
@@ -17,8 +16,8 @@ import Footer from '../components/footer/footer'
 import About from '../components/About/About'
   
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Container, Row, Col } from 'reactstrap';
-let pageArray=['/home', '/graph', '/comment','/contact', '/about']
+import { Container, Row } from 'reactstrap';
+
 const AnimatedSwitch = withRouter(({ location }) => (
 
   <TransitionGroup>

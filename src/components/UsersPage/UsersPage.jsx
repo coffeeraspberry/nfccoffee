@@ -1,13 +1,11 @@
 import React from "react";
 import "./UsersPage.css";
-import Header from "../header/header";
-import Footer from "../footer/footer";
 import UsersBody from "./UsersBody/UsersBody";
 import { Container, Row, Col } from "reactstrap";
 import api from "../../constants/api";
 import "../home/home.css";
 import Loader from "../../router/loading";
-import DEBUG from '../../constants/debug';
+import DEBUG from "../../constants/debug";
 let route = "/users";
 
 class UsersPage extends React.Component {
@@ -21,8 +19,7 @@ class UsersPage extends React.Component {
   }
 
   async componentDidMount() {
-    let url = api + route
-    
+    let url = api + route;
 
     let options = {
       method: "GET",
@@ -38,7 +35,7 @@ class UsersPage extends React.Component {
 
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-    
+
     this.setState({ data: JsonResponse });
     let JsonString = await JSON.stringify(JsonResponse, null, 4);
     /* 
@@ -46,10 +43,10 @@ class UsersPage extends React.Component {
     DEBUG. CHECK DATA
     -------------------
     */
-    if(DEBUG){
+    if (DEBUG) {
       console.log("UsersPage fetch url : ", url);
-      console.log('UsersPage JsonResponse : ', JsonResponse)
-      console.log('UsersPage JsonString : ', JsonString)
+      console.log("UsersPage JsonResponse : ", JsonResponse);
+      console.log("UsersPage JsonString : ", JsonString);
     }
     return JsonString;
   }
@@ -90,10 +87,17 @@ class UsersPage extends React.Component {
             </Row>
             <Row>
               <Col></Col>
-              <Col sm="10"> <div className="load-gif">
-      <img src="https://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width="300" height="200"    />
-
-       </div></Col>
+              <Col sm="10">
+                {" "}
+                <div className="load-gif">
+                  <img
+                    src="https://media3.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+                    width="300"
+                    height="200"
+                    alt="cat"
+                  />
+                </div>
+              </Col>
               <Col></Col>
             </Row>
           </Container>
