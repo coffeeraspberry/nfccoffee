@@ -32,7 +32,12 @@ print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
 pn532.SAM_configuration()
 
 def scanBadge():
-    uid = pn532.read_passive_target(timeout=0.5)
+    try:
+        uid = pn532.read_passive_target(timeout=0.5)
+    except:
+        print("Something went wrong!")
+        print("uid is: %s" %(uid))
+        return None
     return uid
 
 interuptScan = False
@@ -51,12 +56,7 @@ def mainf():
     while True:
         # Check if a card is available to read
         if interuptScan is False:
-            try:
-                uid = scanBadge()
-            except expression as identifier:
-                print(identifier)
-            finally:
-                print("UID: %s" %uid)
+            uid = scanBadge()
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
