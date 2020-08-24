@@ -33,9 +33,9 @@ pn532.SAM_configuration()
 
 def scanBadge():
     try:
-        uid = pn532.read_passive_target(timeout=0.5)
+        uid = pn532.read_passive_target(timeout=0.3)
     except:
-        print("Something went wrong!")
+        print("UID is None. No badge scanned!")
         return None
     return uid
 
@@ -44,6 +44,7 @@ interuptScan = False
 def mainf():
     subprocess.call('python3 -m app &', shell=True)
     con = sqlite3.connect('application/pi.db')
+
     lcd = character_lcd.Character_LCD_RGB_I2C(busio.I2C(board.SCL, board.SDA), 16, 2)
     lcd.color = [0, 0, 0]
     hostname = socket.gethostname()
@@ -51,15 +52,19 @@ def mainf():
     s.connect(("8.8.8.8", 80))
     ip_address = s.getsockname()[0]
     s.close()
+
     while True:
+
         if interuptScan is False:
             uid = scanBadge()
+
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
-            print("No badge detected")
+            print("No badge detected...")
         else:
             print("UID: "+str(uid.hex()))
             our_user = getUser(con,str(uid.hex()))
+            
             if our_user:
                 lcd.message = "Found User:\n%s" %(our_user[0][2])
                 lcd.message = "Remove card!"
