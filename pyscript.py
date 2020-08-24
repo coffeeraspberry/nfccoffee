@@ -36,7 +36,6 @@ def scanBadge():
         uid = pn532.read_passive_target(timeout=0.5)
     except:
         print("Something went wrong!")
-        print("uid is: %s" %(uid))
         return None
     return uid
 
