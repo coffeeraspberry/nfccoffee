@@ -42,11 +42,11 @@ def scan():
 
 @app.route("/logs", methods=['GET'])
 def logs():
-    return json.dumps([v._asdict() for v in str(Dates.query.all())], sort_keys=True)
+    return json.dumps([v._asdict() for v in Dates.query.all()], sort_keys=True)
 
 @app.route("/contacts", methods=['GET'])
 def contacts():
-    return json.dumps([w._asdict() for w in str(Contact.query.all())], sort_keys=True)
+    return json.dumps([w._asdict() for w in Contact.query.all()], sort_keys=True)
 
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
@@ -63,7 +63,6 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    #user = Users(UserName=data['UserName'], Email=data['Email'], UserID=data['UserID']) #modifica aici filter by 
     user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     success = True
     try:
