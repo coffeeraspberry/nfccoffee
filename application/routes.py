@@ -6,11 +6,12 @@ from flask import json, request
 import os, signal, csv, subprocess, stream
 from pyscript import interuptScan, scanBadge
 from time import sleep
+
 def findUser():
-    uid = None
+    #uid = None
     uid = scanBadge()
     while uid is None:
-        sleep(4)
+        #sleep(4)
         uid = scanBadge()
     uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()

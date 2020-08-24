@@ -40,7 +40,7 @@ def scanBadge():
     return uid
 
 interuptScan = False
-uid = None
+#uid = None
 
 def mainf():
     subprocess.call('python3 -m app &', shell=True)
