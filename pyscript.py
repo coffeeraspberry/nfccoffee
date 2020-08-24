@@ -51,7 +51,12 @@ def mainf():
     while True:
         # Check if a card is available to read
         if interuptScan is False:
-            uid = scanBadge()
+            try:
+                uid = scanBadge()
+            except expression as identifier:
+                print(identifier)
+            finally:
+                print("UID: %s" %uid)
         # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
@@ -69,6 +74,7 @@ def mainf():
                 lcd.message = "Remove card!"
                 sleep(1)
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
+            sleep(1)
         lcd.clear()     
 
 if __name__=='__main__':
