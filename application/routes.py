@@ -72,10 +72,11 @@ def createUsers():
         success = False
 
     return json.dumps({'Success' : str(success)})
-
+'''
 @app.route('/deleteUsers', methods=['DELETE'])
 def deleteUsers():
     user = Users.query.filter_by(UserID=1).first()
     db.session.delete(user)
     db.session.commit()
     return "User %s was deleted from DB \n" % user
+'''

@@ -40,7 +40,6 @@ def scanBadge():
     return uid
 
 interuptScan = False
-#uid = None
 
 def mainf():
     subprocess.call('python3 -m app &', shell=True)
@@ -53,10 +52,8 @@ def mainf():
     ip_address = s.getsockname()[0]
     s.close()
     while True:
-        # Check if a card is available to read
         if interuptScan is False:
             uid = scanBadge()
-        # Try again if no card is available.
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
             print("No badge detected")
@@ -73,8 +70,8 @@ def mainf():
                 lcd.message = "Remove card!"
                 sleep(1)
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
-            sleep(1)
-        lcd.clear()     
+        sleep(3)
+        #lcd.clear()     
 
 if __name__=='__main__':
      mainf()
