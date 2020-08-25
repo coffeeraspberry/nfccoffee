@@ -13,11 +13,16 @@ Backend subproject part of **Coffe_counter** web-app built inside Continental Su
 
 > sudo pip3 install Flask Flask-Cors Flask-SQLAlchemy adafruit-circuitpython-busdevice adafruit-circuitpython-pn532 adafruit-circuitpython-charlcd pystream-protobuf
 
+>mkdir backend
+
+>cd backend/
+
 > git clone --single-branch --branch backend https://github.com/coffeeraspberry/nfccoffee.git
 
 # Run
 
-> cd nfccoffee/
+> cd backend/nfccoffee
+
 > sh scriptbackend.sh
 
 ## About and usage!
