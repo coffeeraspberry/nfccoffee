@@ -8,8 +8,11 @@ Backend subproject part of **Coffe_counter** web-app built inside Continental Su
 # Install
 
 > sudo apt-get install build-essential python-dev git vim nano sqlite3 python3 python3-pip libnfc5 libnfc-bin -y
+
 > pip3 install --upgrade setuptools
+
 > sudo pip3 install Flask Flask-Cors Flask-SQLAlchemy adafruit-circuitpython-busdevice adafruit-circuitpython-pn532 adafruit-circuitpython-charlcd pystream-protobuf
+
 > git clone --single-branch --branch backend https://github.com/coffeeraspberry/nfccoffee.git
 
 # Run
