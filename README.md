@@ -11,7 +11,7 @@ Backend subproject part of **Coffe_counter** web-app built inside Continental Su
 
 > pip3 install --upgrade setuptools
 
-> sudo pip3 install Flask Flask-Cors Flask-SQLAlchemy adafruit-circuitpython-busdevice adafruit-circuitpython-pn532 adafruit-circuitpython-charlcd pystream-protobuf
+> sudo pip3 install Flask Flask-Cors Flask-SQLAlchemy adafruit-circuitpython-busdevice adafruit-circuitpython-pn532 adafruit-circuitpython-charlcd pystream-protobuf stream-python
 
 >mkdir backend
 
