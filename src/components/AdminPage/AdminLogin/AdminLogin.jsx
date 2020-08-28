@@ -55,6 +55,12 @@ class AdminLogin extends React.Component {
     let JsonResponse =  await Urlresponse.json();
 
     if (Urlresponse) {
+      
+      if(JsonResponse.token === "")
+      {
+        alert("Login Failed. Returning to home page.")
+        window.location.replace('/home')
+        return null;}
       document.getElementById("email").value = "";
       document.getElementById("pass").value = "";
       alert("Login Success");
@@ -71,7 +77,7 @@ class AdminLogin extends React.Component {
 
   render() {
     if(this.state.final === true){
-     return ( <Redirect to exact path="/home"></Redirect>)
+     return (window.location.replace('/api'))
     }
     return (
       <div className="admin-login-form">

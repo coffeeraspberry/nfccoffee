@@ -54,8 +54,7 @@ async verify_token(tok) {
     
     if (
       localStorage.getItem("token") === undefined ||
-      localStorage.getItem("token") === null ||
-      this.state.token === null
+      localStorage.getItem("token") === null 
     ) {
       return (
         <div>
