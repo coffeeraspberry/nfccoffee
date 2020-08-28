@@ -37,7 +37,6 @@ def users():
 
 @app.route("/scan", methods=['GET'])
 def scan():
-    log.info("/scan route called")
     interuptScan = True
     user = findUser()
     interuptScan = False
@@ -66,16 +65,11 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-
     if data['UserName'] == "":
         data['UserName'] = "Unknown"
     if data['Email'] == "":
         data['Email'] = "Unknown"
-
-    print(data)
     user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
-    print(user)
-    
     success = True
     try:
         db.session.commit()

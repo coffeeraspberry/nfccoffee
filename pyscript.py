@@ -7,8 +7,6 @@ from time import sleep #delay for LCD
 import sqlite3, subprocess #communication with Flask and DB
 from logger import *
 
-
-
 #Get Unknown existitng user from db to modify it's values like Name and Email
 def getUser(con,UserID):
     cursor = con.cursor()
