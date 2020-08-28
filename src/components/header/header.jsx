@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import DEBUG from "../../constants/debug";
+import api from "../../constants/api"
+let route_verify="/verify"
 
 let handleClick = () => {
   if (DEBUG) {
@@ -12,7 +14,32 @@ let handleClick = () => {
   }
 };
 
+async function verify_token() {
+  const url = api + route_verify;
+  let options = {
+    method: "GET",
+    headers: {
+      mode: "cors",
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
+  };
+
+  let JsonResponse=null;
+  let urlResponse=  await fetch(url, options)
+  JsonResponse= await urlResponse.json()
+ console.log('Json Resp ', JsonResponse)
+ 
+ return await JsonResponse.success
+}
+
+
+
 function header() {
+
   return (
     <div className="header">
       <Container fluid>
@@ -90,7 +117,7 @@ function header() {
                     <NavDropdown.Item>
                       <Link
                         to="/download"
-                        style={{ textDecoration: "none", color: "orange"}}
+                        style={{ textDecoration: "none", color: "orange" }}
                       >
                         Download Database .csv
                       </Link>
@@ -98,34 +125,54 @@ function header() {
                   </div>
                 </NavDropdown>
                 <div className="highlight">
-                <Nav.Link>
-                  <Link
-                    to="/comment"
-                    style={{ textDecoration: "none", color: "whitesmoke" }}
-                  >
-                    Comment Feed
-                  </Link>
-                </Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/comment"
+                      style={{ textDecoration: "none", color: "whitesmoke" }}
+                    >
+                      Comment Feed
+                    </Link>
+                  </Nav.Link>
                 </div>
                 <div className="highlight">
-                <Nav.Link>
-                  <Link
-                    to="/contact"
-                    style={{ textDecoration: "none", color: "whitesmoke" }}
-                  >
-                    Contact
-                  </Link>
-                </Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/api"
+                      style={{ textDecoration: "none", color: "whitesmoke" }}
+                    >
+                      C0ffeeAdmin
+                    </Link>
+                  </Nav.Link>
                 </div>
                 <div className="highlight">
-                <Nav.Link>
-                  <Link
-                    to="/about"
-                    style={{ textDecoration: "none", color: "whitesmoke" }}
-                  >
-                    About
-                  </Link>
-                </Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/contact"
+                      style={{ textDecoration: "none", color: "whitesmoke" }}
+                    >
+                      Contact
+                    </Link>
+                  </Nav.Link>
+                </div>
+                <div className="highlight">
+                  <Nav.Link>
+                    <Link
+                      to="/about"
+                      style={{ textDecoration: "none", color: "whitesmoke" }}
+                    >
+                      About
+                    </Link>
+                  </Nav.Link>
+                </div>
+                <div className="highlight">
+                  <Nav.Link>
+                    <Link
+                      to="/signout"
+                      style={{ textDecoration: "none", color: "whitesmoke" }}
+                    >
+                      Sign Out
+                    </Link>
+                  </Nav.Link>
                 </div>
               </Nav>
             </Navbar.Collapse>
@@ -134,6 +181,8 @@ function header() {
       </Container>
     </div>
   );
+
 }
+
 
 export default header;

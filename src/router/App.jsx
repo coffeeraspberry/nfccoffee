@@ -12,9 +12,9 @@ import Contact from '../components/Contact/Contact'
 import CommentPage from '../components/CommentPage/CommentPage'
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
-
+import AdminPage from '../components/AdminPage/AdminPage'
 import About from '../components/About/About'
-  
+import Sign from '../components/sign'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Container, Row } from 'reactstrap';
 
@@ -33,7 +33,8 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/about' component={About}/>
         <Route exact path='/comment' component={CommentPage}/>
         <Route exact path='/download' component={downloadDbPage} / >
-        
+        <Route exact path='/api' component={AdminPage}/>
+        <Route exact path='/signout' component={Sign}/>
       </Switch>
     </CSSTransition>
    
