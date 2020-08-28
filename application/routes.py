@@ -3,15 +3,13 @@ from application import app
 from application.models import Users, Dates, Contact
 from . import db
 from flask import json, request
-import os, signal, csv, subprocess, stream
+import os, signal, csv, subprocess, stream, logger
 from pyscript import interuptScan, scanBadge
 from time import sleep
 
 def findUser():
-    #uid = None
     uid = scanBadge()
     while uid is None:
-        #sleep(4)
         uid = scanBadge()
     uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
@@ -64,6 +62,12 @@ def insertContacts():
 def createUsers():
     data = getFrontJSON()
     user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
+
+    if user['UserName']=='':
+        user['UserName'] = 'Unknown'
+    if user['Email']=='':
+        user['Email']='Unknown'
+
     success = True
     try:
         db.session.commit()
@@ -72,11 +76,3 @@ def createUsers():
         success = False
 
     return json.dumps({'Success' : str(success)})
-'''
-@app.route('/deleteUsers', methods=['DELETE'])
-def deleteUsers():
-    user = Users.query.filter_by(UserID=1).first()
-    db.session.delete(user)
-    db.session.commit()
-    return "User %s was deleted from DB \n" % user
-'''

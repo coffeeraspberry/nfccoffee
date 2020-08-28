@@ -4,7 +4,9 @@ import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd #this one i
 from digitalio import DigitalInOut #this one is for both (LCD & NFC)
 from adafruit_pn532.spi import PN532_SPI #this one is for PN532 NFC
 from time import sleep #delay for LCD
-import sqlite3, subprocess #communication with Flask and DB
+import sqlite3, subprocess, logging #communication with Flask and DB
+
+
 
 #Get Unknown existitng user from db to modify it's values like Name and Email
 def getUser(con,UserID):
@@ -33,6 +35,7 @@ cs_pin = DigitalInOut(board.D8)
 pn532 = PN532_SPI(spi, cs_pin, debug=False)
 ic, ver, rev, support = pn532.firmware_version
 print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
+logging.info("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
 pn532.SAM_configuration()
 
 #A function made especially for /scan route
@@ -41,6 +44,8 @@ def scanBadge():
         uid = pn532.read_passive_target(timeout=0.3)
     except:
         print("UID is None. No badge scanned!")
+        logging.warning("UID is None. No badge scanned!")
+        logging.exception("Exception occured in scanBadge()", exc_info=True)
         return None
     return uid
 
@@ -72,11 +77,13 @@ def mainf():
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
             print("No badge detected...")
+            logging.info("No badge detected")
         else: #a badge has been scanned
             print("UID: "+str(uid.hex())) #print for debub and demo pupose
             our_user = getUser(con,str(uid.hex())) #check if uid exists in db
             if our_user: #if uid exists than do that
                 lcd.message = "Found User:\n%s" %(our_user[0][2])
+                logging.info("Found User:\n%s" %(our_user[0][2]))
                 lcd.message = "Remove card!"
                 incrementUserCounter(con,our_user)
                 sleep(0.5)
@@ -85,8 +92,10 @@ def mainf():
                 lcd.message = "Remove card!"
                 sleep(1)
                 lcd.message = "Generic user added in DB\nVisit %s" %(str(ip_address))
+                logging.info("Generic user added in DB")
         sleep(3)
         lcd.clear()     
 
 if __name__=='__main__':
-     mainf()
+    logging.info("pyscript.py has started")
+    mainf()
