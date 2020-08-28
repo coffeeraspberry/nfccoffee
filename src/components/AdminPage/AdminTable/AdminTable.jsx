@@ -3,13 +3,18 @@ import { Redirect } from "react-router-dom";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import { Container, Row, Col, Button, Tooltip, UncontrolledTooltip } from "reactstrap";
+import { Container, Row, Col, Button, Tooltip, UncontrolledTooltip, FormGroup } from "reactstrap";
 import api from "../../../constants/api";
 import copy from "copy-to-clipboard";
 import DEBUG from "../../../constants/debug";
+import cellEditFactory from 'react-bootstrap-table2-editor';
+import Type from 'react-bootstrap-table2-editor'
 import "./AdminTable.css";
 let route = "/users";
 let reset_route = "/api/reset";
+
+
+//cellEdit={ cellEditFactory({ mode: 'click' }) }
 
 class AdminTable extends React.Component {
   constructor(props) {
@@ -19,10 +24,17 @@ class AdminTable extends React.Component {
       isFetching: true,
       loading: true,
       uid: null,
+      edit: false,
     };
     this.handleResetButton = this.handleResetButton.bind(this);
+   
   }
-
+  handleMyButton(e, row){
+    alert('change')
+    let it_be=!this.state.edit;
+    this.setState({edit:it_be})
+    console.log('edit it be', this.state.edit)
+  }
   async componentDidMount() {
     let url = api + route;
 
@@ -64,6 +76,7 @@ class AdminTable extends React.Component {
     this.state.uid = uid;
     console.log("done ", this.state.uid);
   }
+
   render() {
     const { loading } = this.state.loading;
     if (loading) {
@@ -78,6 +91,7 @@ class AdminTable extends React.Component {
         this.set_uid(row.UserID);
       },
     };
+   
     const rowEvents = {
       onDoubleClick: (e, row, rowIndex) => {
         alert("Row copied to clipboard ", rowIndex);
@@ -104,6 +118,9 @@ class AdminTable extends React.Component {
         dataAlign: "Center",
         text: "Counter",
         headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+        }
       },
       {
         dataField: "Email",
@@ -111,22 +128,38 @@ class AdminTable extends React.Component {
         text: "Email ",
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
+        editor: {
+          type:Type.TEXTAREA ,
+           // The rest properties will be rendered into the editor's DOM element
+        }
       },
       {
         dataField: "LastAccess",
         text: "LastAccess",
         headerStyle: { backgroundColor: "white" },
+        editor: {
+          type:Type.TEXTAREA ,
+           // The rest properties will be rendered into the editor's DOM element
+        }
       },
       {
         dataField: "UserID",
         text: "UserID",
         headerStyle: { backgroundColor: "white" },
+        editor: {
+          type:Type.TEXTAREA ,
+           // The rest properties will be rendered into the editor's DOM element
+        }
       },
       {
         dataField: "UserName",
         text: "UserName ",
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
+        editor: {
+          type:Type.TEXTAREA ,
+           // The rest properties will be rendered into the editor's DOM element
+        }
       },
     ];
 
@@ -165,24 +198,22 @@ class AdminTable extends React.Component {
         </div>
       );
     } else {
-      
+      console.log('this.state.edit  inainte de return ', this.state.edit)
+      if(this.state.edit===false){
       return (
-        <div>
           <div className="reset-couter-button">
-          
-  
-
-            <Button id="uncontrolledTooltip" color="success" onClick={this.handleResetButton}>
+          <FormGroup>
+            <div>
+            <Button  color="success" onClick={this.handleResetButton}>
               Reset User Counter
             </Button>{" "}
-            <UncontrolledTooltip
-          placement="bottom"
-          target="uncontrolledTooltip"
-          delay={{ show: 1000, hide: 0 }}
-        >
-         First select a row
-        </UncontrolledTooltip>
-          </div>
+            </div>
+            <div>
+            <Button  color="success" onClick={this.handleMyButton.bind(this)}>
+              edit
+            </Button>{" "}
+            </div>
+            </FormGroup>
           <div classNames="table table-hover">
             <BootstrapTable
               wrapperClasses="table-responsive"
@@ -205,11 +236,55 @@ class AdminTable extends React.Component {
             />
           </div>
         </div>
-      );
+      
+      );}
+      else if(this.state.edit===true){
+       return (
+<div className="reset-couter-button">
+          <FormGroup>
+            <div>
+            <Button  color="success" onClick={this.handleResetButton}>
+              Reset User Counter
+            </Button>{" "}
+            </div>
+            <div>
+            <Button  color="success" onClick={this.handleMyButton.bind(this)}>
+              edit
+            </Button>{" "}
+            </div>
+            </FormGroup>
+          <div classNames="table table-hover">
+            <BootstrapTable
+              wrapperClasses="table-responsive"
+              hover={true}
+              className="table-condensed table-striped table-hover"
+              keyField="id"
+              loading={true}
+              data={this.state.data}
+              columns={columns}
+              headerStyle={{ backgroundColor: "green" }}
+              bordered={false}
+              headers={true}
+              fluid={true}
+              pagination={paginationFactory()}
+              filter={filterFactory()}
+              rowStyle={{ backgroundColor: "white" }}
+              rowEvents={rowEvents}
+              selectRow={selectRow}
+              condensed={true}
+            />
+          </div>
+        </div>
+       )
+      }
     }
   }
 
+
+
+
   handleResetButton(e, row) {
+    alert('reset')
     if (this.state.uid === undefined || this.state.uid === null) {
       console.log("this is the uid ", this.state.uid);
       return null;
@@ -236,6 +311,14 @@ class AdminTable extends React.Component {
      window.location.replace('/api')
     });
   }
+  
+
+ 
+
+
+
 }
+
+
 
 export default AdminTable;
