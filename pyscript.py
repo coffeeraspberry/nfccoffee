@@ -4,7 +4,7 @@ import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd #this one i
 from digitalio import DigitalInOut #this one is for both (LCD & NFC)
 from adafruit_pn532.spi import PN532_SPI #this one is for PN532 NFC
 from time import sleep #delay for LCD
-import sqlite3, subprocess, log #communication with Flask and DB
+import sqlite3, subprocess, logger #communication with Flask and DB
 
 
 
