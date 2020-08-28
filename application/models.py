@@ -18,7 +18,10 @@ class Users(db.Model, DictSerializable):
     userRelationship = db.relationship("Dates")
     UserName = db.Column(db.String(80),  nullable=False, default='Unknown')
     Email = db.Column(db.String(120), nullable=False, default='Unknown')
-    Counter = db.Column(db.Integer, nullable=False, default=0, )
+    Counter = db.Column(db.Integer, nullable=False, default=0)
+    PricePerCoffee = db.Column(db.Float, nullable=False, default=1.5)
+    toPay = db.Column(db.Float, nullable=False, default=func.multiply(Counter,PricePerCoffee))
+    
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
 
     def __repr__(self):
