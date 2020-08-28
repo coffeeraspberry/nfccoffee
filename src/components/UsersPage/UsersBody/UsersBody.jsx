@@ -11,6 +11,7 @@ class UsersBody extends React.Component {
     this.state = {
       data: null,
       isFetching: false,
+    
       users: [],
     };
     this.state.data = props.items;

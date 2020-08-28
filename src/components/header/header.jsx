@@ -14,7 +14,25 @@ let handleClick = () => {
   }
 };
 
-async function verify_token() {
+
+  
+
+
+
+class header extends React.Component {
+constructor(props){
+  super(props)
+  this.state={
+    data:null,
+    token: null,
+    success:null,
+  }
+
+}
+  
+
+/*
+async componentDidMount(){
   const url = api + route_verify;
   let options = {
     method: "GET",
@@ -27,18 +45,17 @@ async function verify_token() {
       Expires: "0",
     },
   };
-
-  let JsonResponse=null;
-  let urlResponse=  await fetch(url, options)
-  JsonResponse= await urlResponse.json()
- console.log('Json Resp ', JsonResponse)
- 
- return await JsonResponse.success
+  let fetchurl= await fetch(url, options)
+  let fetchJson = await fetchurl.json()
+  if(fetchJson.success==="true"){
+  await this.setState({success: true})
+  console.log('state success ', this.state.success)
+  }
 }
+*/
 
-
-
-function header() {
+render(){
+ 
 
   return (
     <div className="header">
@@ -181,7 +198,11 @@ function header() {
       </Container>
     </div>
   );
-
+              
+              
+            
+            
+            }
 }
 
 

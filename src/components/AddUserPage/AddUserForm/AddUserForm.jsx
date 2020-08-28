@@ -65,9 +65,11 @@ NO USE NOW
     /* Check if input forms are not empty  */
     /* Submit button will not do anything */
     if (
-      document.getElementById("username").value === "" &&
+      document.getElementById("username").value === "" ||
       document.getElementById("email").value === ""
+      
     ) {
+      alert('Please fill all mandatory fields ;)')
       return null;
     }
 
