@@ -6,8 +6,10 @@ from flask import json, request
 import os, signal, csv, subprocess, stream, logger
 from pyscript import interuptScan, scanBadge
 from time import sleep
+from logger import *
 
 def findUser():
+    log.info("findUser() function from application/routes.py  called")
     uid = scanBadge()
     while uid is None:
         uid = scanBadge()
@@ -16,7 +18,9 @@ def findUser():
     return temp
 
 def getFrontJSON():
+    log.info("getFrontJSON() function from application/routes.py  called")
     data = request.get_json(force=True)
+    log.info("getFrontJSON() returned: %s " %(str(data)))
     return data
 
 @app.route("/comment",methods=['POST'])
@@ -29,10 +33,12 @@ def comment():
 
 @app.route("/users", methods=['GET'])
 def users():
+    log.info("/users route called")
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
 @app.route("/scan", methods=['GET'])
 def scan():
+    log.info("/scan route called")
     interuptScan = True
     user = findUser()
     interuptScan = False
@@ -44,10 +50,12 @@ def logs():
 
 @app.route("/contacts", methods=['GET'])
 def contacts():
+    log.info("/contacts route called")
     return json.dumps([w._asdict() for w in Contact.query.all()], sort_keys=True)
 
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
+    log.info("/contact route called")
     data = getFrontJSON()
     contact = Contact(Email=data['Email'], Name=data['Name'], Subject=data['Subject'], Message=data['Message']) 
     success = True
