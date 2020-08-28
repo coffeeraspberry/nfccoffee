@@ -33,7 +33,6 @@ def comment():
 
 @app.route("/users", methods=['GET'])
 def users():
-    log.info("/users route called")
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
 @app.route("/scan", methods=['GET'])
@@ -50,12 +49,10 @@ def logs():
 
 @app.route("/contacts", methods=['GET'])
 def contacts():
-    log.info("/contacts route called")
     return json.dumps([w._asdict() for w in Contact.query.all()], sort_keys=True)
 
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
-    log.info("/contact route called")
     data = getFrontJSON()
     contact = Contact(Email=data['Email'], Name=data['Name'], Subject=data['Subject'], Message=data['Message']) 
     success = True
