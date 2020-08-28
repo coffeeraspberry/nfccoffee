@@ -83,9 +83,11 @@ def mainf():
             our_user = getUser(con,str(uid.hex())) #check if uid exists in db
             if our_user: #if uid exists than do that
                 lcd.message = "Found User:\n%s" %(our_user[0][2])
-                log.info("Found User:%s" %(our_user[0][2]))
+                print("Found User: %s" %(our_user[0][2]))
+                log.info("Found user %s" %(str(our_user[0][2])))
                 lcd.message = "Remove card!"
                 incrementUserCounter(con,our_user)
+                log.info("Counter incremented")
                 sleep(0.5)
             else: #otherwise insert new row in db
                 addUserIfNotExists(con,str(uid.hex()))
