@@ -46,7 +46,6 @@ def scanBadge():
     except:
         print("UID is None. No badge scanned!")
         log.warning("UID is None. No badge scanned!")
-        log.exception("Exception occured in scanBadge()", exc_info=True)
         return None
     return uid
 
