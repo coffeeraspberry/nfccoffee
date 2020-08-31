@@ -49,7 +49,7 @@ def login():
 
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
-@app.route("/admin/users", methods=['GET'])
+@app.route("/admin-users", methods=['GET'])
 @require_api_token
 def users():
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True)
