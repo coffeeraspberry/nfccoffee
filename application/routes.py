@@ -10,8 +10,6 @@ from logger import *
 import jwt, datetime
 from functools import wraps
 
-#auth = HTTPTokenAuth(scheme='Bearer')
-data = None
 def require_api_token(func):
     @wraps(func)
     def decorated(*args, **kwargs):
@@ -24,8 +22,9 @@ def require_api_token(func):
 
         try:
             data=jwt.decode(token,app.config['SECRET_KEY'])
+            return json.dumps({'success' : 'true'}),200
         except:
-            return json.dumps({'message' : 'Token not corect'}),401
+            return json.dumps({'success' : 'false'}),401
 
         return func(*args, **kwargs)
     
@@ -60,11 +59,6 @@ def login():
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
-def admin():
-    print(data)
-    if data == None:
-        return json.dumps({'succes':'false'})
-    return json.dumps({'succes':'true'})
 
 @app.route("/admin/<smth>", methods=['GET'])
 @require_api_token
