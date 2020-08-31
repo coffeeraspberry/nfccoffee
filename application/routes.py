@@ -2,14 +2,13 @@
 from application import app
 from application.models import Users, Dates, Contact
 from . import db
-from flask import json, request, make_response, session
+from flask import json, request, make_response, session, redirect
 import os, signal, csv, subprocess, stream, logger
 from pyscript import interuptScan, scanBadge
 from time import sleep
 from logger import *
 import jwt, datetime
 from functools import wraps
-from flask_httpauth import HTTPTokenAuth
 
 auth = HTTPTokenAuth(scheme='Bearer')
 
@@ -60,9 +59,9 @@ def login():
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
 @app.route("/admin/<smth>", methods=['GET'])
-#@require_api_token
+@require_api_token
 def smth(smth):
-    return redirect(url_for(str(smth)))
+    return redirect(url_for("/%s"%(smth)))
 
 @app.route("/comment",methods=['POST'])
 def comment():
