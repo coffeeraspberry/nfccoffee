@@ -11,6 +11,16 @@ class DictSerializable(object):
             result[key] = getattr(self, key)
         return result
 
+class Admin(db.Model, DictSerializable):
+    __tablename__ = 'Admin'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Email = db.Column(db.String(120), nullable=False, default='admin')
+    Password = db.Column(db.String(120), nullable=False, default='test')
+
+    def __repr__(self):
+        return '<Admin{}>'.format(self.id)
+
+
 class Users(db.Model, DictSerializable):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
