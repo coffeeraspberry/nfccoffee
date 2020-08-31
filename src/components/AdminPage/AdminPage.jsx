@@ -1,10 +1,10 @@
 import React from "react";
 import "./AdminPage.css";
 import AdminLogin from "./AdminLogin/AdminLogin";
-import AdminTable from "./AdminTable/AdminTable"
-import {Container, Row, Col } from 'reactstrap';
-import api from '../../constants/api'
-let route_verify = "/verify";
+import AdminTable from "./AdminTable/AdminTable";
+import { Container, Row, Col } from "reactstrap";
+import api from "../../constants/api";
+let route_verify = "/admin";
 
 class AdminPage extends React.Component {
   constructor(props) {
@@ -14,19 +14,21 @@ class AdminPage extends React.Component {
       success: null,
     };
   }
-  componentDidMount() {
+   componentDidMount() {
     if (
       localStorage.getItem("token") === undefined ||
       localStorage.getItem("token") === null
     ) {
       return null;
     } else {
+      this.state.token = localStorage.getItem("token");
       console.log("this.state.token ", this.state.token);
     }
     this.verify_token(localStorage.getItem("token"));
+    
   }
 
-async verify_token(tok) {
+  async verify_token(tok) {
     const url = api + route_verify;
     let options = {
       method: "GET",
@@ -37,45 +39,56 @@ async verify_token(tok) {
         "Cache-Control": "no-cache, no-store, must-revalidate",
         Pragma: "no-cache",
         Expires: "0",
+        token: localStorage.getItem("token"),
       },
     };
-
-    let JsonResponse=null;
-    let urlResponse=  await fetch(url, options)
-    console.log('AdminPage Fetch')
-    JsonResponse= await urlResponse.json()
-   console.log('Json Resp ', JsonResponse)
-   this.setState({token:localStorage.getItem("token"), success:JsonResponse.success})
-   return JsonResponse
+    
+    let JsonResponse = null;
+    let urlResponse = await fetch(url, options);
+    console.log("AdminPage Fetch");
+    JsonResponse = await urlResponse.json();
+    console.log("Json Resp ", JsonResponse);
+    this.setState({
+      token: localStorage.getItem("token"),
+      success: JsonResponse.success,
+    });
+    return await JsonResponse;
   }
 
-   render() {
-   
-    
+  render() {
+    console.log('this.state.success render ', this.state.success)
     if (
       localStorage.getItem("token") === undefined ||
       localStorage.getItem("token") === null 
     ) {
+      
       return (
         <div>
           <div>
             <AdminLogin />
           </div>
         </div>
+      
       );
     } else {
+      if(this.state.success ==="false"){
+        return ( <div>
+          <div>
+            <AdminLogin />
+          </div>
+        </div>)
+      }
 
-      if (this.state.success === "true" ) {
-        
 
+      if (this.state.success === "true") {
         return (
           <div>
-            <AdminTable/>
+            <AdminTable />
           </div>
         );
       } else {
         return (
-            <div>
+          <div>
             <Container fluid={true}>
               <Row className="on-load">
                 <Col></Col>
@@ -106,7 +119,7 @@ async verify_token(tok) {
               </Row>
             </Container>
           </div>
-        )
+        );
       }
     }
 

@@ -6,6 +6,7 @@ import { Container, Row, Col } from "reactstrap";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import DEBUG from "../../constants/debug";
 import api from "../../constants/api"
+
 let route_verify="/verify"
 
 let handleClick = () => {
@@ -30,32 +31,15 @@ constructor(props){
 
 }
   
-
-/*
-async componentDidMount(){
-  const url = api + route_verify;
-  let options = {
-    method: "GET",
-    headers: {
-      mode: "cors",
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-      "Cache-Control": "no-cache, no-store, must-revalidate",
-      Pragma: "no-cache",
-      Expires: "0",
-    },
-  };
-  let fetchurl= await fetch(url, options)
-  let fetchJson = await fetchurl.json()
-  if(fetchJson.success==="true"){
-  await this.setState({success: true})
-  console.log('state success ', this.state.success)
-  }
+check_token(){
+  if(localStorage.getItem("token")===undefined || localStorage.getItem("token")===null){this.state.token=null}
+  else {this.state.token=localStorage.getItem("token")}
 }
-*/
+
+
 
 render(){
- 
+ //check_token();
 
   return (
     <div className="header">
@@ -181,16 +165,6 @@ render(){
                     </Link>
                   </Nav.Link>
                 </div>
-                <div className="highlight">
-                  <Nav.Link>
-                    <Link
-                      to="/signout"
-                      style={{ textDecoration: "none", color: "whitesmoke" }}
-                    >
-                      Sign Out
-                    </Link>
-                  </Nav.Link>
-                </div>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -198,7 +172,7 @@ render(){
       </Container>
     </div>
   );
-              
+                 
               
             
             

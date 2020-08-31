@@ -1,16 +1,16 @@
 import React from "react";
-import "./AdminLogin.css";
+import "./AdminChangePass.css";
 import api from "../../../constants/api";
 import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Redirect } from "react-router-dom";
 import DEBUG from "../../../constants/debug";
-//let route = "/api";
-let route = "/login";
+let route = "/api";
+//let route = "/login";
 //change to real world later
 const METHOD = "POST";
 
-class AdminLogin extends React.Component {
+class AdminResetPass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,12 +40,12 @@ class AdminLogin extends React.Component {
         Pragma: "no-cache",
         Expires: "0",
       },
-     
+     /*
       body: await JSON.stringify({
         Email: document.getElementById("email").value,
         Password: document.getElementById("pass").value,
       }),
-
+*/
     };
 
     let Urlresponse = await fetch(url, options);
@@ -76,11 +76,11 @@ class AdminLogin extends React.Component {
       return window.location.replace("/api");
     }
     return (
-      <div className="admin-login-form">
+      <div className="admin-passchange-form">
         <Container fluid>
           <div className="input-pos">
-            <p className="big-text">Log in as admin</p>
-            <p className="big-text">Default credentials provided by dev</p>
+            <p className="big-text">Change your password here</p>
+            <p className="big-text"></p>
             <p className="empty-contact"></p>
             <Row>
               <Col></Col>
@@ -89,13 +89,13 @@ class AdminLogin extends React.Component {
                   <AvForm
                     onValidSubmit={this.handleValidSubmit}
                     onInvalidSubmit={this.handleInvalidSubmit}
-                    errorMessage="Please enter valid Email"
+                    errorMessage="This field is mandatory"
                   >
                     <AvField
-                      name="email"
-                      placeholder="Your Email address"
-                      label="Email"
-                      type="email"
+                      name="pass"
+                      placeholder="Current password"
+                      label="Your Password"
+                      type="password"
                       required
                       className="center"
                     />
@@ -114,10 +114,31 @@ class AdminLogin extends React.Component {
                     errorMessage="This field is mandatory"
                   >
                     <AvField
-                      name="pass"
-                      label="Password"
+                      name="newpass"
+                      label="New Password"
                       type="password"
-                      placeholder="Your password"
+                      placeholder="Your new password"
+                      required
+                    />
+                  </AvForm>
+                </div>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row>
+              <Col></Col>
+              <Col lg="6">
+                <div className="white">
+                  <AvForm
+                    onValidSubmit={this.handleValidSubmit}
+                    onInvalidSubmit={this.handleInvalidSubmit}
+                    errorMessage="This field is mandatory"
+                  >
+                    <AvField
+                      name="confirmpass"
+                      label="Confirm New Password"
+                      type="password"
+                      placeholder="Confirm new password"
                       required
                     />
                   </AvForm>
@@ -134,4 +155,4 @@ class AdminLogin extends React.Component {
     );
   }
 }
-export default AdminLogin;
+export default AdminResetPass;

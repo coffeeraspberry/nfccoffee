@@ -13,6 +13,7 @@ import CommentPage from '../components/CommentPage/CommentPage'
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
 import AdminPage from '../components/AdminPage/AdminPage'
+import AdminChangePass from '../components/AdminPage/AdminChangePass/AdminChangePass'
 import About from '../components/About/About'
 import Sign from '../components/sign'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -34,6 +35,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
         <Route exact path='/comment' component={CommentPage}/>
         <Route exact path='/download' component={downloadDbPage} / >
         <Route exact path='/api' component={AdminPage}/>
+        <Route exact path='/change' component={AdminChangePass}/>
         <Route exact path='/signout' component={Sign}/>
       </Switch>
     </CSSTransition>

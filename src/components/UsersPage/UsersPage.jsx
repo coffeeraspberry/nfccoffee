@@ -1,7 +1,7 @@
 import React from "react";
 import "./UsersPage.css";
 import UsersBody from "./UsersBody/UsersBody";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import api from "../../constants/api";
 import "../home/home.css";
 import Loader from "../../router/loading";
@@ -71,16 +71,16 @@ class UsersPage extends React.Component {
 
     if (this.state.data == null) {
       return (
+        
         <div>
+        
           <Container fluid={true}>
             <Row className="on-load">
               <Col></Col>
               <Col xs="auto" sm="auto" md="auto">
                 <div class="loader">
                   <div className="load-text">Please wait, loading data</div>
-                  <span class="loader__dot">.</span>
-                  <span class="loader__dot">.</span>
-                  <span class="loader__dot">.</span>
+                  <Spinner style={{ width: '3rem', height: '3rem' }} type="grow" color="warning"/>
                 </div>
               </Col>
               <Col></Col>

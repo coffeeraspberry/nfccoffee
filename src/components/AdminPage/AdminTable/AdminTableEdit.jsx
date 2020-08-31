@@ -1,0 +1,163 @@
+import React from "react";
+import { Redirect } from "react-router-dom";
+import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import api from "../../../constants/api";
+import DEBUG from "../../../constants/debug";
+import cellEditFactory from "react-bootstrap-table2-editor";
+import Type from "react-bootstrap-table2-editor";
+import "./AdminTable.css";
+let route = "/admin/save";
+let reset_route = "/api/reset";
+const METHOD= "POST";
+//cellEdit={ cellEditFactory({ mode: 'click' }) }
+
+class AdminTableEdit extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      isFetching: true,
+      loading: true,
+      uid: null,
+      edit: false,
+    };
+    this.state.data = props.data;
+  }
+
+  async componentDidMount() {}
+
+  demoAsyncCall() {
+    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  }
+  async fetch_changes(changes){
+let url= api+route;
+let options = {
+  method: METHOD,
+  headers: {
+    mode: "cors",
+    Accept: "application/json",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Cache-Control": "no-cache, no-store, must-revalidate",
+    Pragma: "no-cache",
+    Expires: "0",
+  },
+  body: await JSON.stringify({
+    Email: changes.Email,
+    LastAccess: changes.LastAccess,
+    UserName: changes.UserName,
+    UserID:changes.UserID,
+  }),
+};
+
+await console.log('fetch changes ', changes)
+await console.log('options ', options.body)
+let fetch_now= fetch(url, options)
+return null;
+
+  }
+
+
+
+
+  render() {
+    const { loading } = this.state.loading;
+    if (loading) {
+      return null;
+    }
+
+    let columns = [
+      {
+        dataField: "Counter",
+        dataAlign: "Center",
+        text: "Counter",
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+        },
+        editable: false,
+      },
+      {
+        dataField: "Email",
+        dataAlign: "Center",
+        text: "Email ",
+        filter: textFilter(),
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+          // The rest properties will be rendered into the editor's DOM element
+        },
+      },
+      {
+        dataField: "LastAccess",
+        text: "LastAccess",
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+          // The rest properties will be rendered into the editor's DOM element
+        },
+      },
+      {
+        dataField: "UserID",
+        text: "UserID",
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+          // The rest properties will be rendered into the editor's DOM element
+        },
+        editable: false,
+      },
+      {
+        dataField: "UserName",
+        text: "UserName ",
+        filter: textFilter(),
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+          // The rest properties will be rendered into the editor's DOM element
+        },
+      },
+    ];
+
+    return (
+      <div className="reset-couter-button">
+        <div classNames="table table-hover">
+          <BootstrapTable
+            wrapperClasses="table-responsive"
+            hover={true}
+            className="table-condensed table-striped table-hover"
+            keyField="id"
+            loading={true}
+            data={this.state.data}
+            columns={columns}
+            headerStyle={{ backgroundColor: "green" }}
+            bordered={false}
+            headers={true}
+            fluid={true}
+            pagination={paginationFactory()}
+            filter={filterFactory()}
+            rowStyle={{ backgroundColor: "white" }}
+            cellEdit={cellEditFactory({
+              mode: "click",
+              blurToSave: "true",
+              onStartEdit: (row, column, rowIndex, columnIndex) => {
+                console.log("start to edit!!!");
+              },
+              beforeSaveCell: (oldValue, newValue, row, column) => {
+                console.log("Before Saving Cell!!");
+              },
+              afterSaveCell: (oldValue, newValue, row, column) => {
+                console.log("After Saving Cell!! row ", row);
+                this.fetch_changes(row);
+              },
+            })}
+            condensed={true}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default AdminTableEdit;

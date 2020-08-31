@@ -2,6 +2,7 @@ import React from "react";
 import "./GraphPage.css";
 import "../home/home.css";
 import GraphBody from "./graphBody/graphBody";
+import {Spinner} from 'reactstrap'
 import api from "../../constants/api";
 import DEBUG from '../../constants/debug';
 let route = "/users";
@@ -66,9 +67,7 @@ class GraphPage extends React.Component {
         <div>
           <div class="loader">
             <div className="load-text">CoffeeGraph loading</div>
-            <span class="loader__dot">.</span>
-            <span class="loader__dot">.</span>
-            <span class="loader__dot">.</span>
+            <Spinner style={{ width: '3rem', height: '3rem' }} type="grow" color="warning"/>
           </div>
         </div>
       );

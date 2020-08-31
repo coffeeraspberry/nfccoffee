@@ -1,4 +1,5 @@
 import React from "react";
+import {Spinner} from 'reactstrap'
 import "./home.css";
 import HomeBody from "./HomeBody/HomeBody";
 
@@ -23,7 +24,8 @@ class home extends React.Component {
   render() {
     const { loading } = this.state.loading;
     if (loading) {
-      return null;
+      return (<div><Spinner style={{ width: '3rem', height: '3rem' }} />{' '}</div>
+      )
     }
 
     return (

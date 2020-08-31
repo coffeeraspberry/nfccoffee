@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
@@ -10,6 +10,8 @@ import DEBUG from "../../../constants/debug";
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import Type from 'react-bootstrap-table2-editor'
 import "./AdminTable.css";
+import AdminTableEdit from "./AdminTableEdit";
+import sign from '../../sign'
 let route = "/users";
 let reset_route = "/api/reset";
 
@@ -30,7 +32,11 @@ class AdminTable extends React.Component {
    
   }
   handleMyButton(e, row){
-    alert('change')
+    if(!this.state.edit){
+    alert('You are entering edit mode')
+    }else{
+      alert('You are leaving edit mode')
+    }
     let it_be=!this.state.edit;
     this.setState({edit:it_be})
     console.log('edit it be', this.state.edit)
@@ -199,21 +205,51 @@ class AdminTable extends React.Component {
       );
     } else {
       console.log('this.state.edit  inainte de return ', this.state.edit)
+      //fetch success
       if(this.state.edit===false){
       return (
+       
           <div className="reset-couter-button">
-          <FormGroup>
-            <div>
+             <Container fluid>
+               <Row>
+         
+            <Col><div>
             <Button  color="success" onClick={this.handleResetButton}>
               Reset User Counter
             </Button>{" "}
             </div>
+            </Col>
+            <Col>
             <div>
-            <Button  color="success" onClick={this.handleMyButton.bind(this)}>
-              edit
+            <Button  color="primary" onClick={this.handleMyButton.bind(this)}>
+              Edit Mode
             </Button>{" "}
             </div>
-            </FormGroup>
+            </Col>
+            <Col>
+            <div>
+              <Link to ="/signout">
+            <Button  color="danger" >
+              Sign Out
+            </Button>{" "}
+            </Link>
+            </div>
+            </Col>
+            </Row>
+            <Row>
+              <Col></Col>
+              <Col>
+            <div className="change-button">
+              <Link to ="/change">
+            <Button  color="warning" >
+              Change Password
+            </Button>{" "}
+            </Link>
+            </div>
+            </Col>
+            <Col></Col>
+            </Row>
+            </Container>
           <div classNames="table table-hover">
             <BootstrapTable
               wrapperClasses="table-responsive"
@@ -239,43 +275,41 @@ class AdminTable extends React.Component {
       
       );}
       else if(this.state.edit===true){
-       return (
-<div className="reset-couter-button">
-          <FormGroup>
-            <div>
-            <Button  color="success" onClick={this.handleResetButton}>
+       
+        return (
+     <div className="edit-buttons">
+   <Container fluid>
+               <Row>
+         
+            <Col><div>
+            <Button  color="secondary" >
               Reset User Counter
             </Button>{" "}
             </div>
+            </Col>
+            <Col>
             <div>
             <Button  color="success" onClick={this.handleMyButton.bind(this)}>
-              edit
+              Edit Mode
             </Button>{" "}
             </div>
-            </FormGroup>
-          <div classNames="table table-hover">
-            <BootstrapTable
-              wrapperClasses="table-responsive"
-              hover={true}
-              className="table-condensed table-striped table-hover"
-              keyField="id"
-              loading={true}
-              data={this.state.data}
-              columns={columns}
-              headerStyle={{ backgroundColor: "green" }}
-              bordered={false}
-              headers={true}
-              fluid={true}
-              pagination={paginationFactory()}
-              filter={filterFactory()}
-              rowStyle={{ backgroundColor: "white" }}
-              rowEvents={rowEvents}
-              selectRow={selectRow}
-              condensed={true}
-            />
+            </Col>
+            <Col>
+            <Button  color="secondary" >
+              Sign Out
+            </Button>{" "}
+            </Col>
+            </Row>
+           
+            </Container>
+          <div>
+            <AdminTableEdit data={this.state.data}/>
           </div>
-        </div>
-       )
+          </div>
+        )
+
+
+
       }
     }
   }
@@ -284,9 +318,10 @@ class AdminTable extends React.Component {
 
 
   handleResetButton(e, row) {
-    alert('reset')
+    
     if (this.state.uid === undefined || this.state.uid === null) {
       console.log("this is the uid ", this.state.uid);
+      alert('Please select a row from table')
       return null;
     }
     console.log("row ", this.state.uid);
@@ -312,7 +347,7 @@ class AdminTable extends React.Component {
     });
   }
   
-
+ 
  
 
 

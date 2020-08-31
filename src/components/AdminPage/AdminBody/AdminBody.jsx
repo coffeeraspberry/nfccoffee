@@ -4,7 +4,7 @@ import api from "../../../constants/api";
 import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import DEBUG from "../../../constants/debug";
-let route = "/body";
+let route = "/verify";
 //change to real world later
 const METHOD = "GET";
 
