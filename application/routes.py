@@ -24,7 +24,7 @@ def getFrontJSON():
     log.info("getFrontJSON() returned: %s " %(str(data)))
     return data
 
-@app.route("/login", methods=['GET'])
+@app.route("/login", methods=['POST'])
 def login():
     data = getFrontJSON()
 
