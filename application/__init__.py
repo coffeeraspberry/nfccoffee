@@ -10,6 +10,7 @@ CORS(app)
 # Configurations
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'coffeeCounterS3cr3tKey'
 
 # Define the database object which is imported
 # by modules and controllers
