@@ -59,12 +59,12 @@ def login():
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
-
+'''
 @app.route("/admin/<smth>", methods=['GET'])
 @require_api_token
 def smth(smth):
     return redirect(url_for("%s"%(smth)))
-
+'''
 @app.route("/comment",methods=['POST'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
