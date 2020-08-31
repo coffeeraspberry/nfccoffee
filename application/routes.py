@@ -60,7 +60,7 @@ def login():
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
 @app.route("/admin/<smth>", methods=['GET'])
-@require_api_token
+#@require_api_token
 def smth(smth):
     return redirect(url_for(str(smth)))
 
