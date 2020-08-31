@@ -61,7 +61,7 @@ def login():
 @app.route("/admin/<smth>", methods=['GET'])
 @require_api_token
 def smth(smth):
-    return redirect(url_for("/%s"%(smth)))
+    return redirect(url_for("%s"%(smth)))
 
 @app.route("/comment",methods=['POST'])
 def comment():
