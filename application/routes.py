@@ -29,7 +29,7 @@ def login():
     data = getFrontJSON()
 
     if data['Password'] == 'test':
-        token = jwt.encode({'user' : data['Username'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'user' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         return json.dmps({'token' : token.decode('UTF-8')})
 
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
