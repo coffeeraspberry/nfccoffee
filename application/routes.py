@@ -18,8 +18,9 @@ def require_api_token(func):
     def decorated(*args, **kwargs):
         token = None
         #if 'x-access-token' in request.headers:
-            #token = request.headers['x-access-token']
-        token = request.args.get('token')
+        
+        token = request.headers['token']
+            
         if not token:
             return json.dumps({'message' : 'Token is missing'}),401
 
@@ -27,7 +28,7 @@ def require_api_token(func):
             data=jwt.decode(token,app.config['SECRET_KEY'])
         except:
             return json.dumps({'message' : 'Token is missing'}),401
-        
+
         return func(*args, **kwargs)
     
     return decorated
