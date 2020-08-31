@@ -59,6 +59,8 @@ def login():
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
+def admin():
+    return
 '''
 @app.route("/admin/<smth>", methods=['GET'])
 @require_api_token
