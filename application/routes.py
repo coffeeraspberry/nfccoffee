@@ -9,6 +9,11 @@ from time import sleep
 from logger import *
 import jwt, datetime
 from functools import wraps
+from flask_httpauth import HTTPTokenAuth
+
+auth = HTTPTokenAuth(scheme='Bearer')
+
+token = None
 
 def require_api_token(func):
     @wraps(func)
@@ -16,8 +21,7 @@ def require_api_token(func):
         # Check to see if it's in their session
         if 'api_session_token' not in session:
             # If it isn't return our access denied message (you can also return a redirect or render_template)
-            print(1)
-            #return make_response("Access denied!"), 401
+            return make_response("Access denied!"), 401
         # Otherwise just send them where they wanted to go
         return func(*args, **kwargs)
     
@@ -38,7 +42,7 @@ def getFrontJSON():
     log.info("getFrontJSON() returned: %s " %(str(data)))
     return data
 
-@app.route("/login", methods=['POST'])
+@app.route("/login", methods=['POST','GET'])
 def login():
     data = getFrontJSON()
 
@@ -51,7 +55,8 @@ def login():
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
 @app.route("/admin/<smth>", methods=['GET'])
-@require_api_token
+#@require_api_token
+@auth.login_required
 def smth(smth):
     return redirect(url_for(str(smth)))
 
