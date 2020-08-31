@@ -29,7 +29,7 @@ def login():
     data = getFrontJSON()
 
     if data['Password'] == 'test':
-        token = JWT().encode({'user' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'user' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         print(token)
         print(token.decode('UTF-8'))
         return json.dumps({'token' : token.decode('UTF-8')})
