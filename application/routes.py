@@ -17,9 +17,8 @@ def require_api_token(func):
     @wraps(func)
     def decorated(*args, **kwargs):
         token = None
-        #if 'x-access-token' in request.headers:
-        
-        token = request.headers['token']
+        if 'token' in request.headers:
+            token = request.headers['token']
             
         if not token:
             return json.dumps({'message' : 'Token is missing'}),401
