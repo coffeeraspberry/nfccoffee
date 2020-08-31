@@ -10,7 +10,7 @@ from logger import *
 import jwt, datetime
 from functools import wraps
 
-auth = HTTPTokenAuth(scheme='Bearer')
+#auth = HTTPTokenAuth(scheme='Bearer')
 
 def require_api_token(func):
     @wraps(func)
