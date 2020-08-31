@@ -2,7 +2,7 @@
 from application import app
 from application.models import Users, Dates, Contact
 from . import db
-from flask import json, request, make_response, session, redirect
+from flask import json, request, make_response, session, redirect, url_for
 import os, signal, csv, subprocess, stream, logger
 from pyscript import interuptScan, scanBadge
 from time import sleep
