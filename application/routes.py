@@ -59,6 +59,7 @@ def login():
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
 @app.route("/admin", methods=['GET'])
+def admin():
     return json.dumps({'success' : 'true'})
 
 @app.route("/admin/<smth>", methods=['GET'])
