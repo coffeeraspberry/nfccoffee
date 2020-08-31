@@ -24,10 +24,10 @@ def getFrontJSON():
     log.info("getFrontJSON() returned: %s " %(str(data)))
     return data
 
-@app.route("/login", method=['GET'])
+@app.route("/login", methods=['GET'])
 def login():
     data = getFrontJSON()
-    
+
     if data['Password'] == 'test':
         token = jwt.encode({'user' : data['Username'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         return json.dmps({'token' : token.decode('UTF-8')})
