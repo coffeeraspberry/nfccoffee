@@ -13,19 +13,18 @@ from flask_httpauth import HTTPTokenAuth
 
 auth = HTTPTokenAuth(scheme='Bearer')
 
-token = None
-
 def require_api_token(func):
     @wraps(func)
-    def check_token(*args, **kwargs):
-        # Check to see if it's in their session
-        if 'api_session_token' not in session:
-            # If it isn't return our access denied message (you can also return a redirect or render_template)
-            return make_response("Access denied!"), 401
-        # Otherwise just send them where they wanted to go
+    def decorated(*args, **kwargs):
+        token = None
+        if 'x-access-token' in request.headers:
+            token = request.headers['x-access-token']
+        if not token:
+            return json.dumps({'message' : 'Token is missing'}),401
+        
         return func(*args, **kwargs)
     
-    return check_token
+    return decorated
 
 def findUser():
     log.info("findUser() function from application/routes.py  called")
@@ -55,8 +54,7 @@ def login():
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
 
 @app.route("/admin/<smth>", methods=['GET'])
-#@require_api_token
-@auth.login_required
+@require_api_token
 def smth(smth):
     return redirect(url_for(str(smth)))
 
