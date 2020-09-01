@@ -71,7 +71,7 @@ def login():
 @require_api_token
 def admin():
     log.info("/admin route from application/routes.py  called")
-    return json.dumps([a._asdict() for a in Admin.query.all()], sort_keys=True)
+    return
 
 '''
 @app.route("/admin/<smth>", methods=['GET'])
