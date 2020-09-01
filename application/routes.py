@@ -83,7 +83,8 @@ def changePass(current_user):
     if(data['newPassword'] != data['confimPassword'] or admin is None):
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
-    Admin.query.filter_by(id=current_user['id']).update(dict(Email=data['Email'], Password=data['newPassword']))
+    #Admin.query.filter_by(id=current_user['id']).update(dict(Password=data['newPassword']))
+    current_user.Password = data['newPassword']
     success = True
     try:
         db.session.commit()
