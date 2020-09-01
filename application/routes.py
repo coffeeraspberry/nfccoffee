@@ -76,16 +76,16 @@ def admin(current_user):
 
 @app.route("/changepass", methods=['GET', 'POST'])
 @require_api_token
-def changePass(current_user, Email):
+def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
-    admin = findAdmin(data['Email'])
+    
     if(data['newPassword'] != data['confimPassword'] and data['password']!=current_user.Password):
         print("Current User pass: "+current_user.Password)
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
-    Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
-    #current_user.Password = data['newPassword']
+    #Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
+    current_user.Password = data['newPassword']
     success = False
     try:
         db.session.commit()
