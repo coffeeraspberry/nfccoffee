@@ -83,7 +83,7 @@ def changePass(current_user):
         print("Current User pass: "+current_user.Password)
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
-    #Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
+    ####Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
     current_user.Password = data['newPassword']
     success = False
     try:
