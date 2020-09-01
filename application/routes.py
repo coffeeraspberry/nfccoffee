@@ -94,7 +94,7 @@ def changePass(current_user, Email):
     except:
         success = False
     
-    return json.dumps({'Success' : str(success)})
+    return json.dumps({'success' : str(success)})
 
 
 @app.route("/comment",methods=['POST'])
@@ -155,4 +155,4 @@ def createUsers():
     except Exception as e:
         success = False
 
-    return json.dumps({'Success' : str(success)})
+    return json.dumps({'success' : str(success)})
