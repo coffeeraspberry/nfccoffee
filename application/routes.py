@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from application import app
-from application.models import Users, Dates, Contact
+from application.models import Users, Dates, Contact, Admin
 from . import db
 from flask import json, request, make_response, session, redirect, url_for
 import os, signal, csv, subprocess, stream, logger
@@ -63,10 +63,8 @@ def login():
 @app.route("/admin", methods=['GET'])
 @require_api_token
 def admin():
-
     log.info("/admin route from application/routes.py  called")
-
-    return
+    return json.dumps([a._asdict() for a in Admin.query.all()], sort_keys=True)
 
 '''
 @app.route("/admin/<smth>", methods=['GET'])
