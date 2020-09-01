@@ -49,6 +49,7 @@ def getFrontJSON():
 def findAdmin(email):
     log.info("findAdmin() function from application/routes.py  called")
     temp = Admin.query.filter_by(Email='%s' %(email)).first()
+    return temp
 
 @app.route("/login", methods=['POST','GET'])
 def login():
