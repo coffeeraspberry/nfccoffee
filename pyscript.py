@@ -14,16 +14,16 @@ def getUser(con,UserID):
     user = cursor.fetchall()
     return user
 
-#Increment Counter column in db
-def incrementUserCounter(con,user):
+#Increment Counter column in db and update the Amount he has to pay so far
+def updateUser(con,user):
     cursor = con.cursor()
-    cursor.execute('UPDATE Users SET Counter = Counter + 1, LastAccess=CURRENT_TIMESTAMP WHERE UserID = \'%s\'' %(user[0][1]))
+    cursor.execute('UPDATE Users SET Counter = Counter + 1, LastAccess=CURRENT_TIMESTAMP WHERE UserID = \'%s\', AmountToPay = Counter * CoffeUnitPrice' %(user[0][1]))
     con.commit()
 
 #If a badge is scanned and UID doen't exist -> insert new row in db
 def addUserIfNotExists(con,uid):
     cursor = con.cursor()
-    insert = 'INSERT INTO Users(UserID,UserName,Email,Counter,LastAccess) VALUES(\'%s\',\'%s\',\'%s\',0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown')
+    insert = 'INSERT INTO Users(UserID,UserName,Email,Counter,CoffeUnitPrice,AmountToPay,LastAccess) VALUES(\'%s\',\'%s\',\'%s\',0,1.5,0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown')
     print(insert)
     cursor.execute(insert)
     con.commit()
@@ -83,7 +83,7 @@ def mainf():
                 lcd.message = "Found User:\n%s" %(our_user[0][2])
                 log.info("Found user %s" %(str(our_user[0][2])))
                 lcd.message = "Remove card!"
-                incrementUserCounter(con,our_user)
+                updateUser(con,our_user)
                 log.info("Counter incremented")
                 sleep(0.5)
             else: #otherwise insert new row in db

@@ -11,6 +11,7 @@ import jwt, datetime
 from functools import wraps
 
 def require_api_token(func):
+    log.info("require_api_token(func) function from application/routes.py  called")
     @wraps(func)
     def decorated(*args, **kwargs):
         token = None
@@ -21,7 +22,7 @@ def require_api_token(func):
             return json.dumps({'message' : 'Token is missing'}),401
 
         try:
-            data=jwt.decode(token,app.config['SECRET_KEY'])
+            data = jwt.decode(token,app.config['SECRET_KEY'])
             return json.dumps({'success' : 'true'}),200
         except:
             return json.dumps({'success' : 'false'}),401
@@ -47,6 +48,8 @@ def getFrontJSON():
 
 @app.route("/login", methods=['POST','GET'])
 def login():
+    log.info("/login route from application/routes.py  called")
+
     data = getFrontJSON()
 
     if data['Password'] == 'test':
@@ -60,13 +63,18 @@ def login():
 @app.route("/admin", methods=['GET'])
 @require_api_token
 def admin():
+
+    log.info("/admin route from application/routes.py  called")
+
     return
+
 '''
 @app.route("/admin/<smth>", methods=['GET'])
 @require_api_token
 def smth(smth):
     return redirect(url_for("%s"%(smth)))
 '''
+
 @app.route("/comment",methods=['POST'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
@@ -77,10 +85,12 @@ def comment():
 
 @app.route("/users", methods=['GET'])
 def users():
+    log.info("/users [GET] route from application/routes.py  called")
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
 
 @app.route("/scan", methods=['GET'])
 def scan():
+    log.info("/scan route from application/routes.py  called")
     interuptScan = True
     user = findUser()
     interuptScan = False
@@ -92,10 +102,12 @@ def logs():
 
 @app.route("/contacts", methods=['GET'])
 def contacts():
+    log.info("/contacts route from application/routes.py  called")
     return json.dumps([w._asdict() for w in Contact.query.all()], sort_keys=True)
 
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
+    log.info("/contact route with insertContacts() function from application/routes.py  called")
     data = getFrontJSON()
     contact = Contact(Email=data['Email'], Name=data['Name'], Subject=data['Subject'], Message=data['Message']) 
     success = True

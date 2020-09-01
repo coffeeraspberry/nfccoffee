@@ -1,4 +1,5 @@
 # Python backend
+
 > Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :)
 
 # Context
@@ -26,6 +27,7 @@ Backend subproject part of **Coffe_counter** web-app built inside Continental Su
 > sh scriptbackend.sh
 
 ## About and usage!
+
   * the 'offline' script called pyscript.py starts 
   * a subprocess calls the Flask server (aka app.py)
   * pyscript scans every second for card and displays different messages on LCD screen
@@ -70,6 +72,7 @@ Coffee_counter Python backend uses a number of open source projects to work prop
 * **zipp==3.1.0**
 
 And of course:
+
 * **Python 3.x**
 * **PIP3**
 * **sqlite3**
