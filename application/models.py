@@ -31,12 +31,8 @@ class Users(db.Model, DictSerializable):
     Counter = db.Column(db.Integer, nullable=False, default=0)
     CoffeUnitPrice = db.Column(db.Float, nullable=False, default=1.5)
     AmountToPay = db.Column(db.Float, nullable=False, default=0)
-    
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
-
-    @event.listens_for(Users.AmountToPay, 'set')
-
-
+    
     def __repr__(self):
         return '<User{}>'.format(self.id)
 
