@@ -71,7 +71,7 @@ def login():
 @require_api_token
 def admin(current_user):
     log.info("/admin route from application/routes.py  called")
-    return
+    return return json.dumps({'success' : 'true'}),200
 
 @app.route("/changepass", methods=['POST'])
 @require_api_token
