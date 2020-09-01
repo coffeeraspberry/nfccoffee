@@ -46,13 +46,18 @@ def getFrontJSON():
     log.info("getFrontJSON() returned: %s " %(str(data)))
     return data
 
+def findAdmin(email):
+    log.info("findAdmin() function from application/routes.py  called")
+    temp = Admin.query.filter_by(Email='%s' %(email)).first()
+
 @app.route("/login", methods=['POST','GET'])
 def login():
     log.info("/login route from application/routes.py  called")
 
     data = getFrontJSON()
+    admin = findAdmin(data['Email'])
 
-    if data['Password'] == 'test':
+    if data['Password'] == admin['Password']:
         token = jwt.encode({'user' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         print(token)
         session['api_session_token'] = token
