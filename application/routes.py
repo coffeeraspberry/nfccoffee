@@ -24,7 +24,7 @@ def require_api_token(func):
         try:
             data = jwt.decode(token,app.config['SECRET_KEY'])
             current_user = Admin.query.filter_by(Email=data['Email']).first()
-            return json.dumps({'success' : 'true'}),200
+            #return json.dumps({'success' : 'true'}),200
         except:
             return json.dumps({'success' : 'false'}),401
 
