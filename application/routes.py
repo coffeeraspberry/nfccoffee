@@ -49,7 +49,6 @@ def getFrontJSON():
 
 def findAdmin(email):
     log.info("findAdmin() function from application/routes.py  called")
-    print('email: '+email)
     temp = Admin.query.filter_by(Email='%s' %(email)).first()
     return temp._asdict()
 
@@ -74,7 +73,7 @@ def admin(current_user):
     log.info("/admin route from application/routes.py  called")
     return
 
-@app.route("/changepass", methods=['GET', 'POST'])
+@app.route("/changepass", methods=['POST'])
 @require_api_token
 def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
