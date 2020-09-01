@@ -22,8 +22,8 @@ def require_api_token(func):
             return json.dumps({'message' : 'Token is missing'}),401
 
         try:
+            data = jwt.decode(token,app.config['SECRET_KEY'])
             current_user = Admin.query.filter_by(Email=data['Email']).first()
-            current_user = current_user._asdict()
             return json.dumps({'success' : 'true'}),200
         except:
             return json.dumps({'success' : 'false'}),401
@@ -61,7 +61,7 @@ def login():
     admin = findAdmin(data['Email'])
     print(admin)
     if data['Password'] == admin['Password']:
-        token = jwt.encode({'user' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        token = jwt.encode({'Email' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         print(token)
         session['api_session_token'] = token
         return json.dumps({'token' : token.decode('UTF-8')})
