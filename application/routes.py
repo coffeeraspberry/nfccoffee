@@ -80,7 +80,8 @@ def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
     admin = findAdmin(data['Email'])
-    if(data['newPassword'] != data['confimPassword'] or admin is None):
+    if(data['newPassword'] != data['confimPassword'] and data['password']!=current_user.Password):
+        print("Current User pass: "+current_user.Password)
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
     Admin.query.filter_by(Email=current_user.Email).update(dict(Password=data['newPassword']))
