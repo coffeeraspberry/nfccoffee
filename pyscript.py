@@ -17,13 +17,13 @@ def getUser(con,UserID):
 #Increment Counter column in db and update the Amount he has to pay so far
 def updateUser(con,user):
     cursor = con.cursor()
-    cursor.execute('UPDATE Users SET Counter  =Counter + 1, LastAccess = CURRENT_TIMESTAMP, AmountToPay  =Counter*CoffeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
+    cursor.execute('UPDATE Users SET Counter  =Counter + 1, LastAccess = CURRENT_TIMESTAMP, AmountToPay  =Counter*CoffeeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
     con.commit()
 
 #If a badge is scanned and UID doen't exist -> insert new row in db
 def addUserIfNotExists(con,uid):
     cursor = con.cursor()
-    insert = 'INSERT INTO Users(UserID,UserName,Email,Counter,CoffeUnitPrice,AmountToPay,LastAccess) VALUES(\'%s\',\'%s\',\'%s\',0,1.5,0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown')
+    insert = 'INSERT INTO Users(UserID,UserName,Email,Counter,CoffeeUnitPrice,AmountToPay,LastAccess) VALUES(\'%s\',\'%s\',\'%s\',0,1.5,0,CURRENT_TIMESTAMP)' % (str(uid),'Unknown','Unknown')
     print(insert)
     cursor.execute(insert)
     con.commit()
