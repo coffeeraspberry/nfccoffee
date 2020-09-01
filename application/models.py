@@ -29,10 +29,10 @@ class Users(db.Model, DictSerializable):
     UserName = db.Column(db.String(80),  nullable=False, default='Unknown')
     Email = db.Column(db.String(120), nullable=False, default='Unknown')
     Counter = db.Column(db.Integer, nullable=False, default=0)
-    CoffeUnitPrice = db.Column(db.Float, nullable=False, default=1.5)
+    CoffeeUnitPrice = db.Column(db.Float, nullable=False, default=1.5)
     AmountToPay = db.Column(db.Float, nullable=False, default=0)
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
-    
+
     def __repr__(self):
         return '<User{}>'.format(self.id)
 
