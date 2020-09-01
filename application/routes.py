@@ -22,12 +22,13 @@ def require_api_token(func):
             return json.dumps({'message' : 'Token is missing'}),401
 
         try:
-            data = jwt.decode(token,app.config['SECRET_KEY'])
+            current_user = Admin.query.filter_by(Email=data['Email']).first()
+            current_user = current_user._asdict()
             return json.dumps({'success' : 'true'}),200
         except:
             return json.dumps({'success' : 'false'}),401
 
-        return func(*args, **kwargs)
+        return func(current_user,*args, **kwargs)
     
     return decorated
 
@@ -69,20 +70,20 @@ def login():
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
-def admin():
+def admin(current_user):
     log.info("/admin route from application/routes.py  called")
     return
 
 @app.route("/changepass", methods=['GET', 'POST'])
 @require_api_token
-def changePass():
+def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
     admin = findAdmin(data['Email'])
     if(data['newPassword'] != data['confimPassword'] or admin is None):
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
-    Admin.query.filter_by(UserID=data['Email']).update(dict(Email=data['Email'], Password=data['newPassword']))
+    Admin.query.filter_by(id=current_user['id']).update(dict(Email=data['Email'], Password=data['newPassword']))
     success = True
     try:
         db.session.commit()
