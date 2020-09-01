@@ -73,12 +73,25 @@ def admin():
     log.info("/admin route from application/routes.py  called")
     return
 
-'''
-@app.route("/admin/<smth>", methods=['GET'])
+@app.route("/changepass", methods=['GET', 'POST'])
 @require_api_token
-def smth(smth):
-    return redirect(url_for("%s"%(smth)))
-'''
+def changePass():
+    log.info("/changepass route from application/routes.py  called")
+    data = getFrontJSON()
+    admin = findAdmin(data['Email'])
+    if(data['newPassword'] != data['confimPassword'] or admin is None):
+        return json.dumps({'success' : 'false'}),401
+    #update DB admin pass
+    Admin.query.filter_by(UserID=data['Email']).update(dict(Email=data['Email'], Password=data['newPassword']))
+    success = True
+    try:
+        db.session.commit()
+        log.info("Admin: %s password succesfully changed" %(data['Email']))
+    except:
+        success = False
+    
+    return json.dumps({'Success' : str(success)})
+
 
 @app.route("/comment",methods=['POST'])
 def comment():
