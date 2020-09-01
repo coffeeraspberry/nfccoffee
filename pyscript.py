@@ -52,8 +52,9 @@ interuptScan = False
 
 #Main logic
 def mainf():
-    #Launch Flask backend app
+    #Launch Flask backend app an wait a little bit
     subprocess.call('python3 -m app &', shell=True)
+    sleep(5)
     #connect pyscript.pi to db
     con = sqlite3.connect('application/pi.db')
     #settings for LCD display
