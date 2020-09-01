@@ -62,7 +62,7 @@ def mainf():
     hostname = socket.gethostname()
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     #A nice trick found on StackOverflow to display local ip adress ;)
-    s.connect(("8.8.8.8", 53))
+    s.connect(("8.8.8.8", 80))
     ip_address = s.getsockname()[0]
     s.close()
 
