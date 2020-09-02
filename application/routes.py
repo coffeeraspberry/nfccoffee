@@ -99,7 +99,7 @@ def changePass(current_user):
 def resetCounter(current_user):
     log.info("/resetCounter route from application/routes.py  called")
     data = getFrontJSON()
-    user = Admin.query.filter_by(UserID=data['uid']).first()
+    user = Users.query.filter_by(UserID=data['uid']).first()
     user.Counter = 0
     try:
         db.session.commit()
