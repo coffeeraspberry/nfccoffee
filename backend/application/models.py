@@ -11,6 +11,16 @@ class DictSerializable(object):
             result[key] = getattr(self, key)
         return result
 
+class Admin(db.Model, DictSerializable):
+    __tablename__ = 'Admin'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Email = db.Column(db.String(120), nullable=False, default='admin')
+    Password = db.Column(db.String(120), nullable=False, default='test')
+
+    def __repr__(self):
+        return '<Admin{}>'.format(self.id)
+
+
 class Users(db.Model, DictSerializable):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -18,7 +28,9 @@ class Users(db.Model, DictSerializable):
     userRelationship = db.relationship("Dates")
     UserName = db.Column(db.String(80),  nullable=False, default='Unknown')
     Email = db.Column(db.String(120), nullable=False, default='Unknown')
-    Counter = db.Column(db.Integer, nullable=False, default=0, )
+    Counter = db.Column(db.Integer, nullable=False, default=0)
+    CoffeeUnitPrice = db.Column(db.Float, nullable=False, default=1.5)
+    AmountToPay = db.Column(db.Float, nullable=False, default=0)
     LastAccess = db.Column(db.DateTime, nullable=True, default=func.now())
 
     def __repr__(self):

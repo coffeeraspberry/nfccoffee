@@ -1,11 +1,33 @@
 # Python backend
+
 > Please, please, please! If nothing at all does not make any sense just DO NOT TOUCH IT! Thank you! :)
 
 # Context
 
 Backend subproject part of **Coffe_counter** web-app built inside Continental Summer Practice 2020. 
 
+# Install
+
+> sudo apt-get install build-essential python-dev git vim nano sqlite3 python3 python3-pip libnfc5 libnfc-bin -y
+
+> pip3 install --upgrade setuptools
+
+> sudo pip3 install Flask Flask-Cors Flask-SQLAlchemy adafruit-circuitpython-busdevice adafruit-circuitpython-pn532 adafruit-circuitpython-charlcd pystream-protobuf stream-python PyJWT flask_httpauth
+
+>mkdir backend
+
+>cd backend/
+
+> git clone --single-branch --branch backend https://github.com/coffeeraspberry/nfccoffee.git
+
+# Run
+
+> cd backend/nfccoffee
+
+> sh scriptbackend.sh
+
 ## About and usage!
+
   * the 'offline' script called pyscript.py starts 
   * a subprocess calls the Flask server (aka app.py)
   * pyscript scans every second for card and displays different messages on LCD screen
@@ -50,6 +72,7 @@ Coffee_counter Python backend uses a number of open source projects to work prop
 * **zipp==3.1.0**
 
 And of course:
+
 * **Python 3.x**
 * **PIP3**
 * **sqlite3**

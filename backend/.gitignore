@@ -2,3 +2,5 @@ __pycache__/
 /application/__pycache__/
 /application/pi.db
 *.csv
+*.log
+.vscode/
