@@ -86,11 +86,9 @@ def changePass(current_user):
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
     admin = Admin.query.filter_by(Email=current_user.Email).first()
-    success = False
+    admin.Password = data['newPassword']
     try:
-        admin.Password = data['newPassword']
-        #db.session.commit()
-        log.info("Admin: %s password succesfully changed" %(data['Email']))
+        db.session.commit()
         success = True
     except:
         success = False
