@@ -80,12 +80,13 @@ def admin(current_user):
 def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
-    
-    if(data['newPassword'] != data['confimPassword'] and data['password']!=current_user.Password):
-        print("Current User pass: "+current_user.Password)
-        return json.dumps({'success' : 'false'}),401
-    #update DB admin pass
     admin = Admin.query.filter_by(Email=current_user.Email).first()
+    print("Debug1")
+    if(data['newPassword'] != data['confimPassword'] and data['password']!=admin.Password):
+        print("Debug2")
+        return json.dumps({'success' : 'false'}),401
+    print("Debug3")
+    #update DB admin pass
     admin.Password = data['newPassword']
     try:
         db.session.commit()
