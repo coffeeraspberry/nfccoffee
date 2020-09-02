@@ -101,7 +101,7 @@ def save(current_user):
     data = getFrontJSON()
     
     user = Users.query.filter_by(UserID=data['uid']).first()
-    user.Email = data['Email'] if user.Email != data['Email'] else user.email
+    user.Email = data['Email'] if user.Email != data['Email'] else user.Email
     user.UserName = data['Username'] if user.UserName != data['Username'] else user.UserName
     user.CoffeeUnitPrice = data['CoffeeUnitPrice'] if user.CoffeeUnitPrice != data['CoffeeUnitPrice'] else user.CoffeeUnitPrice
     
@@ -122,7 +122,7 @@ def resetCounter(current_user):
     data = getFrontJSON()
     user = Users.query.filter_by(UserID=data['uid']).first()
     user.Counter = 0
-    user.AmountToPay = 0
+    user.AmountToPay = 0;
     try:
         db.session.commit()
         success = True
