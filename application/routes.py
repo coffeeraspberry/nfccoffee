@@ -66,13 +66,15 @@ def login():
         return json.dumps({'token' : token.decode('UTF-8')})
 
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
-
+# ! 
 @app.route("/admin", methods=['GET'])
 @require_api_token
 def admin(current_user):
     log.info("/admin route from application/routes.py  called")
-    return json.dumps({'success' : 'true'}),200
-
+    if current_user:
+        return json.dumps({'success' : 'true'}),200
+    return json.dumps({'success' : 'false'}),401
+# TODO: succes: true / false
 @app.route("/changepass", methods=['POST'])
 @require_api_token
 def changePass(current_user):
@@ -93,7 +95,7 @@ def changePass(current_user):
     except:
         success = False
     
-    return json.dumps({'success' : str(success)})
+    return json.dumps({'success' : str(success).lower})
 
 
 @app.route("/comment",methods=['POST'])
