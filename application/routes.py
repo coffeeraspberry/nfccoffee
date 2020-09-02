@@ -74,7 +74,7 @@ def admin(current_user):
     if current_user:
         return json.dumps({'success' : 'true'}),200
     return json.dumps({'success' : 'false'}),401
-# TODO: succes: true / false
+# TODO: succes: true / false;
 @app.route("/changepass", methods=['POST'])
 @require_api_token
 def changePass(current_user):
