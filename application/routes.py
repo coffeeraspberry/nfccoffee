@@ -94,6 +94,27 @@ def changePass(current_user):
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
 
+@app.route("/save", methods=['GET','POST'])
+@require_api_token
+def save(current_user):
+    log.info("/save route from application/routes.py  called")
+    data = getFrontJSON()
+    
+    user = Users.query.filter_by(UserID=data['uid']).first()
+    user.Email = data['Email'] if user.Email != data['Email'] else user.email
+    user.UserName = data['Username'] if user.UserName != data['Username'] else user.UserName
+    user.CoffeeUnitPrice = data['CoffeeUnitPrice'] if user.CoffeeUnitPrice != data['CoffeeUnitPrice'] else user.CoffeeUnitPrice
+    
+    try:
+        db.session.commit()
+        success = True
+    except:
+        success = False
+    
+    if success == False:
+        return json.dumps({'success' : 'false'}),401
+    return json.dumps({'success' : 'true'}),200
+
 @app.route("/resetCounter", methods=['GET','POST'])
 @require_api_token
 def resetCounter(current_user):
@@ -101,6 +122,7 @@ def resetCounter(current_user):
     data = getFrontJSON()
     user = Users.query.filter_by(UserID=data['uid']).first()
     user.Counter = 0
+    user.AmountToPay = 0
     try:
         db.session.commit()
         success = True
