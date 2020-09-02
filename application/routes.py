@@ -82,7 +82,7 @@ def changePass(current_user):
     data = getFrontJSON()
     admin = Admin.query.filter_by(Email=current_user.Email).first()
     print("Debug1")
-    if(data['newPassword'] != data['confimPassword'] and data['password']!=admin.Password):
+    if(data['newPassword'] != data['confimPassword'] or data['password']!=admin.Password):
         print("Debug2")
         return json.dumps({'success' : 'false'}),401
     print("Debug3")
