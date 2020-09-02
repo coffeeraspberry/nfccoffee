@@ -24,7 +24,6 @@ def require_api_token(func):
         try:
             data = jwt.decode(token,app.config['SECRET_KEY'])
             current_user = Admin.query.filter_by(Email=data['Email']).first()
-            #return json.dumps({'success' : 'true'}),200
         except:
             return json.dumps({'success' : 'false'}),401
 
@@ -81,7 +80,7 @@ def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
     admin = Admin.query.filter_by(Email=current_user.Email).first()
-    if(data['newPassword'] != data['confimPassword'] or data['password']!=admin.Password):
+    if(data['newPassword'] != data['confirmPassword'] or data['password']!=admin.Password):
         return json.dumps({'success' : 'false'}),401
 
     admin.Password = data['newPassword']

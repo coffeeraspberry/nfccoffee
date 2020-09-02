@@ -20,7 +20,6 @@ class Admin(db.Model, DictSerializable):
     def __repr__(self):
         return '<Admin{}>'.format(self.id)
 
-
 class Users(db.Model, DictSerializable):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
