@@ -74,19 +74,16 @@ def admin(current_user):
     if current_user:
         return json.dumps({'success' : 'true'}),200
     return json.dumps({'success' : 'false'}),401
-# TODO: succes: true / false;
+
 @app.route("/changepass", methods=['GET','POST'])
 @require_api_token
 def changePass(current_user):
     log.info("/changepass route from application/routes.py  called")
     data = getFrontJSON()
     admin = Admin.query.filter_by(Email=current_user.Email).first()
-    print("Debug1")
     if(data['newPassword'] != data['confimPassword'] or data['password']!=admin.Password):
-        print("Debug2")
         return json.dumps({'success' : 'false'}),401
-    print("Debug3")
-    #update DB admin pass
+
     admin.Password = data['newPassword']
     try:
         db.session.commit()
@@ -97,7 +94,6 @@ def changePass(current_user):
     if success == False:
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
-
 
 @app.route("/comment",methods=['POST'])
 def comment():
@@ -156,5 +152,4 @@ def createUsers():
         print("User updated succesfully")
     except Exception as e:
         success = False
-
     return json.dumps({'success' : str(success)})
