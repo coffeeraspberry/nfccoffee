@@ -95,7 +95,9 @@ def changePass(current_user):
     except:
         success = False
     
-    return json.dumps({'success' : str(success).lower}),200
+    if success == False:
+        return json.dumps({'success' : 'false'}),401
+    return json.dumps({'success' : 'true'}),200
 
 
 @app.route("/comment",methods=['POST'])
