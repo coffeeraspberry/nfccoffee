@@ -42,7 +42,7 @@ pn532.SAM_configuration()
 #A function made especially for /scan route
 def scanBadge():
     try:
-        uid = pn532.read_passive_target(timeout=0.3)
+        uid = pn532.read_passive_target(timeout=0.5)
     except:
         print("UID is None. No badge scanned!")
         log.warning("UID is None. No badge scanned!")
@@ -52,7 +52,7 @@ def scanBadge():
 #A 'global' var to mimic a virtual interrupt
 interuptScan = False
 
-#Main logic
+#Main logic for reading badge, displaying on LCD and insert/update DB based on that 
 def mainf():
     #Launch Flask backend app an wait a little bit
     subprocess.call('python3 -m app &', shell=True)

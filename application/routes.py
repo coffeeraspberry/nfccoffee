@@ -10,6 +10,7 @@ from logger import *
 import jwt, datetime
 from functools import wraps
 
+#token auth for all admin pages
 def require_api_token(func):
     log.info("require_api_token(func) function from application/routes.py  called")
     @wraps(func)
@@ -39,7 +40,7 @@ def findUser():
     uid = uid.hex()
     temp = Users.query.filter_by(UserID='%s' %(uid)).first()
     return temp
-
+#get JSON data from body
 def getFrontJSON():
     log.info("getFrontJSON() function from application/routes.py  called")
     data = request.get_json(force=True)
@@ -73,7 +74,7 @@ def admin(current_user):
     if current_user:
         return json.dumps({'success' : 'true'}),200
     return json.dumps({'success' : 'false'}),401
-
+#change admins passwords
 @app.route("/changepass", methods=['GET','POST'])
 @require_api_token
 def changePass(current_user):
@@ -93,7 +94,7 @@ def changePass(current_user):
     if success == False:
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
-
+#save edits made by admin on Users table
 @app.route("/save", methods=['GET','POST'])
 @require_api_token
 def save(current_user):
@@ -114,7 +115,7 @@ def save(current_user):
     if success == False:
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
-
+#reset counter admin command
 @app.route("/resetCounter", methods=['GET','POST'])
 @require_api_token
 def resetCounter(current_user):
@@ -132,7 +133,7 @@ def resetCounter(current_user):
     if success == False:
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
-
+#generate token for posting a new comment in frontend feed
 @app.route("/comment",methods=['POST'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
@@ -140,12 +141,12 @@ def comment():
     user_token = client.create_user_token(str(frontData['username']))
     print(json.dumps({'token':user_token}))
     return json.dumps({'token':user_token})
-
+#display users from Users table in a JSON manner
 @app.route("/users", methods=['GET'])
 def users():
     log.info("/users [GET] route from application/routes.py  called")
     return json.dumps([u._asdict() for u in Users.query.all()], sort_keys=True) 
-
+#edit own data based on badge scanning (without admin rights)
 @app.route("/scan", methods=['GET'])
 def scan():
     log.info("/scan route from application/routes.py  called")
@@ -153,16 +154,16 @@ def scan():
     user = findUser()
     interuptScan = False
     return user._asdict()
-
+#not used so far
 @app.route("/logs", methods=['GET'])
 def logs():
     return json.dumps([v._asdict() for v in Dates.query.all()], sort_keys=True)
-
+#display messages from Contact page
 @app.route("/contacts", methods=['GET'])
 def contacts():
     log.info("/contacts route from application/routes.py  called")
     return json.dumps([w._asdict() for w in Contact.query.all()], sort_keys=True)
-
+#insert into DB a new Contact message
 @app.route("/contact", methods=['GET','POST'])
 def insertContacts():
     log.info("/contact route with insertContacts() function from application/routes.py  called")
@@ -175,7 +176,7 @@ def insertContacts():
     except Exception as e:
         success = False
     return json.dumps({'Success' : str(success)})
-
+#update user (works with /scan) without admin rights
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
