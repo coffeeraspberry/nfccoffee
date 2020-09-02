@@ -94,6 +94,23 @@ def changePass(current_user):
         return json.dumps({'success' : 'false'}),401
     return json.dumps({'success' : 'true'}),200
 
+@app.route("/resetCounter", methods=['GET','POST'])
+@require_api_token
+def resetCounter(current_user):
+    log.info("/resetCounter route from application/routes.py  called")
+    data = getFrontJSON()
+    user = Admin.query.filter_by(UserID=data['uid']).first()
+    user.Counter = 0
+    try:
+        db.session.commit()
+        success = True
+    except:
+        success = False
+    
+    if success == False:
+        return json.dumps({'success' : 'false'}),401
+    return json.dumps({'success' : 'true'}),200
+
 @app.route("/comment",methods=['POST'])
 def comment():
     client = stream.connect('cacwd7veh7pg', 'z3te9ufeyfrt5k9x685zh5ph9y52jrwcjmydg2vk7ytvznvncgart7g7nw2qsm7j')
