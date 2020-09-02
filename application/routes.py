@@ -89,7 +89,7 @@ def changePass(current_user):
     success = False
     try:
         admin.Password = data['newPassword']
-        db.session.commit()
+        #db.session.commit()
         log.info("Admin: %s password succesfully changed" %(data['Email']))
         success = True
     except:
