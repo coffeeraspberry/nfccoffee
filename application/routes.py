@@ -66,7 +66,7 @@ def login():
         return json.dumps({'token' : token.decode('UTF-8')})
 
     return make_response('Could not verify',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
-# ! 
+
 @app.route("/admin", methods=['GET'])
 @require_api_token
 def admin(current_user):
@@ -85,10 +85,11 @@ def changePass(current_user):
         print("Current User pass: "+current_user.Password)
         return json.dumps({'success' : 'false'}),401
     #update DB admin pass
-    ####Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
-    current_user.Password = data['newPassword']
+    #Admin.query.filter_by(Email=Email).update(dict(Password=data['newPassword']))
+    admin = Admin.query.filter_by(Email=current_user.Email).first()
     success = False
     try:
+        admin.Password = data['newPassword']
         db.session.commit()
         log.info("Admin: %s password succesfully changed" %(data['Email']))
         success = True
