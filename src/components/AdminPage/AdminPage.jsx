@@ -79,7 +79,6 @@ class AdminPage extends React.Component {
         </div>)
       }
 
-
       if (this.state.success === "true") {
         return (
           <div>

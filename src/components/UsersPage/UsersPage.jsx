@@ -71,16 +71,18 @@ class UsersPage extends React.Component {
 
     if (this.state.data == null) {
       return (
-        
         <div>
-        
           <Container fluid={true}>
             <Row className="on-load">
               <Col></Col>
               <Col xs="auto" sm="auto" md="auto">
                 <div class="loader">
                   <div className="load-text">Please wait, loading data</div>
-                  <Spinner style={{ width: '3rem', height: '3rem' }} type="grow" color="warning"/>
+                  <Spinner
+                    style={{ width: "3rem", height: "3rem" }}
+                    type="grow"
+                    color="warning"
+                  />
                 </div>
               </Col>
               <Col></Col>

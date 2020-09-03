@@ -5,7 +5,7 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Redirect } from "react-router-dom";
 import DEBUG from "../../../constants/debug";
-let route = "/api";
+let route = "/changepass";
 //let route = "/login";
 //change to real world later
 const METHOD = "POST";
@@ -18,15 +18,17 @@ class AdminResetPass extends React.Component {
       Email: null,
       Name: null,
       final: false,
+      token:null,
     };
+    this.setState({token: localStorage.getItem("token")})
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
   }
 
   async handleSubmitButton() {
     let url = api + route;
     if (
-      document.getElementById("email").value === "" ||
-      document.getElementById("pass").value === ""
+      document.getElementById("currpass").value === "" ||
+      document.getElementById("newpass").value === ""
     ) {
       alert("Please fill all mandatory fields");
       return null;
@@ -39,30 +41,30 @@ class AdminResetPass extends React.Component {
         "Cache-Control": "no-cache, no-store, must-revalidate",
         Pragma: "no-cache",
         Expires: "0",
+        token: localStorage.getItem("token"),
       },
-     /*
+     
       body: await JSON.stringify({
-        Email: document.getElementById("email").value,
-        Password: document.getElementById("pass").value,
+        password: document.getElementById("currpass").value,
+        newPassword: document.getElementById("newpass").value,
+        confirmPassword: document.getElementById("confirmpass").value,
       }),
-*/
-    };
 
+    };
+    console.log('curr pass ', document.getElementById("currpass").value )
+    console.log(' new pass ', document.getElementById("newpass").value)
+    console.log(' confirm pass ', document.getElementById("confirmpass").value)
+    console.log('this.state ', this.state.token)
+    console.log('localstorage  ', localStorage.getItem("token"))
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-
-    if (Urlresponse) {
-      if (JsonResponse.token === "") {
-        alert("Login Failed. Returning to home page.");
-        window.location.replace("/home");
-        return null;
-      }
-      document.getElementById("email").value = "";
-      document.getElementById("pass").value = "";
-      alert("Login Success");
-
-      localStorage.setItem("token", JsonResponse.token);
-      await this.setState({ final: true });
+console.log('JsonResponse ', JsonResponse)
+    if (JsonResponse.success==="true") {
+      alert('Password changed !')
+     window.location.replace('/api')
+    }else {
+      alert('Something went wrong :((')
+      window.location.replace('/home')
     }
 
     if (DEBUG) {
@@ -92,7 +94,7 @@ class AdminResetPass extends React.Component {
                     errorMessage="This field is mandatory"
                   >
                     <AvField
-                      name="pass"
+                      name="currpass"
                       placeholder="Current password"
                       label="Your Password"
                       type="password"

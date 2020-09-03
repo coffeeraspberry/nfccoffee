@@ -8,10 +8,10 @@ import DEBUG from "../../../constants/debug";
 import cellEditFactory from "react-bootstrap-table2-editor";
 import Type from "react-bootstrap-table2-editor";
 import "./AdminTable.css";
-let route = "/admin/save";
-let reset_route = "/api/reset";
+let route = "/save";
+//let reset_route = "/api/reset";
 const METHOD= "POST";
-//cellEdit={ cellEditFactory({ mode: 'click' }) }
+
 
 class AdminTableEdit extends React.Component {
   constructor(props) {
@@ -42,15 +42,16 @@ let options = {
     "Cache-Control": "no-cache, no-store, must-revalidate",
     Pragma: "no-cache",
     Expires: "0",
-  },
+    "token": localStorage.getItem("token"),
+    },
   body: await JSON.stringify({
+    CoffeeUnitPrice: changes.CoffeeUnitPrice,
     Email: changes.Email,
-    LastAccess: changes.LastAccess,
-    UserName: changes.UserName,
-    UserID:changes.UserID,
+    Username: changes.UserName,
+    uid:changes.UserID,
   }),
 };
-
+console.log('Change Body ', options.body)
 await console.log('fetch changes ', changes)
 await console.log('options ', options.body)
 let fetch_now= fetch(url, options)
@@ -78,6 +79,27 @@ return null;
         },
         editable: false,
       },
+      ,
+      {
+        dataField: "CoffeeUnitPrice",
+        dataAlign: "Center",
+        text: "Coffee Price",
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+        },
+        editable: true,
+      },
+      {
+        dataField: "AmountToPay",
+        dataAlign: "Center",
+        text: "To pay",
+        headerStyle: { backgroundColor: "white" },
+        editor: {
+          type: Type.TEXTAREA,
+        },
+        editable: false,
+      },
       {
         dataField: "Email",
         dataAlign: "Center",
@@ -97,6 +119,7 @@ return null;
           type: Type.TEXTAREA,
           // The rest properties will be rendered into the editor's DOM element
         },
+        editable: false,
       },
       {
         dataField: "UserID",

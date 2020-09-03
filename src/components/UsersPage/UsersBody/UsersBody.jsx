@@ -11,7 +11,7 @@ class UsersBody extends React.Component {
     this.state = {
       data: null,
       isFetching: false,
-    
+
       users: [],
     };
     this.state.data = props.items;
@@ -50,6 +50,19 @@ class UsersBody extends React.Component {
         text: "Counter",
         headerStyle: { backgroundColor: "white" },
       },
+      {
+        dataField: "CoffeeUnitPrice",
+        dataAlign: "Center",
+        text: "Coffee Price",
+        headerStyle: { backgroundColor: "white" },
+      },
+      {
+        dataField: "AmountToPay",
+        dataAlign: "Center",
+        text: "To pay",
+        headerStyle: { backgroundColor: "white" },
+      },
+
       {
         dataField: "Email",
         dataAlign: "Center",

@@ -13,9 +13,9 @@ import "./AdminTable.css";
 import AdminTableEdit from "./AdminTableEdit";
 import sign from '../../sign'
 let route = "/users";
-let reset_route = "/api/reset";
+let reset_route = "/resetCounter";
 
-
+//resetCounter
 //cellEdit={ cellEditFactory({ mode: 'click' }) }
 
 class AdminTable extends React.Component {
@@ -27,6 +27,7 @@ class AdminTable extends React.Component {
       loading: true,
       uid: null,
       edit: false,
+      token:null, 
     };
     this.handleResetButton = this.handleResetButton.bind(this);
    
@@ -127,6 +128,18 @@ class AdminTable extends React.Component {
         editor: {
           type: Type.TEXTAREA,
         }
+      },
+      {
+        dataField: "CoffeeUnitPrice",
+        dataAlign: "Center",
+        text: "Coffee Price",
+        headerStyle: { backgroundColor: "white" },
+      },
+      {
+        dataField: "AmountToPay",
+        dataAlign: "Center",
+        text: "To pay",
+        headerStyle: { backgroundColor: "white" },
       },
       {
         dataField: "Email",
@@ -337,7 +350,7 @@ class AdminTable extends React.Component {
         Expires: "0",
       },
       body: JSON.stringify({
-        UserID: this.state.uid,
+        uid: this.state.uid,
       }),
     };
     let response = fetch(url, options).then(() => {
