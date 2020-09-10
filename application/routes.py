@@ -65,7 +65,7 @@ def login():
         session['api_session_token'] = token
         return json.dumps({'token' : token.decode('UTF-8')})
 
-    return make_response('{"success" : "false"}',401,{'WWW-Authenticate' : 'Basic realm="Login Required"'})    
+    return json.dumps({'success' : 'false'})   
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
