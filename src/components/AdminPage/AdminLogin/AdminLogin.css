@@ -2,3 +2,10 @@
     position: relative;
     
 }
+
+.eye-btn:hover{
+opacity: .5;
+}
+.eye-btn{
+    margin-bottom: 5%;
+    }

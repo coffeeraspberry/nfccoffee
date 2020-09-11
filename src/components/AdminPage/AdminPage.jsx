@@ -12,6 +12,7 @@ class AdminPage extends React.Component {
     this.state = {
       token: null,
       success: null,
+      fetcherr:null,
     };
   }
    componentDidMount() {
@@ -44,7 +45,12 @@ class AdminPage extends React.Component {
     };
     
     let JsonResponse = null;
-    let urlResponse = await fetch(url, options);
+    let urlResponse;
+    try{
+    urlResponse = await fetch(url, options);
+    
+   
+    console.log('urlResponse ', urlResponse)
     console.log("AdminPage Fetch");
     JsonResponse = await urlResponse.json();
     console.log("Json Resp ", JsonResponse);
@@ -52,11 +58,23 @@ class AdminPage extends React.Component {
       token: localStorage.getItem("token"),
       success: JsonResponse.success,
     });
+    console.log('JsonResponse on timeout ', JsonResponse)
+  }
+    catch(error){
+      console.log('CatchErr UrlResponse ', error )
+      if(error.toString()==="TypeError: Failed to fetch"){
+       await this.setState({fetcherr:true})
+        console.log('this is the fetch state in verify ', this.state.fetcherr)
+      }
+    }
     return await JsonResponse;
   }
 
   render() {
     console.log('this.state.success render ', this.state.success)
+    if(this.state.fetcherr===true){
+      return (<p className="fetch-error-text">We are sorry, but we were unable to fetch data from backend server</p>)
+    }
     if (
       localStorage.getItem("token") === undefined ||
       localStorage.getItem("token") === null 

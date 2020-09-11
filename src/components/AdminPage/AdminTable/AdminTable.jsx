@@ -302,8 +302,8 @@ class AdminTable extends React.Component {
             </Col>
             <Col>
             <div>
-            <Button  color="success" onClick={this.handleMyButton.bind(this)}>
-              Edit Mode
+            <Button  color="danger" onClick={this.handleMyButton.bind(this)}>
+              Leave edit mode
             </Button>{" "}
             </div>
             </Col>

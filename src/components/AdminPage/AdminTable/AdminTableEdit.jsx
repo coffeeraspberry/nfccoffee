@@ -8,8 +8,7 @@ import DEBUG from "../../../constants/debug";
 import cellEditFactory from "react-bootstrap-table2-editor";
 import Type from "react-bootstrap-table2-editor";
 import "./AdminTable.css";
-let route = "/save";
-//let reset_route = "/api/reset";
+let route = "/save";;
 const METHOD= "POST";
 
 
@@ -171,7 +170,7 @@ return null;
                 console.log("Before Saving Cell!!");
               },
               afterSaveCell: (oldValue, newValue, row, column) => {
-                console.log("After Saving Cell!! row ", row);
+                console.log("After Saving Cell!! row", row);
                 this.fetch_changes(row);
               },
             })}

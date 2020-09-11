@@ -141,7 +141,7 @@ render(){
                       to="/api"
                       style={{ textDecoration: "none", color: "whitesmoke" }}
                     >
-                      C0ffeeAdmin
+                      CoffeeAdmin
                     </Link>
                   </Nav.Link>
                 </div>

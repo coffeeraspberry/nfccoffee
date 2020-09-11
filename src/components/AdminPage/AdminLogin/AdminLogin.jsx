@@ -5,6 +5,9 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Redirect } from "react-router-dom";
 import DEBUG from "../../../constants/debug";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
 //let route = "/api";
 let route = "/login";
 //change to real world later
@@ -18,12 +21,41 @@ class AdminLogin extends React.Component {
       Email: null,
       Name: null,
       final: false,
+      hasError: false,
+      passwordShown: false,
     };
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
+    this.handleValidSubmit = this.handleValidSubmit.bind(this);
+    this.handleInvalidSubmit = this.handleInvalidSubmit.bind(this);
+    this.showPass = this.showPass.bind(this);
+    this.keyPress = this.keyPress.bind(this);
   }
 
+  showPass() {
+    let passState = this.state.passwordShown;
+    this.setState({ passwordShown: !passState });
+  }
+  keyPress(e){
+    if(e.keyCode == 13){
+      this.handleSubmitButton()
+    }
+ }
+  
+  isValidEmailAddress(address) {
+    return !!address.match(/.+@.+/);
+  }
   async handleSubmitButton() {
     let url = api + route;
+    if (
+      this.isValidEmailAddress(document.getElementById("email").value) === false
+    ) {
+      alert("Invalid Email Address");
+      return null;
+    }
+    if (this.state.hasError === true) {
+      return null;
+      alert("Email provided is not correct");
+    }
     if (
       document.getElementById("email").value === "" ||
       document.getElementById("pass").value === ""
@@ -40,18 +72,22 @@ class AdminLogin extends React.Component {
         Pragma: "no-cache",
         Expires: "0",
       },
-     
+
       body: await JSON.stringify({
         Email: document.getElementById("email").value,
         Password: document.getElementById("pass").value,
       }),
-
     };
 
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-
+    await console.log("jsonResponse ", JsonResponse);
     if (Urlresponse) {
+      if (JsonResponse.success === "false") {
+        alert("Login Failed. Email or password provided is incorrect");
+        window.location.replace("/api");
+        return null;
+      }
       if (JsonResponse.token === "") {
         alert("Login Failed. Returning to home page.");
         window.location.replace("/home");
@@ -86,16 +122,13 @@ class AdminLogin extends React.Component {
               <Col></Col>
               <Col lg="6">
                 <div className="white">
-                  <AvForm
-                    onValidSubmit={this.handleValidSubmit}
-                    onInvalidSubmit={this.handleInvalidSubmit}
-                    errorMessage="Please enter valid Email"
-                  >
+                  <AvForm errorMessage="Please enter valid Email">
                     <AvField
                       name="email"
                       placeholder="Your Email address"
                       label="Email"
                       type="email"
+                      onKeyDown={this.keyPress}
                       required
                       className="center"
                     />
@@ -109,23 +142,31 @@ class AdminLogin extends React.Component {
               <Col lg="6">
                 <div className="white">
                   <AvForm
-                    onValidSubmit={this.handleValidSubmit}
-                    onInvalidSubmit={this.handleInvalidSubmit}
+                    onValidSubmit={this.handleValidPassSubmit}
+                    onInvalidSubmit={this.handleInvalidPassSubmit}
                     errorMessage="This field is mandatory"
                   >
                     <AvField
                       name="pass"
                       label="Password"
-                      type="password"
                       placeholder="Your password"
+                      type={this.state.passwordShown ? "text" : "password"}
+                      onKeyDown={this.keyPress}
                       required
                     />
+                    <div className="eye-btn">
+                      <i onClick={this.showPass}>{eye} Show password</i>
+                    </div>
                   </AvForm>
                 </div>
               </Col>
               <Col></Col>
             </Row>
-            <Button color="primary" onClick={this.handleSubmitButton}>
+            <Button
+              type="submit"
+              color="primary"
+              onClick={this.handleSubmitButton}
+            >
               Submit
             </Button>{" "}
           </div>
