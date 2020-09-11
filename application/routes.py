@@ -69,6 +69,10 @@ def login():
     data = getFrontJSON()
     admin = findAdmin(data['Email'])
     print(admin)
+    
+    if data['Email'] != admin['Email']:
+        return json.dumps({'success' : 'false'}),401
+        
     if data['Password'] == admin['Password']:
         token = jwt.encode({'Email' : data['Email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
         print(token)
