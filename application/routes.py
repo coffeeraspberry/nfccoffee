@@ -50,6 +50,8 @@ def getFrontJSON():
 def findAdmin(email):
     log.info("findAdmin() function from application/routes.py  called")
     temp = Admin.query.filter_by(Email='%s' %(email)).first()
+    if temp is None:
+        return False
     return temp._asdict()
 
 def checkEmail(email):   
@@ -69,8 +71,8 @@ def login():
     data = getFrontJSON()
     admin = findAdmin(data['Email'])
     print(admin)
-    
-    if data['Email'] != admin['Email']:
+
+    if not admin:
         return json.dumps({'success' : 'false'}),401
         
     if data['Password'] == admin['Password']:
