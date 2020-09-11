@@ -102,11 +102,15 @@ class AdminTable extends React.Component {
     const rowEvents = {
       onDoubleClick: (e, row, rowIndex) => {
         alert("Row copied to clipboard ", rowIndex);
-
+        console.log('row is ', row)
         let string = "";
         string +=
           "Counter : " +
           row.Counter +
+          ", Coffee Price : "+
+          row.CoffeeUnitPrice+
+          ", To pay : "+
+          row.AmountToPay+
           ", Email : " +
           row.Email +
           ", Last Access : " +

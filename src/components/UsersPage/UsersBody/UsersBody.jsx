@@ -29,17 +29,21 @@ class UsersBody extends React.Component {
         console.log("Row : ", row);
         let string = "";
         string +=
-          "Counter : " +
-          row.Counter +
-          ", Email : " +
-          row.Email +
-          ", Last Access : " +
-          row.LastAccess +
-          ", User Id : " +
-          row.UserID +
-          ", Username : " +
-          row.UserName;
-        copy(string);
+        "Counter : " +
+        row.Counter +
+        ", Coffee Price : "+
+        row.CoffeeUnitPrice+
+        ", To pay : "+
+        row.AmountToPay+
+        ", Email : " +
+        row.Email +
+        ", Last Access : " +
+        row.LastAccess +
+        ", User Id : " +
+        row.UserID +
+        ", Username : " +
+        row.UserName;
+      copy(string);
       },
     };
 

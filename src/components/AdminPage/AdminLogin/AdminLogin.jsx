@@ -25,8 +25,7 @@ class AdminLogin extends React.Component {
       passwordShown: false,
     };
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
-    this.handleValidSubmit = this.handleValidSubmit.bind(this);
-    this.handleInvalidSubmit = this.handleInvalidSubmit.bind(this);
+   
     this.showPass = this.showPass.bind(this);
     this.keyPress = this.keyPress.bind(this);
   }
