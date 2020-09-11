@@ -19,7 +19,7 @@ def updateUser(con,user):
     cursor = con.cursor()
     cursor.execute('UPDATE Users SET Counter  = Counter + 1, LastAccess = CURRENT_TIMESTAMP WHERE UserID=\'%s\';' %(user[0][1]))
     con.commit()
-    cursor.execute('UPDATE Users SET LastAccess = CURRENT_TIMESTAMP, AmountToPay = Counter*CoffeeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
+    cursor.execute('UPDATE Users SET LastAccess = CURRENT_TIMESTAMP, AmountToPay = AmountToPay + CoffeeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
     con.commit()
 
 #If a badge is scanned and UID doen't exist -> insert new row in db

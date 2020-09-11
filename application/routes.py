@@ -52,6 +52,16 @@ def findAdmin(email):
     temp = Admin.query.filter_by(Email='%s' %(email)).first()
     return temp._asdict()
 
+def checkEmail(email):   
+    if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',email)):  
+        return True 
+    return False 
+
+def checkUserName(username):   
+    if all(x.isalpha() or x.isspace() for x in username):  
+        return True 
+    return False 
+
 @app.route("/login", methods=['POST','GET'])
 def login():
     log.info("/login route from application/routes.py  called")
@@ -65,7 +75,7 @@ def login():
         session['api_session_token'] = token
         return json.dumps({'token' : token.decode('UTF-8')})
 
-    return json.dumps({'success' : 'false'})   
+    return json.dumps({'success' : 'false'}),401
 
 @app.route("/admin", methods=['GET'])
 @require_api_token
@@ -180,15 +190,17 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    if data['UserName'] == "":
-        data['UserName'] = "Unknown"
-    if data['Email'] == "":
-        data['Email'] = "Unknown"
     user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
-    success = True
+
+    if data['UserName'] == "" or not checkUserName(data['UserName']):
+        data['UserName'] = user.UserName
+    if data['Email']  == "" or not checkEmail(data['Email']):
+        data['Email'] = user.Email
+    
     try:
         db.session.commit()
+        success = True
         print("User updated succesfully")
     except Exception as e:
         success = False
-    return json.dumps({'success' : str(success)})
+    return json.dumps({'success' : str(success).lower})
