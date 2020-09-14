@@ -119,7 +119,7 @@ def save(current_user):
     
     user = Users.query.filter_by(UserID=data['uid']).first()
     user.Email = data['Email'] if checkEmail(data['Email']) else user.Email
-    user.UserName = data['Username'] if checkUserName(data['UserName']) else user.UserName
+    user.UserName = data['Username'] if checkUserName(data['Username']) else user.UserName
     user.CoffeeUnitPrice = data['CoffeeUnitPrice'] if user.CoffeeUnitPrice != data['CoffeeUnitPrice'] else user.CoffeeUnitPrice
     
     try:
