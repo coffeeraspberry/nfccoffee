@@ -204,10 +204,12 @@ def createUsers():
         user.UserName = data['UserName']
     if checkEmail(data['Email']) or data['Email'] == "":
         user.Email = user.Email
+        print("Am ajuns aici in if")
     else:
         user.Email = data['Email']
 
     try:
+        print("Am ntrat in try")
         db.session.commit()
         success = True
         print("User updated succesfully")
