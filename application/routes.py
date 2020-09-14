@@ -56,8 +56,8 @@ def findAdmin(email):
 
 def checkEmail(email):   
     if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',email)):  
-        return True
-    return False
+        return False
+    return True
 
 def checkUserName(username):   
     if all(x.isalpha() or x.isspace() for x in username):  
