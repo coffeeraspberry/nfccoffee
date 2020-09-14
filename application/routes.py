@@ -118,7 +118,7 @@ def save(current_user):
     data = getFrontJSON()
     
     user = Users.query.filter_by(UserID=data['uid']).first()
-    user.Email = data['Email'] if user.Email != data['Email'] else user.Email
+    user.Email = data['Email'] if checkEmail(data['Email']) else user.Email
     user.UserName = data['Username'] if user.UserName != data['Username'] else user.UserName
     user.CoffeeUnitPrice = data['CoffeeUnitPrice'] if user.CoffeeUnitPrice != data['CoffeeUnitPrice'] else user.CoffeeUnitPrice
     
@@ -196,20 +196,7 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
-    user = Users.query.filter_by(UserID=data['UserID']).first()
-
-    '''if data['UserName'] == "" or  checkUserName(data['UserName']):
-        user.UserName = oldUserName
-    else:
-        user.UserName = newUserName'''
-
-    if not(checkEmail(data['Email'])) or data['Email'] == "":
-        log.info("if email true")
-    else:
-        user.Email = data['Email']
-        log.info("if eai lfalse")
-
+    user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     try:
         db.session.commit()
         success = True
