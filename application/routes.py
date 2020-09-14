@@ -203,6 +203,9 @@ def createUsers():
     if data['Email']  == "" or not checkEmail(data['Email']):
         data['Email'] = user.Email
     
+    user.UserName = data['UserName']
+    user.Email = data['Email']
+
     try:
         db.session.commit()
         success = True
