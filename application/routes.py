@@ -3,7 +3,7 @@ from application import app
 from application.models import Users, Dates, Contact, Admin
 from . import db
 from flask import json, request, make_response, session, redirect, url_for
-import os, signal, csv, subprocess, stream, logger
+import os, signal, csv, subprocess, stream, logger, re
 from pyscript import interuptScan, scanBadge
 from time import sleep
 from logger import *
@@ -55,9 +55,9 @@ def findAdmin(email):
     return temp._asdict()
 
 def checkEmail(email):   
-    if "@" in email:  
-        return True 
-    return False 
+    if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',email)):  
+        return True
+    return False
 
 def checkUserName(username):   
     if all(x.isalpha() or x.isspace() for x in username):  
@@ -200,7 +200,7 @@ def createUsers():
     user = Users.query.filter_by(UserID=data['UserID']).first()
     if data['UserName'] == "" or not checkUserName(data['UserName']):
         data['UserName'] = user.UserName
-    if data['Email']  == "" or not checkEmail(data['Email']):
+    if not checkEmail(data['Email']):
         data['Email'] = user.Email
     #Update the user
     user.UserName = data['UserName']
