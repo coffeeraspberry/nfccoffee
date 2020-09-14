@@ -60,7 +60,7 @@ def checkEmail(email):
     return False
 
 def checkUserName(username):   
-    if all(x.isalpha() or x.isspace() for x in username):  
+    if re.search('^[a-zA-Z\s]*$',username):  
         return True 
     return False 
 
