@@ -78,7 +78,6 @@ def mainf():
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
             print("No badge detected...")
-            log.info("No badge detected")
         else: #a badge has been scanned
             print("UID: "+str(uid.hex())) #print for debub and demo pupose
             our_user = getUser(con,str(uid.hex())) #check if uid exists in db

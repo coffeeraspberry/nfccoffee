@@ -55,7 +55,7 @@ def findAdmin(email):
     return temp._asdict()
 
 def checkEmail(email):   
-    if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',email)):  
+    if "@" in email:  
         return True 
     return False 
 
@@ -196,8 +196,8 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
-
+    #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
+    user = Users.query.filter_by(UserID=data['UserID']).first()
     if data['UserName'] == "" or not checkUserName(data['UserName']):
         data['UserName'] = user.UserName
     if data['Email']  == "" or not checkEmail(data['Email']):
