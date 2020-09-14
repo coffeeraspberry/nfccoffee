@@ -56,8 +56,8 @@ def findAdmin(email):
 
 def checkEmail(email):   
     if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$',email)):  
-        return False
-    return True
+        return True
+    return False
 
 def checkUserName(username):   
     if all(x.isalpha() or x.isspace() for x in username):  
@@ -198,19 +198,16 @@ def createUsers():
     data = getFrontJSON()
     #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     user = Users.query.filter_by(UserID=data['UserID']).first()
-    oldUserName = user.UserName
-    newUserName = data['Username']
-    oldEmail = user.Email
-    newEmail = data['Email']
-    if data['UserName'] == "" or  checkUserName(data['UserName']):
+
+    '''if data['UserName'] == "" or  checkUserName(data['UserName']):
         user.UserName = oldUserName
     else:
-        user.UserName = newUserName
+        user.UserName = newUserName'''
 
-    if not(checkEmail(data['Email']) or data['Email'] == ""):
-        user.Email = oldEmail
+    if not(checkEmail(data['Email'])) or data['Email'] == "":
+        print("...")
     else:
-        user.Email = newEmail
+        user.Email = data['Email']
 
     try:
         db.session.commit()
