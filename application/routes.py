@@ -196,7 +196,11 @@ def insertContacts():
 @app.route("/users", methods=['POST'])
 def createUsers():
     data = getFrontJSON()
-    user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
+
+    user = Users.query.filter_by(UserID=data['uid']).first()
+    user.Email = data['Email'] if checkEmail(data['Email']) else user.Email
+    user.UserName = data['Username'] if checkUserName(data['Username']) else user.UserName
+    
     try:
         db.session.commit()
         success = True
