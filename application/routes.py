@@ -198,21 +198,20 @@ def createUsers():
     data = getFrontJSON()
     #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     user = Users.query.filter_by(UserID=data['UserID']).first()
-    if data['UserName'] == "" or not checkUserName(data['UserName']):
+
+    if data['UserName'] == "" or  checkUserName(data['UserName']):
         user.UserName = user.UserName
     else:
         user.UserName = data['UserName']
-    if checkEmail(data['Email']) or data['Email'] == "":
+
+    if not(checkEmail(data['Email']) or data['Email'] == ""):
         user.Email = user.Email
-        print("Am ajuns aici in if")
     else:
         user.Email = data['Email']
 
     try:
-        print("Am ntrat in try")
         db.session.commit()
         success = True
-        print("User updated succesfully")
     except Exception as e:
         success = False
     return json.dumps({'success' : str(success)})
