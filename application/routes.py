@@ -200,7 +200,7 @@ def createUsers():
     user = Users.query.filter_by(UserID=data['UserID']).first()
     if data['UserName'] == "" or not checkUserName(data['UserName']):
         data['UserName'] = user.UserName
-    if not checkEmail(data['Email']):
+    if checkEmail(data['Email']) or data['Email'] == "":
         data['Email'] = user.Email
     #Update the user
     user.UserName = data['UserName']
