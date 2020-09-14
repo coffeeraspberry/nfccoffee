@@ -202,7 +202,7 @@ def createUsers():
         data['UserName'] = user.UserName
     if data['Email']  == "" or not checkEmail(data['Email']):
         data['Email'] = user.Email
-    #Update
+    #Update the user
     user.UserName = data['UserName']
     user.Email = data['Email']
     try:
