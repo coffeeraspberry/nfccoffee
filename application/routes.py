@@ -199,12 +199,14 @@ def createUsers():
     #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     user = Users.query.filter_by(UserID=data['UserID']).first()
     if data['UserName'] == "" or not checkUserName(data['UserName']):
-        data['UserName'] = user.UserName
+        user.UserName = user.UserName
+    else:
+        user.UserName = data['UserName']
     if checkEmail(data['Email']) or data['Email'] == "":
-        data['Email'] = user.Email
-    #Update the user
-    user.UserName = data['UserName']
-    user.Email = data['Email']
+        user.Email = user.Email
+    else:
+        user.Email = data['Email']
+
     try:
         db.session.commit()
         success = True
