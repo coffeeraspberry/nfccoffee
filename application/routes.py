@@ -205,9 +205,10 @@ def createUsers():
         user.UserName = newUserName'''
 
     if not(checkEmail(data['Email'])) or data['Email'] == "":
-        print("...")
+        log.info("if email true")
     else:
         user.Email = data['Email']
+        log.info("if eai lfalse")
 
     try:
         db.session.commit()
