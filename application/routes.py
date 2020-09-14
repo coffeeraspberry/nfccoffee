@@ -198,16 +198,19 @@ def createUsers():
     data = getFrontJSON()
     #user = Users.query.filter_by(UserID=data['UserID']).update(dict(UserName=data['UserName'], Email=data['Email']))
     user = Users.query.filter_by(UserID=data['UserID']).first()
-
+    oldUserName = user.UserName
+    newUserName = data['Username']
+    oldEmail = user.Email
+    newEmail = data['Email']
     if data['UserName'] == "" or  checkUserName(data['UserName']):
-        user.UserName = user.UserName
+        user.UserName = oldUserName
     else:
-        user.UserName = data['UserName']
+        user.UserName = newUserName
 
     if not(checkEmail(data['Email']) or data['Email'] == ""):
-        user.Email = user.Email
+        user.Email = oldEmail
     else:
-        user.Email = data['Email']
+        user.Email = newEmail
 
     try:
         db.session.commit()
