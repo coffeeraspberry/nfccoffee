@@ -211,4 +211,4 @@ def createUsers():
         print("User updated succesfully")
     except Exception as e:
         success = False
-    return json.dumps({'success' : str(success).lower})
+    return json.dumps({'success' : str(success)})
