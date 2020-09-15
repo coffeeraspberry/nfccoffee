@@ -4,6 +4,7 @@ import AdminLogin from "./AdminLogin/AdminLogin";
 import AdminTable from "./AdminTable/AdminTable";
 import { Container, Row, Col } from "reactstrap";
 import api from "../../constants/api";
+import DEBUG from "../../constants/debug";
 let route_verify = "/admin";
 
 class AdminPage extends React.Component {
@@ -12,10 +13,13 @@ class AdminPage extends React.Component {
     this.state = {
       token: null,
       success: null,
-      fetcherr:null,
+      fetcherr: null,
     };
   }
-   componentDidMount() {
+  /* 
+Check if token present in local storage
+*/
+  componentDidMount() {
     if (
       localStorage.getItem("token") === undefined ||
       localStorage.getItem("token") === null
@@ -26,9 +30,10 @@ class AdminPage extends React.Component {
       console.log("this.state.token ", this.state.token);
     }
     this.verify_token(localStorage.getItem("token"));
-    
   }
-
+  /* 
+Verify access token with backend
+*/
   async verify_token(tok) {
     const url = api + route_verify;
     let options = {
@@ -43,58 +48,57 @@ class AdminPage extends React.Component {
         token: localStorage.getItem("token"),
       },
     };
-    
+
     let JsonResponse = null;
     let urlResponse;
-    try{
-    urlResponse = await fetch(url, options);
-    
-   
-    console.log('urlResponse ', urlResponse)
-    console.log("AdminPage Fetch");
-    JsonResponse = await urlResponse.json();
-    console.log("Json Resp ", JsonResponse);
-    this.setState({
-      token: localStorage.getItem("token"),
-      success: JsonResponse.success,
-    });
-    console.log('JsonResponse on timeout ', JsonResponse)
-  }
-    catch(error){
-      console.log('CatchErr UrlResponse ', error )
-      if(error.toString()==="TypeError: Failed to fetch"){
-       await this.setState({fetcherr:true})
-        console.log('this is the fetch state in verify ', this.state.fetcherr)
+    try {
+      urlResponse = await fetch(url, options);
+      JsonResponse = await urlResponse.json();
+      this.setState({
+        token: localStorage.getItem("token"),
+        success: JsonResponse.success,
+      });
+      //DEBUG
+      // console.log("JsonResponse on timeout ", JsonResponse);
+    } catch (error) {
+      console.log("verify_token fetch error : ", error);
+      if (error.toString() === "TypeError: Failed to fetch") {
+        await this.setState({ fetcherr: true });
+        console.log("verify_token fetch error :  ", this.state.fetcherr);
       }
     }
     return await JsonResponse;
   }
 
   render() {
-    console.log('this.state.success render ', this.state.success)
-    if(this.state.fetcherr===true){
-      return (<p className="fetch-error-text">We are sorry, but we were unable to fetch data from backend server</p>)
+    //Manual router
+    if (this.state.fetcherr === true) {
+      return (
+        <p className="fetch-error-text">
+          We are sorry, but we were unable to fetch data from backend server
+        </p>
+      );
     }
     if (
       localStorage.getItem("token") === undefined ||
-      localStorage.getItem("token") === null 
+      localStorage.getItem("token") === null
     ) {
-      
       return (
         <div>
           <div>
             <AdminLogin />
           </div>
         </div>
-      
       );
     } else {
-      if(this.state.success ==="false"){
-        return ( <div>
+      if (this.state.success === "false") {
+        return (
           <div>
-            <AdminLogin />
+            <div>
+              <AdminLogin />
+            </div>
           </div>
-        </div>)
+        );
       }
 
       if (this.state.success === "true") {
@@ -140,8 +144,7 @@ class AdminPage extends React.Component {
       }
     }
 
-    //last
-    return null;
+    
   }
 }
 

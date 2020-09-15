@@ -3,14 +3,11 @@ import "./AdminChangePass.css";
 import api from "../../../constants/api";
 import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import { Redirect } from "react-router-dom";
 import DEBUG from "../../../constants/debug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
 let route = "/changepass";
-//let route = "/login";
-//change to real world later
 const METHOD = "POST";
 
 class AdminResetPass extends React.Component {
@@ -29,21 +26,26 @@ class AdminResetPass extends React.Component {
     this.showPass = this.showPass.bind(this);
     this.keyPress = this.keyPress.bind(this);
   }
-
+  /* Show password as plain text */
   showPass() {
-
-    let passState= this.state.passwordShown
-    this.setState({passwordShown: !passState })
+    let passState = this.state.passwordShown;
+    this.setState({ passwordShown: !passState });
   }
-
-  keyPress(e){
-    if(e.keyCode == 13){
-       this.handleSubmitButton();
+  /* 
+  Enter keypress handler 
+  */
+  keyPress(e) {
+    if (e.keyCode === 13) {
+      this.handleSubmitButton();
     }
- }
+  }
+  /* 
+  fetch new password to backend
+  Submit button handler
+  */
   async handleSubmitButton() {
     let url = api + route;
-    
+    //Validations
     if (
       document.getElementById("currpass").value === "" ||
       document.getElementById("newpass").value === "" ||
@@ -53,14 +55,13 @@ class AdminResetPass extends React.Component {
       return null;
     }
     if (
-      
-      document.getElementById("newpass").value !== 
-      document.getElementById("confirmpass").value 
+      document.getElementById("newpass").value !==
+      document.getElementById("confirmpass").value
     ) {
       alert("New password and confirm password fields are not the same");
       return null;
     }
-  
+
     let options = {
       method: METHOD,
       headers: {
@@ -78,14 +79,18 @@ class AdminResetPass extends React.Component {
         confirmPassword: document.getElementById("confirmpass").value,
       }),
     };
+    /* 
+    Debug check input fields values
+    */
+    if(DEBUG){
     console.log("curr pass ", document.getElementById("currpass").value);
     console.log(" new pass ", document.getElementById("newpass").value);
     console.log(" confirm pass ", document.getElementById("confirmpass").value);
     console.log("this.state ", this.state.token);
     console.log("localstorage  ", localStorage.getItem("token"));
+    }
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-    console.log("JsonResponse ", JsonResponse);
     if (JsonResponse.success === "true") {
       alert("Password changed !");
       window.location.replace("/api");
@@ -171,13 +176,12 @@ class AdminResetPass extends React.Component {
                       type={this.state.passwordShown ? "text" : "password"}
                       onKeyDown={this.keyPress}
                       placeholder="Confirm new password"
-                      
                       required
                     />
                   </AvForm>
                   <div className="eye-btn">
                     <i onClick={this.showPass}>{eye} Show password fields</i>
-                    </div>
+                  </div>
                 </div>
               </Col>
               <Col></Col>

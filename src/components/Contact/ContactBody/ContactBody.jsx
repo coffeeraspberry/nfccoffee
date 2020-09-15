@@ -15,7 +15,9 @@ class ContactBody extends React.Component {
       Name: null,
     };
   }
-
+/* 
+Submit button handler for submitting new message
+*/
   handleSubmitButton() {
     let url = api + route;
     if (

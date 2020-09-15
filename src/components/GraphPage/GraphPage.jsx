@@ -62,6 +62,7 @@ class GraphPage extends React.Component {
   }
 
   render() {
+    //Return loading screen while fetching data
     if (this.state.data == null) {
       return (
         <div>

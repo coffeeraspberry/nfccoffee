@@ -3,14 +3,11 @@ import "./AdminLogin.css";
 import api from "../../../constants/api";
 import { Container, Row, Col, Button } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import { Redirect } from "react-router-dom";
 import DEBUG from "../../../constants/debug";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
-//let route = "/api";
 let route = "/login";
-//change to real world later
 const METHOD = "POST";
 
 class AdminLogin extends React.Component {
@@ -25,24 +22,30 @@ class AdminLogin extends React.Component {
       passwordShown: false,
     };
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
-   
     this.showPass = this.showPass.bind(this);
     this.keyPress = this.keyPress.bind(this);
   }
-
+  /* Show password as plain text */
   showPass() {
     let passState = this.state.passwordShown;
     this.setState({ passwordShown: !passState });
   }
-  keyPress(e){
-    if(e.keyCode == 13){
-      this.handleSubmitButton()
+  /* 
+  Enter keypress handler 
+  */
+  keyPress(e) {
+    if (e.keyCode === 13) {
+      this.handleSubmitButton();
     }
- }
-  
+  }
+  /* Email Validator */
   isValidEmailAddress(address) {
     return !!address.match(/.+@.+/);
   }
+  
+  /*
+Submit button handler for log in
+*/
   async handleSubmitButton() {
     let url = api + route;
     if (
@@ -50,10 +53,6 @@ class AdminLogin extends React.Component {
     ) {
       alert("Invalid Email Address");
       return null;
-    }
-    if (this.state.hasError === true) {
-      return null;
-      alert("Email provided is not correct");
     }
     if (
       document.getElementById("email").value === "" ||

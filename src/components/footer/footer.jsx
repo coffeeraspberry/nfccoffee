@@ -14,7 +14,6 @@ let handleClick = () => {
 };
 
 class footer extends React.Component {
-
   render() {
     return (
       <Container

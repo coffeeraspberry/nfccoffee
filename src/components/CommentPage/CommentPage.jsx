@@ -15,43 +15,9 @@ class CommentPage extends React.Component {
       moveOn: false,
       user: null,
     };
-    this.handleSubmitButton = this.handleSubmitButton.bind(this);
   }
 
-  close = () => {
-    this.setState({ showMod: false });
-  };
-  open = () => {
-    this.setState({ showMod: true });
-  };
-  demoAsyncCall() {
-    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-  }
-
-  async needFetch() {
-    /*Function temporary moved to handleSubmitButton()*/
-    /*
-    let url=api+route
-    console.log('FETCH URL ', url)
-    let options = {
-    method: 'GET',
-    headers: {
-      'mode': 'cors',
-      'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-   'Pragma': 'no-cache',
-   'Expires': '0'
-    },
-  };
-
-    let Urlresponse = await fetch(url, options)
-    let JsonResponse= await Urlresponse.json()
-    let picpic= await JSON.stringify(JsonResponse, null, 4);
-   this.state.data= picpic
-    */
-  }
-
+  /* Fetch GETSTREAM access token from backend server */
   async componentDidMount() {
     let options = {
       method: "POST",
@@ -67,34 +33,6 @@ class CommentPage extends React.Component {
       }),
     };
     this.state.user = "user";
-
-    let url = api + route;
-    let Urlresponse = await fetch(url, options);
-    let JsonResponse = await Urlresponse.json();
-    await this.setState({ moveOn: true, data: JsonResponse.token });
-  }
-
-  async handleSubmitButton() {
-    if (document.getElementById("username").value === "") {
-      alert("Please fill all mandatory fields");
-      return null;
-    }
-
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-      body: JSON.stringify({
-        username: document.getElementById("username").value,
-      }),
-    };
-    this.state.user = document.getElementById("username").value;
-
     let url = api + route;
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
@@ -102,11 +40,7 @@ class CommentPage extends React.Component {
   }
 
   render() {
-    const { loading } = this.state.loading;
-    if (loading) {
-      return null;
-    }
-    //Return input form while waiting for input
+    //Display loading screen while loading
     if (this.state.moveOn === false) {
       return (
         <div className="load">

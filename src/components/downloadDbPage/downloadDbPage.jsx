@@ -3,11 +3,8 @@ import "./downloadDbPage.css";
 import DwnBodyPage from "./dwn-body/DwnBodyPage";
 import { Container, Row, Col } from "reactstrap";
 import api from "../../constants/api";
-import DEBUG from '../../constants/debug';
+import DEBUG from "../../constants/debug";
 let route = "/users";
-
-
-
 
 class downloadDbPage extends React.Component {
   constructor(props) {
@@ -43,8 +40,8 @@ class downloadDbPage extends React.Component {
     DEBUG. CHECK DATA
     -------------------
     */
-    if(DEBUG){
-    console.log("JsonResponse : ", JsonResponse);
+    if (DEBUG) {
+      console.log("JsonResponse : ", JsonResponse);
     }
 
     this.setState({ data: JsonResponse });
@@ -59,9 +56,8 @@ class downloadDbPage extends React.Component {
   };
 
   render() {
+    //display loading screen while loading data
     if (this.state.data == null) {
-      console.log("this.state 1 ", this.state.data);
-
       return (
         <div>
           <div>

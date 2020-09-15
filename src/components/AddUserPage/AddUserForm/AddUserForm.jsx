@@ -13,9 +13,9 @@ import {
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import api from "../../../constants/api";
 import { Redirect } from "react-router-dom";
-import DEBUG from '../../../constants/debug';
+import DEBUG from "../../../constants/debug";
 let route = "/users";
-
+let METHOD = "POST";
 
 class AddUserForm extends React.Component {
   constructor(props) {
@@ -34,6 +34,7 @@ class AddUserForm extends React.Component {
     this.state.email = props.items.Email.toString();
     this.state.username = props.items.UserName.toString();
     this.handleSubmitButton = this.handleSubmitButton.bind(this);
+    this.keyPress = this.keyPress.bind(this);
     /* 
 -------------------
 DEBUG. EXPERIMENTAL FEATURE
@@ -45,7 +46,12 @@ NO USE NOW
     }
   }
   //END CONSTRUCTOR
-
+  
+  keyPress(e) {
+    if (e.keyCode === 13) {
+      this.handleSubmitButton();
+    }
+  }
   async handleSubmitButton() {
     /*
 ------------------------
@@ -67,15 +73,14 @@ NO USE NOW
     if (
       document.getElementById("username").value === "" ||
       document.getElementById("email").value === ""
-      
     ) {
-      alert('Please fill all mandatory fields ;)')
+      alert("Please fill all mandatory fields ;)");
       return null;
     }
 
     let url = api + route;
     let options = {
-      method: "POST",
+      method: METHOD,
       headers: {
         "Content-Type": "application/json",
       },
@@ -127,16 +132,16 @@ DEBUG. DATA CHECK
                   <Col xs="auto" sm="auto" md="auto">
                     <FormGroup>
                       <div className="badge-label-formgroup">
-                      <Label for="BadgeID" className="white-badge-label">
-                        Your badge serial number: 
-                      </Label>
-                      <Input
-                        name="badgeinput"
-                        label="badgeinput"
-                        className="white-badge-label"
-                        plaintext
-                        value={this.state.badgeID}
-                      />
+                        <Label for="BadgeID" className="white-badge-label">
+                          Your badge serial number:
+                        </Label>
+                        <Input
+                          name="badgeinput"
+                          label="badgeinput"
+                          className="white-badge-label"
+                          plaintext
+                          value={this.state.badgeID}
+                        />
                       </div>
                     </FormGroup>
                   </Col>
@@ -147,7 +152,7 @@ DEBUG. DATA CHECK
               <FormGroup>
                 <Row>
                   <Col></Col>
-                  <Col sm="10"  md="8" lg="6" xl="5" >
+                  <Col sm="10" md="8" lg="6" xl="5">
                     <AvForm
                       onValidSubmit={this.handleValidSubmit}
                       onInvalidSubmit={this.handleInvalidSubmit}
@@ -156,16 +161,17 @@ DEBUG. DATA CHECK
                         name="email"
                         label="Email Address"
                         type="email"
+                        onKeyDown={this.keyPress}
                         required
                         value={this.state.email}
                       />
                     </AvForm>
                   </Col>
                   <Col></Col>
-                  </Row>
-                  <Row>
+                </Row>
+                <Row>
                   <Col></Col>
-                  <Col sm="10" md="8" lg="6" xl="5" >
+                  <Col sm="10" md="8" lg="6" xl="5">
                     <AvForm
                       onValidSubmit={this.handleValidSubmit}
                       onInvalidSubmit={this.handleInvalidSubmit}
@@ -174,13 +180,14 @@ DEBUG. DATA CHECK
                         name="username"
                         label="Username"
                         type="username"
+                        onKeyDown={this.keyPress}
                         required
                         value={this.state.username}
                       />
                     </AvForm>
                   </Col>
                   <Col></Col>
-                  </Row>
+                </Row>
               </FormGroup>
               <Button color="success" onClick={this.handleSubmitButton}>
                 Submit

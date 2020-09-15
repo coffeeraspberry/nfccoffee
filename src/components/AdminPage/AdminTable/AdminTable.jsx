@@ -1,22 +1,17 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import { Container, Row, Col, Button, Tooltip, UncontrolledTooltip, FormGroup } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import api from "../../../constants/api";
 import copy from "copy-to-clipboard";
 import DEBUG from "../../../constants/debug";
-import cellEditFactory from 'react-bootstrap-table2-editor';
-import Type from 'react-bootstrap-table2-editor'
+import Type from "react-bootstrap-table2-editor";
 import "./AdminTable.css";
 import AdminTableEdit from "./AdminTableEdit";
-import sign from '../../sign'
 let route = "/users";
 let reset_route = "/resetCounter";
-
-//resetCounter
-//cellEdit={ cellEditFactory({ mode: 'click' }) }
 
 class AdminTable extends React.Component {
   constructor(props) {
@@ -27,24 +22,24 @@ class AdminTable extends React.Component {
       loading: true,
       uid: null,
       edit: false,
-      token:null, 
+      token: null,
     };
     this.handleResetButton = this.handleResetButton.bind(this);
-   
   }
-  handleMyButton(e, row){
-    if(!this.state.edit){
-    alert('You are entering edit mode')
-    }else{
-      alert('You are leaving edit mode')
+  /* Edit button handler */
+  handleMyButton(e, row) {
+    if (!this.state.edit) {
+      alert("You are entering edit mode");
+    } else {
+      alert("You are leaving edit mode");
     }
-    let it_be=!this.state.edit;
-    this.setState({edit:it_be})
-    console.log('edit it be', this.state.edit)
+    let it_be = !this.state.edit;
+    this.setState({ edit: it_be });
+    console.log("edit it be", this.state.edit);
   }
+  /* Users table fetch */
   async componentDidMount() {
     let url = api + route;
-
     let options = {
       method: "GET",
       headers: {
@@ -56,10 +51,8 @@ class AdminTable extends React.Component {
         Expires: "0",
       },
     };
-
     let Urlresponse = await fetch(url, options);
     let JsonResponse = await Urlresponse.json();
-
     this.setState({ data: JsonResponse });
     let JsonString = await JSON.stringify(JsonResponse, null, 4);
     /* 
@@ -74,11 +67,8 @@ class AdminTable extends React.Component {
     }
     return JsonString;
   }
-  
-  demoAsyncCall() {
-    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
-  }
 
+  /* Change in state without render trigger */
   set_uid(uid) {
     this.state.uid = uid;
     console.log("done ", this.state.uid);
@@ -89,6 +79,7 @@ class AdminTable extends React.Component {
     if (loading) {
       return null;
     }
+    //Table props
     const selectRow = {
       mode: "radio",
       bgColor: "#ffb300",
@@ -98,19 +89,18 @@ class AdminTable extends React.Component {
         this.set_uid(row.UserID);
       },
     };
-   
     const rowEvents = {
       onDoubleClick: (e, row, rowIndex) => {
         alert("Row copied to clipboard ", rowIndex);
-        console.log('row is ', row)
+        console.log("row is ", row);
         let string = "";
         string +=
           "Counter : " +
           row.Counter +
-          ", Coffee Price : "+
-          row.CoffeeUnitPrice+
-          ", To pay : "+
-          row.AmountToPay+
+          ", Coffee Price : " +
+          row.CoffeeUnitPrice +
+          ", To pay : " +
+          row.AmountToPay +
           ", Email : " +
           row.Email +
           ", Last Access : " +
@@ -123,7 +113,6 @@ class AdminTable extends React.Component {
       },
     };
     let columns = [
-      
       {
         dataField: "Counter",
         dataAlign: "Center",
@@ -131,7 +120,7 @@ class AdminTable extends React.Component {
         headerStyle: { backgroundColor: "white" },
         editor: {
           type: Type.TEXTAREA,
-        }
+        },
       },
       {
         dataField: "CoffeeUnitPrice",
@@ -152,27 +141,24 @@ class AdminTable extends React.Component {
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
         editor: {
-          type:Type.TEXTAREA ,
-           // The rest properties will be rendered into the editor's DOM element
-        }
+          type: Type.TEXTAREA,
+        },
       },
       {
         dataField: "LastAccess",
         text: "LastAccess",
         headerStyle: { backgroundColor: "white" },
         editor: {
-          type:Type.TEXTAREA ,
-           // The rest properties will be rendered into the editor's DOM element
-        }
+          type: Type.TEXTAREA,
+        },
       },
       {
         dataField: "UserID",
         text: "UserID",
         headerStyle: { backgroundColor: "white" },
         editor: {
-          type:Type.TEXTAREA ,
-           // The rest properties will be rendered into the editor's DOM element
-        }
+          type: Type.TEXTAREA,
+        },
       },
       {
         dataField: "UserName",
@@ -180,12 +166,11 @@ class AdminTable extends React.Component {
         filter: textFilter(),
         headerStyle: { backgroundColor: "white" },
         editor: {
-          type:Type.TEXTAREA ,
-           // The rest properties will be rendered into the editor's DOM element
-        }
+          type: Type.TEXTAREA,
+        },
       },
     ];
-
+    //end table props
     if (this.state.data == null) {
       return (
         <div>
@@ -221,124 +206,112 @@ class AdminTable extends React.Component {
         </div>
       );
     } else {
-      console.log('this.state.edit  inainte de return ', this.state.edit)
+      console.log("this.state.edit  inainte de return ", this.state.edit);
       //fetch success
-      if(this.state.edit===false){
-      return (
-       
-          <div className="reset-couter-button">
-             <Container fluid>
-               <Row>
-         
-            <Col><div>
-            <Button  color="success" onClick={this.handleResetButton}>
-              Reset User Counter
-            </Button>{" "}
-            </div>
-            </Col>
-            <Col>
-            <div>
-            <Button  color="primary" onClick={this.handleMyButton.bind(this)}>
-              Edit Mode
-            </Button>{" "}
-            </div>
-            </Col>
-            <Col>
-            <div>
-              <Link to ="/signout">
-            <Button  color="danger" >
-              Sign Out
-            </Button>{" "}
-            </Link>
-            </div>
-            </Col>
-            </Row>
-            <Row>
-              <Col></Col>
-              <Col>
-            <div className="change-button">
-              <Link to ="/change">
-            <Button  color="warning" >
-              Change Password
-            </Button>{" "}
-            </Link>
-            </div>
-            </Col>
-            <Col></Col>
-            </Row>
-            </Container>
-          <div classNames="table table-hover">
-            <BootstrapTable
-              wrapperClasses="table-responsive"
-              hover={true}
-              className="table-condensed table-striped table-hover"
-              keyField="id"
-              loading={true}
-              data={this.state.data}
-              columns={columns}
-              headerStyle={{ backgroundColor: "green" }}
-              bordered={false}
-              headers={true}
-              fluid={true}
-              pagination={paginationFactory()}
-              filter={filterFactory()}
-              rowStyle={{ backgroundColor: "white" }}
-              rowEvents={rowEvents}
-              selectRow={selectRow}
-              condensed={true}
-            />
-          </div>
-        </div>
-      
-      );}
-      else if(this.state.edit===true){
-       
+      if (this.state.edit === false) {
         return (
-     <div className="edit-buttons">
-   <Container fluid>
-               <Row>
-         
-            <Col><div>
-            <Button  color="secondary" >
-              Reset User Counter
-            </Button>{" "}
-            </div>
-            </Col>
-            <Col>
-            <div>
-            <Button  color="danger" onClick={this.handleMyButton.bind(this)}>
-              Leave edit mode
-            </Button>{" "}
-            </div>
-            </Col>
-            <Col>
-            <Button  color="secondary" >
-              Sign Out
-            </Button>{" "}
-            </Col>
-            </Row>
-           
+          <div className="reset-couter-button">
+            <Container fluid>
+              <Row>
+                <Col>
+                  <div>
+                    <Button color="success" onClick={this.handleResetButton}>
+                      Reset User Counter
+                    </Button>{" "}
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <Button
+                      color="primary"
+                      onClick={this.handleMyButton.bind(this)}
+                    >
+                      Edit Mode
+                    </Button>{" "}
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <Link to="/signout">
+                      <Button color="danger">Sign Out</Button>{" "}
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col></Col>
+                <Col>
+                  <div className="change-button">
+                    <Link to="/change">
+                      <Button color="warning">Change Password</Button>{" "}
+                    </Link>
+                  </div>
+                </Col>
+                <Col></Col>
+              </Row>
             </Container>
-          <div>
-            <AdminTableEdit data={this.state.data}/>
+            <div classNames="table table-hover">
+              <BootstrapTable
+                wrapperClasses="table-responsive"
+                hover={true}
+                className="table-condensed table-striped table-hover"
+                keyField="id"
+                loading={true}
+                data={this.state.data}
+                columns={columns}
+                headerStyle={{ backgroundColor: "green" }}
+                bordered={false}
+                headers={true}
+                fluid={true}
+                pagination={paginationFactory()}
+                filter={filterFactory()}
+                rowStyle={{ backgroundColor: "white" }}
+                rowEvents={rowEvents}
+                selectRow={selectRow}
+                condensed={true}
+              />
+            </div>
           </div>
+        );
+      } else if (this.state.edit === true) {
+        return (
+          <div className="edit-buttons">
+            <Container fluid>
+              <Row>
+                <Col>
+                  <div>
+                    <Button color="secondary">Reset User Counter</Button>{" "}
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <Button
+                      color="danger"
+                      onClick={this.handleMyButton.bind(this)}
+                    >
+                      Leave edit mode
+                    </Button>{" "}
+                  </div>
+                </Col>
+                <Col>
+                  <Button color="secondary">Sign Out</Button>{" "}
+                </Col>
+              </Row>
+            </Container>
+            <div>
+              <AdminTableEdit data={this.state.data} />
+            </div>
           </div>
-        )
-
-
-
+        );
       }
     }
   }
 
-
-
-
+  /* Reset button handler */
   handleResetButton(e, row) {
-    
     if (this.state.uid === undefined || this.state.uid === null) {
       console.log("this is the uid ", this.state.uid);
-      alert('Please select a row from table')
+      alert("Please select a row from table");
       return null;
     }
     console.log("row ", this.state.uid);
@@ -346,7 +319,7 @@ class AdminTable extends React.Component {
     let options = {
       method: "POST",
       headers: {
-        "token": localStorage.getItem("token"),
+        token: localStorage.getItem("token"),
         "Content-Type": "application/json",
         Accept: "application/json",
         "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -358,19 +331,10 @@ class AdminTable extends React.Component {
       }),
     };
     let response = fetch(url, options).then(() => {
-      console.log('AdminTable fetch')
       alert("Change submitted");
-     window.location.replace('/api')
+      window.location.replace("/api");
     });
   }
-  
- 
- 
-
-
-
 }
-
-
 
 export default AdminTable;

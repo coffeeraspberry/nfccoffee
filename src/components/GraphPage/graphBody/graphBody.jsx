@@ -50,59 +50,57 @@ class graphBody extends React.Component {
   render() {
     return (
       <div className="graph">
-      <Container>
-        <Row>
-          <Col>
-            <Bar
-            className="bar-graph"
-            width={200}
-            height={550}
-            responsive={true}
-            
-              data={this.state.data}
-              options={{
-                onClick: this.handleBarClick,
-                responsiveAnimationDuration:1500,
-                
-                aspectRatio:0.5,
-                maintainAspectRatio: false,
-                title: {
-                  animation: true,
-                  display: true,
-                  text: "Coffee Counter",
-                  fontColor:"white",
-                  fontSize: 30,
-                },
-                legend: {
-                  display: false,
-                  position: "right",
-                },
-                scales: {
-                  xAxes: [
-                    { 
-                      
-                      ticks: { display: true },
-                      gridLines: {
-                        display: true,
-                        drawBorder: true,
+        <Container>
+          <Row>
+            <Col>
+              <Bar
+                className="bar-graph"
+                width={200}
+                height={550}
+                responsive={true}
+                data={this.state.data}
+                options={{
+                  onClick: this.handleBarClick,
+                  responsiveAnimationDuration: 1500,
+
+                  aspectRatio: 0.5,
+                  maintainAspectRatio: false,
+                  title: {
+                    animation: true,
+                    display: true,
+                    text: "Coffee Counter",
+                    fontColor: "white",
+                    fontSize: 30,
+                  },
+                  legend: {
+                    display: false,
+                    position: "right",
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        ticks: { display: true },
+                        gridLines: {
+                          display: true,
+                          drawBorder: true,
+                        },
                       },
-                    },
-                  ],
-                  yAxes: [
-                    {
-                      ticks: { display: true },
-                      gridLines: {
-                        display: true,
-                        drawBorder: true,
+                    ],
+                    yAxes: [
+                      {
+                        ticks: { display: true },
+                        gridLines: {
+                          display: true,
+                          drawBorder: true,
+                        },
                       },
-                    },
-                  ],
-                },
-           }}
-            />
-          </Col>
-        </Row>
-      </Container>
+                    ],
+                  },
+                }}
+              />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

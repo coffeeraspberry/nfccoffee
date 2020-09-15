@@ -2,6 +2,10 @@ import React from "react";
 import "./AddUserBodyScan.css";
 import { Container, Row, Col } from "reactstrap";
 
+/*
+Waiting to scan badge page
+*/
+
 class AddUserBodyScan extends React.Component {
   constructor(props) {
     super(props);

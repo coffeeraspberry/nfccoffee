@@ -3,9 +3,8 @@ import "../home/home.css";
 import AddUserBodyScan from "./AddUserBody/AddUserBodyScan";
 import AddUserForm from "./AddUserForm/AddUserForm";
 import url from "../../constants/api";
-import DEBUG from '../../constants/debug'
+import DEBUG from "../../constants/debug";
 let route = "/scan";
-
 
 class AddUserPage extends React.Component {
   constructor(props) {
@@ -24,7 +23,9 @@ class AddUserPage extends React.Component {
   open = () => {
     this.setState({ showMod: true });
   };
-
+  /* 
+Scan bagde to proceed further
+*/
   async componentDidMount() {
     let fetchUrl = url + route;
     let options = {
@@ -56,6 +57,9 @@ class AddUserPage extends React.Component {
   }
 
   render() {
+    /*
+    Check if badge scanned.
+    */
     const { loading } = this.state.loading;
     if (loading) {
       return null;

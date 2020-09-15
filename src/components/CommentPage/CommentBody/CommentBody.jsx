@@ -13,7 +13,9 @@ import {
 import "react-activity-feed/dist/index.css";
 import DEBUG from '../../../constants/debug';
 
-
+/*
+Fetched Comment feed 
+*/
 
 class CommentBody extends React.Component {
   constructor(props) {
