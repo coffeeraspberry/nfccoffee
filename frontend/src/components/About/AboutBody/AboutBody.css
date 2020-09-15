@@ -1,0 +1,17 @@
+.about-img{
+    width:50%;
+    height: auto;
+}
+
+.about-text{
+    margin-left:5%;
+    margin-right:5%;
+   margin-top:12%;
+    text-align: justify;
+    color: white;
+
+}
+
+.about{
+    margin-top:5%;
+}

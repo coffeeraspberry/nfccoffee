@@ -1,0 +1,28 @@
+.dwn{
+    text-align:center;
+    background-color: #000000;
+}
+
+.dwn-header{
+    text-align:center;
+    background-color: #000000;
+}
+
+
+.text{
+    text-align: center;
+    color: white;
+}
+
+.black{
+    background-color: #000000;
+}
+.white-text{
+    text-align: center;
+    font-size-adjust: inherit;
+    font-size: 100%;
+}
+
+.down-button{
+    margin-top:10%;
+}

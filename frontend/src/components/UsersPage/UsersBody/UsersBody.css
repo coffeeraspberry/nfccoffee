@@ -1,0 +1,20 @@
+.usr{
+    background-color: white;
+    text-align: center;
+}
+
+.text{
+    color:white;
+}
+
+
+.react-bootstrap-table table {
+    margin-top:3%;
+    table-layout: auto;
+    }
+
+    .table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: #CFF5FF;
+}
+

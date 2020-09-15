@@ -1,0 +1,24 @@
+.white-badge-label{
+    margin-top: 3%;
+    font-size: 24px;
+    color:white;
+    text-align: center;
+}
+
+.white-badge-text{
+    font-size: 24px;
+    color:white;
+    width: 20vh;
+    text-align:center;
+}
+.success-text{
+    margin-top: 15%;
+    color: white;
+    font-size: 24px;
+}
+
+.badge-label-formgroup{
+    margin-top:7%;
+    text-align: justify;
+
+}

@@ -1,0 +1,43 @@
+.foot {
+  position: relative;
+  margin-top: 0px;
+  width: stretch;
+  text-align: center;
+}
+
+.empty-low {
+  height: 20vh;
+}
+.empty-high {
+  height: 50vh;
+}
+.bord {
+  border-style: solid;
+  border-radius: 2px;
+  border-color: transparent;
+}
+
+.imgforFooter {
+  text-align: center;
+  object-position: center;
+  background-color: transparent;
+  height: auto;
+  width: 50%;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.copyright-text {
+  color: white;
+  text-align: center;
+  margin-top: 10%;
+}
+.social-text {
+  color: white;
+  text-align: center;
+  margin-top: 10%;
+}
+.background-gradient {
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(253,187,45,0) 100%);
+}

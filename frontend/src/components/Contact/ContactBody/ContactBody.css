@@ -1,0 +1,19 @@
+.white{
+    color:white;
+    
+}
+.big-text{
+    color:white;
+    font-size: 30px;
+}
+
+.input-pos{
+    margin-top: 3%;
+}
+
+.center{
+    object-position: center;
+}
+.empty-contact{
+    height: 6vh;
+}
