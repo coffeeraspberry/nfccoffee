@@ -17,7 +17,9 @@ def getUser(con,UserID):
 #Increment Counter column in db and update the Amount he has to pay so far
 def updateUser(con,user):
     cursor = con.cursor()
-    cursor.execute('UPDATE Users SET Counter  =Counter + 1, LastAccess = CURRENT_TIMESTAMP, AmountToPay  =Counter*CoffeeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
+    cursor.execute('UPDATE Users SET Counter  = Counter + 1, LastAccess = CURRENT_TIMESTAMP WHERE UserID=\'%s\';' %(user[0][1]))
+    con.commit()
+    cursor.execute('UPDATE Users SET LastAccess = CURRENT_TIMESTAMP, AmountToPay = AmountToPay + CoffeeUnitPrice WHERE UserID=\'%s\';' %(user[0][1]))
     con.commit()
 
 #If a badge is scanned and UID doen't exist -> insert new row in db
@@ -40,7 +42,7 @@ pn532.SAM_configuration()
 #A function made especially for /scan route
 def scanBadge():
     try:
-        uid = pn532.read_passive_target(timeout=0.3)
+        uid = pn532.read_passive_target(timeout=0.4)
     except:
         print("UID is None. No badge scanned!")
         log.warning("UID is None. No badge scanned!")
@@ -50,7 +52,7 @@ def scanBadge():
 #A 'global' var to mimic a virtual interrupt
 interuptScan = False
 
-#Main logic
+#Main logic for reading badge, displaying on LCD and insert/update DB based on that 
 def mainf():
     #Launch Flask backend app an wait a little bit
     subprocess.call('python3 -m app &', shell=True)
@@ -76,7 +78,6 @@ def mainf():
         if uid is None:
             lcd.message = str(hostname)+"\n"+str(ip_address)
             print("No badge detected...")
-            log.info("No badge detected")
         else: #a badge has been scanned
             print("UID: "+str(uid.hex())) #print for debub and demo pupose
             our_user = getUser(con,str(uid.hex())) #check if uid exists in db
