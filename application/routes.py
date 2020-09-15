@@ -139,7 +139,7 @@ def resetCounter(current_user):
     data = getFrontJSON()
     user = Users.query.filter_by(UserID=data['uid']).first()
     user.Counter = 0
-    user.AmountToPay = 0;
+    user.AmountToPay = 0
     try:
         db.session.commit()
         success = True

@@ -42,7 +42,7 @@ pn532.SAM_configuration()
 #A function made especially for /scan route
 def scanBadge():
     try:
-        uid = pn532.read_passive_target(timeout=0.5)
+        uid = pn532.read_passive_target(timeout=0.4)
     except:
         print("UID is None. No badge scanned!")
         log.warning("UID is None. No badge scanned!")
