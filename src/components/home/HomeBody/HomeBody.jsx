@@ -27,29 +27,18 @@ class HomeBody extends React.Component {
               </Col>
             </Row>
             <div id="home-text">
-              <Row sm="1" md="1" xs="1" lg="1" xl="3">
-                <Col xs sm md lg xl></Col>
+              <Row xs="1" sm="1" md="1" lg="3" xl="3">
+                <Col></Col>
                 <Col>
                   <p className="body-description">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis placerat orci mattis dignissim tincidunt. Nulla a
-                    posuere diam, nec maximus libero. Integer dapibus
-                    condimentum nisl, sit amet vestibulum est sodales vel.
-                    Phasellus aliquet euismod ligula, nec pellentesque est
-                    dictum id. Vestibulum ante ipsum primis in faucibus orci
-                    luctus et ultrices posuere cubilia curae; Phasellus
-                    condimentum fermentum dolor, ac vestibulum risus convallis
-                    eu. Ut lacinia ut purus ornare sollicitudin. In egestas
-                    convallis ligula. Proin ac mauris nibh. Morbi efficitur ut
-                    lacus a imperdiet. Sed mauris purus, pellentesque eu tempus
-                    semper, ultrices at eros. Donec blandit cursus imperdiet.
-                    Donec ut egestas risus. Integer a mollis odio. Aliquam
-                    luctus lacus a lectus posuere consequat. Vestibulum ante
-                    ipsum primis in faucibus orci luctus et ultrices posuere
-                    cubilia curae;
+                    Giving numbers makes people focus on numbers, not content.
+                    That's not helpful. Most people are visual. We have provided
+                    a fun tool that aims at replacing traditional coffee usage
+                    data inside the office. Hope you will have fun using our
+                    Continental Summer Practice 2020 product.
                   </p>
                 </Col>
-                <Col xs sm md lg xl></Col>
+                <Col></Col>
               </Row>
             </div>
           </div>

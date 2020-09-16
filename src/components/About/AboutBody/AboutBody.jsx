@@ -18,20 +18,18 @@ class AboutBody extends React.Component {
           <Row sm="1" md="1" xs="1" lg="1" xl="2">
             <Col xs sm md lg xl>
               <p className="about-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                placerat orci mattis dignissim tincidunt. Nulla a posuere diam,
-                nec maximus libero. Integer dapibus condimentum nisl, sit amet
-                vestibulum est sodales vel. Phasellus aliquet euismod ligula,
-                nec pellentesque est dictum id. Vestibulum ante ipsum primis in
-                faucibus orci luctus et ultrices posuere cubilia curae;
-                Phasellus condimentum fermentum dolor, ac vestibulum risus
-                convallis eu. Ut lacinia ut purus ornare sollicitudin. In
-                egestas convallis ligula. Proin ac mauris nibh. Morbi efficitur
-                ut lacus a imperdiet. Sed mauris purus, pellentesque eu tempus
-                semper, ultrices at eros. Donec blandit cursus imperdiet. Donec
-                ut egestas risus. Integer a mollis odio. Aliquam luctus lacus a
-                lectus posuere consequat. Vestibulum ante ipsum primis in
-                faucibus orci luctus et ultrices posuere cubilia curae;
+                Our product is powered by Raspberry PI Zero W alongside with an
+                Adafruit 16x2 RGB LCD display and an Elechouse RFID Module
+                PN532. Adafruit LCD is used to provide offline feedback to the
+                end-user regarding the web-app access address and NFC reading
+                status. The RFID Module comes up with a friendly hardware
+                interface (Serial Peripheral Interface) and easy to use software
+                libraries written in Python for data acquistion. The main
+                challange was to design a web-app focused on user experince,
+                intuitive UI and responsivness on all devices. The way it was
+                ment to be used: scand the badge, wait for the display feedback,
+                check the web-app for details. For further suggestions feel free
+                to use our contact page.
               </p>
             </Col>
             <Col xs sm md lg xl>

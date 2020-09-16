@@ -42,7 +42,7 @@ class AdminLogin extends React.Component {
   isValidEmailAddress(address) {
     return !!address.match(/.+@.+/);
   }
-  
+
   /*
 Submit button handler for log in
 */

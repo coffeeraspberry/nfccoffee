@@ -62,7 +62,7 @@ class graphBody extends React.Component {
                 options={{
                   onClick: this.handleBarClick,
                   responsiveAnimationDuration: 1500,
-
+                 
                   aspectRatio: 0.5,
                   maintainAspectRatio: false,
                   title: {
@@ -88,11 +88,13 @@ class graphBody extends React.Component {
                     ],
                     yAxes: [
                       {
-                        ticks: { display: true },
+                        ticks: { display: true,  beginAtZero:true,
+                          min:0, },
                         gridLines: {
                           display: true,
                           drawBorder: true,
                         },
+                        
                       },
                     ],
                   },

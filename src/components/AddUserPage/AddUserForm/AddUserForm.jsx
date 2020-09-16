@@ -46,13 +46,21 @@ NO USE NOW
     }
   }
   //END CONSTRUCTOR
-  
+  isValidEmailAddress(address) {
+    return !!address.match(/.+@.+/);
+  }
   keyPress(e) {
     if (e.keyCode === 13) {
       this.handleSubmitButton();
     }
   }
   async handleSubmitButton() {
+    if (
+      this.isValidEmailAddress(document.getElementById("email").value) === false
+    ) {
+      alert("Invalid Email Address");
+      return null;
+    }
     /*
 ------------------------
        DEBUG CONSOLE LOG
