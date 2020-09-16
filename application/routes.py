@@ -55,7 +55,7 @@ def findAdmin(email):
     return temp._asdict()
 
 def checkEmail(email):   
-    if(re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+\-?\w+[.]\w{2,3}$',email)):  
+    if(re.search('^[a-z0-9]+\-?[\._]?[a-z0-9]+[@]\w+\-?\w+[.]\w{2,3}$',email)):  
         return True
     return False
 
